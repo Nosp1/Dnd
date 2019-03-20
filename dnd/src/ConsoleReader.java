@@ -50,6 +50,11 @@ public class ConsoleReader {
         player.setRole(role);
         printPlayerRoleChosen(player);
         chooseRoleSkills(s, player.getRole());
+        System.out.println("This is your character " + player.getPlayerName() + " \n "
+        + "your gender is: " + player.getGender() + "your race" + player.getRace().getRaceName() + " \n"
+        + "your role " + player.getRole().getRollerName() + "and your skills are " + player.getRole().getChosenRoleSkills() + "\n"
+        + "these are your current stats" + Statroller.str + "/n"
+        + Statroller.dex );
 
 
     }
