@@ -3,6 +3,11 @@ package Classes;
 
 import java.util.ArrayList;
 
+/*
+The skills class is intended to handle the proficieny bonuses based on the stats of each skill.  It will in the future handle Skills information:
+todo add printable information on each skill.
+todo add printable information proficiency.
+ */
 public class Skills {
     private ArrayList<String> skills;
 
@@ -11,9 +16,9 @@ public class Skills {
         skills.size();
         addSkills();
     }
-
-    private int skillsproficiency() {
-
+// a test example for proficency modifier.
+    // the modifier changes based on the value of each stat.
+    private int skillsProficiency() {
 
         int modifier = 0;
         if (Statroller.dex == 16 || Statroller.dex == 17) {
@@ -35,9 +40,9 @@ public class Skills {
     }
 
     public int getSkillsProficiency() {
-        return skillsproficiency();
+        return skillsProficiency();
     }
-
+// adds all skills available to a list for easy printing in the future.
     private void addSkills() {
         skills.add("Atlethics");
         skills.add("Animal Handeling");

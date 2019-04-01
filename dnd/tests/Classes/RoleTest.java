@@ -1,11 +1,10 @@
 package Classes;
 
-import Classes.Roles.Rogue;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class RoleTest {
     private Role role;

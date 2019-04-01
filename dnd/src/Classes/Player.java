@@ -1,13 +1,17 @@
 package Classes;
+/*
+The Player class only handles getters and setters from other classes to set values on the player.
+Todo add Alignment choice.. if needed
 
+ */
 public class Player {
     private String playerName; // name of the player
     private String gender; // gender of the player
     private Race race; // the race chosen by the player
     private int age; // the age set by the player
     private Skills skills; // skills chosen by the player.
-    private String Alignment;
-    private Role role;
+    private String Alignment; //alignment chosen by player.
+    private Role role; // to handle role objects on the player
 
     public String getAlignment() {
         return Alignment;

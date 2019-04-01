@@ -1,6 +1,12 @@
 package Classes.Races;
 
 import Classes.Race;
+/*
+This is the standard Elf race. Currently has all Standard Elf features added as strings.
+Todo need to add printable methods for FeyAncestry, Use same method for Darkvision as Dwarf. Keen Senses, and Trance.
+ Todo IF TIME:  Add the standard edition sub races. Wood elf and High elf. Need player input method when player chooses elf.
+
+ */
 
 public class Elf extends Race {
     private String feyAncestry; //Cannot be charmed or put to sleep. Advantage on save

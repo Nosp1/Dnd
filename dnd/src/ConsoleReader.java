@@ -12,10 +12,16 @@ import Classes.Statroller;
 
 import java.util.Arrays;
 import java.util.Scanner;
-
+/*
+ConsoleReader serves as the main data handler of the project. ConsoleReader uses intrinsic methods to assign player
+values: Such as the players name, age, gender, race, role, skills, spells and background.
+Prints the user input in the terminal.
+ */
 public class ConsoleReader {
 
 
+
+//the constructor for consolereader that handles all the input from the reader.
     public ConsoleReader() {
 
         Statroller.rollstats();
@@ -50,15 +56,20 @@ public class ConsoleReader {
         player.setRole(role);
         printPlayerRoleChosen(player);
         chooseRoleSkills(s, player.getRole());
-        System.out.println("This is your character " + player.getPlayerName() + " \n "
-        + "your gender is: " + player.getGender() + "your race" + player.getRace().getRaceName() + " \n"
-        + "your role " + player.getRole().getRollerName() + "and your skills are " + player.getRole().getChosenRoleSkills() + "\n"
-        + "these are your current stats" + Statroller.str + "/n"
-        + Statroller.dex );
+        System.out.println("This is your character " + player.getPlayerName() + " \n"
+        + "your gender is: " + player.getGender() + " and your race " + player.getRace().getRaceName() + " \n"
+        + "your role is " + player.getRole().getRollerName() + " and your skills are " + Arrays.toString(player.getRole().getChosenRoleSkills()) + "\n"
+        + "these are your current stats: Strength: " + Statroller.str + "\n"
+        + "Dexterity: " + Statroller.dex + "\n"
+        + "Constitution: " + Statroller.cons + " \n"
+        + "Intelligence: " + Statroller.intl + "\n "
+        + "Wisdom: " + Statroller.wis + "\n"
+        + "Charisma: " + Statroller.chari);
+
 
 
     }
-
+//prints the current stat values the player just inputted.
     private void printStatrollerComplete() {
         System.out.println("\nCongratulation! You have set your stats! Here are you stats: ");
         System.out.println("Strength: " + Statroller.str);
@@ -76,6 +87,7 @@ public class ConsoleReader {
     }
 
     // while looper som sjekker om isRacechosen blir ulik null.
+    // a While loop that makes sure the player object is assign a race object.
     private Race selectRace(Scanner s) {
         boolean isRaceChosen = false;
         Race race = null;
@@ -88,6 +100,7 @@ public class ConsoleReader {
     }
 
     //lar spiller sette de tilfeldige tallene på spesifikke atributter.
+    // Allows player to set their rolls to specific attributes: E.g. Strength, Dexterity etc.
     private void choosePlayerStats(Scanner s) {
 
         int ans;
@@ -136,6 +149,8 @@ public class ConsoleReader {
 
 
     // iterer over players sine stats og øker de med x amount hvor x er race sin statøkning.
+    // Iterates over the players assigned stat-values and increments them by x amount.
+    // X is based on the race property stat increase.
     private void IncreasePlayerStats(Player player) {
         int n = player.getRace().getRaceInrease();
 
@@ -171,7 +186,8 @@ public class ConsoleReader {
         }
     }
 
-
+// Enables the player to choose the race they want. Generates the array with stats that increase for IncreasePlayerStats Method.
+    //Todo Add rest of the races in core game, maybe add example of custom race?
     private Race chooseRace(String input) {
 
         switch (input.toLowerCase()) {
@@ -204,9 +220,9 @@ public class ConsoleReader {
 /*
 Velger rollens skills basert på tilgjengelige skills og antall skills de kan velge
 @Params Scanner S & Role role
+Enables the player to choose skills to be proficient in: Based on the role chosen.
 
  */
-
     private void chooseRoleSkills(Scanner s, Role role) {
 
         String[] temp = role.getChosenRoleSkills();
@@ -245,6 +261,7 @@ Velger rollens skills basert på tilgjengelige skills og antall skills de kan ve
     }
 
     //printer tilgjengelig skills for spilleren
+    //Prints the available skills for the player
     private void printAvaiableRoleSkills(Role role) {
         for (int i = 0; i < role.getAvailableSkills().length; i++) {
             System.out.println(role.getAvailableSkills()[i] + ": " + i);
@@ -252,6 +269,7 @@ Velger rollens skills basert på tilgjengelige skills og antall skills de kan ve
     }
 
     //Sørger for at Role blir satt på Role objektet
+    // A While loop that checks whether a Role object is put on the player object.
     private Role selectRole(Scanner s) {
         boolean isRoleChosen = false;
         Role role = null;
@@ -264,9 +282,10 @@ Velger rollens skills basert på tilgjengelige skills og antall skills de kan ve
     }
 
     /*
-    Chooses which Role object to store on the players
+    Chooses which Role object to store on the players based on case input: E.g 1,2,3 etc.
     @Params String input
     @Returns new Role object
+    Todo: Further inplement the missing core classes/roles.
      */
     private Role chooseRole(String input) {
 
@@ -293,11 +312,11 @@ Velger rollens skills basert på tilgjengelige skills og antall skills de kan ve
     }
 
 
-
+// Currently not used.
     private boolean ensureString(Object string) {
         return string instanceof String;
     }
-
+//currently not used.
     private boolean ensureInteger(Object integer) {
         return integer instanceof Integer;
     }

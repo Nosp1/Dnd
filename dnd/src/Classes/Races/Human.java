@@ -1,11 +1,13 @@
 package Classes.Races;
 
 import Classes.Race;
-import Classes.Statroller;
 
 
 
-//increase in stats +1 to all or +1 to 2. and extra skill + extra language.
+/*
+Human in dnd: has only one intrinsic property.
+Todo need to add a method for  extra language choice.
+ */
 public class Human extends Race {
     private String extraLanguage;
 

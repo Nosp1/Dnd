@@ -1,5 +1,8 @@
 package Classes;
-
+/*
+This is the Role Class. It serves as a skeleton for any types of Role classes made for easy implementation of the extended DnD library, as well as custom Roles.
+The class contains all the minimum properties a role needs to have. Any intristinc properties will be found in the inherenting class: E.g. Rouge will have an intrinsic property Thief´ Cant
+ */
 public abstract class Role {
     private String rollerName;
     private int baseHp;
@@ -14,7 +17,9 @@ public abstract class Role {
         this.amountOfSkills = amountOfSkills;
         this.chosenRoleSkills = new String[amountOfSkills];
     }
-
+/*
+Below are simple getters and setters to get the object values.
+ */
     public String getRollerName() {
         return rollerName;
     }

@@ -1,5 +1,7 @@
 package Classes;
-
+/*
+This is the Race class. It serves as a skeleton for inheretans
+ */
 public abstract class Race {
     private String raceName;
     private int maxAge;
