@@ -1,12 +1,10 @@
 import Classes.Player;
 import Classes.Race;
-import Classes.Races.Dragonborn;
-import Classes.Races.Dwarf;
-import Classes.Races.Elf;
-import Classes.Races.Human;
+import Classes.Races.*;
 import Classes.Role;
 import Classes.Roles.Cleric;
 import Classes.Roles.Fighter;
+import Classes.Roles.Paladin;
 import Classes.Roles.Rogue;
 import Classes.Statroller;
 
@@ -44,14 +42,16 @@ public class ConsoleReader {
         System.out.println("Chose your race: press 1 for Elf\n " +
                 "press 2 for Human\n " +
                 "press 3 for Dragonborn\n " +
-                "press 4 for Dwarf ");
+                "press 4 for Dwarf\n " +
+                "press 5 for Halfling");
         Race race = selectRace(s);
         player.setRace(race);
         System.out.println("You have Chosen: " + player.getRace().getRaceName());
         IncreasePlayerStats(player);
         System.out.println("Chose your Class: press 1 for Rogue \n " +
                 "press 2 for Fighter\n " +
-                "press 3 for Cleric");
+                "press 3 for Cleric\n " +
+                "press 4 for Paladin");
         Role role = selectRole(s);
         player.setRole(role);
         printPlayerRoleChosen(player);
@@ -210,8 +210,12 @@ public class ConsoleReader {
                 String[] stats = {"cons"};
                 return new Dwarf("Dwarf", 350, 2, "Common, Dwarfish", stats, "Can see in the dark", "has dwarwen weapon training", "can identify stonework");
             }
+            case "5": {
+                String[] stats = {"dex"};
+                return new Halfling("Halfling", 250, 2,"Common, Halfling",stats,"Can see in the dark","Advantage on saving throws against frightened", "can use the hide action when obscured","Can move through the space of any creature one size larger than yours");
+            }
             default:
-                System.out.println("you have not chosen a race, please type 1, 2, 3, or 4");
+                System.out.println("you have not chosen a race, please type 1, 2, 3, 4 or 5");
                 return null;
         }
 
@@ -304,6 +308,10 @@ Enables the player to choose skills to be proficient in: Based on the role chose
             case "3": {
                 String[] skills = {"History", "Religion", "Persuasion", "Medicine", "Insight"};
                 return new Cleric("Cleric", 8, skills, 2);
+            }
+            case "4":{
+                String[] skills = {"Medicine", "Religion", "Intimidation","persuasion", "Insight","Athletics"};
+                return new Paladin("Paladin",10,skills,2,"can heal for total amount of 5 x level","can sense evil");
             }
             default:
                 System.out.println("you have not chosen a role, please type 1,2,3,4");

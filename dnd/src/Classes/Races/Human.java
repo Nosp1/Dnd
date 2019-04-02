@@ -19,4 +19,12 @@ public class Human extends Race {
 
 
     }
+
+    public String getExtraLanguage() {
+        return extraLanguage;
+    }
+
+    public void setExtraLanguage(String extraLanguage) {
+        this.extraLanguage = extraLanguage;
+    }
 }

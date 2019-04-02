@@ -50,4 +50,20 @@ public abstract class Race {
     public void setRaceInrease(int raceIncreaseStats) {
         this.raceIncreaseStats = raceIncreaseStats;
     }
+
+    public int getRaceIncreaseStats() {
+        return raceIncreaseStats;
+    }
+
+    public void setRaceIncreaseStats(int raceIncreaseStats) {
+        this.raceIncreaseStats = raceIncreaseStats;
+    }
+
+    public String getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(String languages) {
+        this.languages = languages;
+    }
 }

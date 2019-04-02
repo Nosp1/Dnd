@@ -10,9 +10,9 @@ Todo need to add printable methods for FeyAncestry, Use same method for Darkvisi
 
 public class Elf extends Race {
     private String feyAncestry; //Cannot be charmed or put to sleep. Advantage on save
-    private String darkVision; // has darkvison. can seee up to x feet in dim light.
-    private String keenSenses; // has proficiency in keenSenses;
-    private String trance;
+    protected String darkVision; // has darkvison. can seee up to x feet in dim light.
+    protected String keenSenses; // has proficiency in keenSenses;
+    protected String trance;
 
     public Elf(String racename, int maxAge, String feyAncestry, int raceIncreaseStats, String languages, String darkVision, String keenSenses, String trance, String[] availableStats){
         super(racename,maxAge,raceIncreaseStats,languages,availableStats);
@@ -20,5 +20,37 @@ public class Elf extends Race {
         this.keenSenses=keenSenses;
         this.darkVision=darkVision;
         this.trance=trance;
+    }
+
+    public String getFeyAncestry() {
+        return feyAncestry;
+    }
+
+    public void setFeyAncestry(String feyAncestry) {
+        this.feyAncestry = feyAncestry;
+    }
+
+    public String getDarkVision() {
+        return darkVision;
+    }
+
+    public void setDarkVision(String darkVision) {
+        this.darkVision = darkVision;
+    }
+
+    public String getKeenSenses() {
+        return keenSenses;
+    }
+
+    public void setKeenSenses(String keenSenses) {
+        this.keenSenses = keenSenses;
+    }
+
+    public String getTrance() {
+        return trance;
+    }
+
+    public void setTrance(String trance) {
+        this.trance = trance;
     }
 }
