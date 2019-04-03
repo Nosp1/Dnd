@@ -8,6 +8,7 @@ import Classes.Statroller;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 /*
 ConsoleReader serves as the main data handler of the project. ConsoleReader uses intrinsic methods to assign player
 values: Such as the players name, age, gender, race, role, skills, spells and background.
@@ -61,53 +62,43 @@ public class ConsoleReader {
         printPlayerRoleChosen(player);
         chooseRoleSkills(s, player.getRole());
         System.out.println("This is your character " + player.getPlayerName() + " \n"
-        + "your gender is: " + player.getGender() + " and your race " + player.getRace().getRaceName() + " \n"
-        + "your role is " + player.getRole().getRollerName() + " and your skills are " + Arrays.toString(player.getRole().getChosenRoleSkills()) + "\n"
-        + "these are your current stats: Strength: \n " +  Statroller.str + "\n"
-        + "Dexterity: " + Statroller.dex + "\n"
-        + "Constitution: " + Statroller.cons + " \n"
-        + "Intelligence: " + Statroller.intl + "\n "
-        + "Wisdom: " + Statroller.wis + "\n"
-        + "Charisma: " + Statroller.chari);
-
+                + "your gender is: " + player.getGender() + " and your race " + player.getRace().getRaceName() + " \n"
+                + "your role is " + player.getRole().getRollerName() + " and your skills are " + Arrays.toString(player.getRole().getChosenRoleSkills()) + "\n"
+                + "your age is " + player.getAge() + "\n"
+                + "these are your current stats: Strength: \n " + Statroller.str + "\n"
+                + "Dexterity: " + Statroller.dex + "\n"
+                + "Constitution: " + Statroller.cons + " \n"
+                + "Intelligence: " + Statroller.intl + "\n "
+                + "Wisdom: " + Statroller.wis + "\n"
+                + "Charisma: " + Statroller.chari);
 
 
     }
 
-    //This method assures that age is sat with a scanner.nextint()
-    //Currently working, with some error at the moment. TODO: needs a fix in the while loop
+    //assures that age is properly sat and that the age is 10 or more.
     private void isAgeSat(Scanner s, Player player) throws InputMismatchException {
         boolean isAgeSat = false;
         while (!isAgeSat) {
             try {
-                player.setAge(s.nextInt());
-                if (s.nextInt() >= 6 && player.getAge() == 0) {
-                    player.setAge(s.nextInt());
-                    System.out.println("your age is: " + player.getAge());
-                    isAgeSat = true;
-                }
-                else if (s.nextInt() > 10){
+                int temp = s.nextInt();
+                if (temp >= 10) {
+                    player.setAge(temp);
                     isAgeSat = true;
                     System.out.println("your age is: " + player.getAge());
-                }
-
-            }
-
-            catch (InputMismatchException err){
+                } else
+                    System.out.println("Age is below mimimum of 10, please enter another number");
+            } catch (InputMismatchException err) {
                 s = new Scanner(System.in);
                 System.out.println("Wrong input type, please use numbers");
-
             }
-
         }
-
     }
 
     private int ensureInteger(int b) {
 
-            //int b = Player.class.toString().toLowerCase().contains("1-100");
+        //int b = Player.class.toString().toLowerCase().contains("1-100");
 
-       return b;
+        return b;
     }
 
     //prints the current stat values the player just inputted.
@@ -227,7 +218,7 @@ public class ConsoleReader {
         }
     }
 
-// Enables the player to choose the race they want. Generates the array with stats that increase for IncreasePlayerStats Method.
+    // Enables the player to choose the race they want. Generates the array with stats that increase for IncreasePlayerStats Method.
     //Todo Add rest of the races in core game, maybe add example of custom race?
     private Race chooseRace(String input) {
 
@@ -253,7 +244,7 @@ public class ConsoleReader {
             }
             case "5": {
                 String[] stats = {"dex"};
-                return new Halfling("Halfling", 250, 2,"Common, Halfling",stats,"Can see in the dark","Advantage on saving throws against frightened", "can use the hide action when obscured","Can move through the space of any creature one size larger than yours");
+                return new Halfling("Halfling", 250, 2, "Common, Halfling", stats, "Can see in the dark", "Advantage on saving throws against frightened", "can use the hide action when obscured", "Can move through the space of any creature one size larger than yours");
             }
             default:
                 System.out.println("you have not chosen a race, please type 1, 2, 3, 4 or 5");
@@ -262,12 +253,12 @@ public class ConsoleReader {
 
     }
 
-/*
-Velger rollens skills basert på tilgjengelige skills og antall skills de kan velge
-@Params Scanner S & Role role
-Enables the player to choose skills to be proficient in: Based on the role chosen.
+    /*
+    Velger rollens skills basert på tilgjengelige skills og antall skills de kan velge
+    @Params Scanner S & Role role
+    Enables the player to choose skills to be proficient in: Based on the role chosen.
 
- */
+     */
     private void chooseRoleSkills(Scanner s, Role role) {
 
         String[] temp = role.getChosenRoleSkills();
@@ -350,13 +341,13 @@ Enables the player to choose skills to be proficient in: Based on the role chose
                 String[] skills = {"History", "Religion", "Persuasion", "Medicine", "Insight"};
                 return new Cleric("Cleric", 8, skills, 2);
             }
-            case "4":{
-                String[] skills = {"Medicine", "Religion", "Intimidation","persuasion", "Insight","Athletics"};
-                return new Paladin("Paladin",10,skills,2,"can heal for total amount of 5 x level","can sense evil");
+            case "4": {
+                String[] skills = {"Medicine", "Religion", "Intimidation", "persuasion", "Insight", "Athletics"};
+                return new Paladin("Paladin", 10, skills, 2, "can heal for total amount of 5 x level", "can sense evil");
             }
             case "5":
-                String[] skills = {"Animal Handling","Intimidation", "Athletics","Nature", "Survival","Perception"};
-                return new Barbarian("Barbarian", 12, skills,2,"can rage to decrease damage and increase damage", "as long as not wearing armor: AC equals 10 + dex mod + cons mod. You can also use a shield.");
+                String[] skills = {"Animal Handling", "Intimidation", "Athletics", "Nature", "Survival", "Perception"};
+                return new Barbarian("Barbarian", 12, skills, 2, "can rage to decrease damage and increase damage", "as long as not wearing armor: AC equals 10 + dex mod + cons mod. You can also use a shield.");
             default:
                 System.out.println("you have not chosen a role, please type 1,2,3,4 or 5");
                 return null;
@@ -364,11 +355,12 @@ Enables the player to choose skills to be proficient in: Based on the role chose
     }
 
 
-// Currently not used.
+    // Currently not used.
     private boolean ensureString(Object string) {
         return string instanceof String;
     }
-//currently not used.
+
+    //currently not used.
     private boolean ensureInteger(Object integer) {
         return integer instanceof Integer;
     }
