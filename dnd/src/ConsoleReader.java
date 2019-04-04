@@ -48,6 +48,7 @@ public class ConsoleReader {
         player.setRace(race);
         System.out.println("You have Chosen: " + player.getRace().getRaceName());
         IncreasePlayerStats(player);
+        halfElfPickStats(player, s);
         System.out.println("Choose your age, type it in. ");
         isAgeSat(s, player);
 
@@ -94,12 +95,6 @@ public class ConsoleReader {
         }
     }
 
-    private int ensureInteger(int b) {
-
-        //int b = Player.class.toString().toLowerCase().contains("1-100");
-
-        return b;
-    }
 
     //prints the current stat values the player just inputted.
     private void printStatrollerComplete() {
@@ -218,6 +213,46 @@ public class ConsoleReader {
         }
     }
 
+    public void halfElfPickStats(Player player, Scanner s) {
+        System.out.println("Half-elf can increase their stats by choice");
+        if (player.getRace().getRaceName().equals("Half-Elf"))
+            System.out.println("You can now increase two stats by 1: press 1,2,3,4,5,6 for the respective stats: ");
+            for (int i = 0; i < 2; i++) {
+                int n = 1;
+                switch (s.next().trim().toLowerCase()) {
+                    case "1": {
+                        Statroller.str += n;
+                        System.out.println(String.format("Your Strength has increased by: %d. It is now: %d", n, Statroller.str));
+                        break;
+                    }
+                    case "2": {
+                        Statroller.dex += n;
+                        System.out.println(String.format("Your Dexterity has increased by: %d. It is now: %d", n, Statroller.dex));
+                        break;
+                    }
+                    case "3": {
+                        Statroller.cons += n;
+                        System.out.println(String.format("Your Constitution has increased by: %d. It is now: %d", n, Statroller.cons));
+                        break;
+                    }
+                    case "4": {
+                        Statroller.intl += n;
+                        System.out.println(String.format("Your Intelligence has increased by: %d. It is now: %d", n, Statroller.intl));
+                    }
+                    case "5": {
+                        Statroller.wis += n;
+                        System.out.println(String.format("Your Wisdom has increased by: %d. It is now: %d", n, Statroller.wis));
+                    }
+                    case "6": {
+                        Statroller.chari +=n;
+                        System.out.println(String.format("Your Charisma has increased by: %d. It is now: %d", n, Statroller.chari));
+                    }
+
+                }
+            }
+        }
+    
+
     // Enables the player to choose the race they want. Generates the array with stats that increase for IncreasePlayerStats Method.
     //Todo Add rest of the races in core game, maybe add example of custom race?
     private Race chooseRace(String input) {
@@ -246,8 +281,12 @@ public class ConsoleReader {
                 String[] stats = {"dex"};
                 return new Halfling("Halfling", 250, 2, "Common, Halfling", stats, "Can see in the dark", "Advantage on saving throws against frightened", "can use the hide action when obscured", "Can move through the space of any creature one size larger than yours");
             }
+            case "6": {
+                String[] stats = {"chari"};
+                return new HalfElf("Half-elf", 180, 2, "Common, Elvish", stats, "advantage on charm and sleep", "can see in the dark", "can pick 2 extra skills");
+            }
             default:
-                System.out.println("you have not chosen a race, please type 1, 2, 3, 4 or 5");
+                System.out.println("you have not chosen a race, please type 1, 2, 3, 4, 5 or 7");
                 return null;
         }
 
