@@ -43,7 +43,11 @@ public class ConsoleReader {
                 "press 2 for Human\n " +
                 "press 3 for Dragonborn\n " +
                 "press 4 for Dwarf\n " +
-                "press 5 for Halfling");
+                "press 5 for Halfling\n" +
+                "press 6 for Half-Elf\n" +
+                "press 7 for Gnome\n " +
+                "press 8 for Half-Orc\n" +
+                "press 9 for Tiefling\n");
         Race race = selectRace(s);
         player.setRace(race);
         System.out.println("You have Chosen: " + player.getRace().getRaceName());
@@ -53,12 +57,14 @@ public class ConsoleReader {
         isAgeSat(s, player);
 
         System.out.println("Chose your Class: press 1 for Rogue \n " +
-                "press 2 for Fighter\n " +
-                "press 3 for Cleric\n " +
-                "press 4 for Paladin\n" +
-                "press 5 for Barbarian");
+                        "press 2 for Fighter\n " +
+                        "press 3 for Cleric\n " +
+                        "press 4 for Paladin\n " +
+                        "press 5 for Barbarian\n ");
 
-        Role role = selectRole(s);
+
+
+                Role role = selectRole(s);
         player.setRole(role);
         printPlayerRoleChosen(player);
         chooseRoleSkills(s, player.getRole());
@@ -212,10 +218,10 @@ public class ConsoleReader {
             }
         }
     }
-
+// Help method for when player chooses Half-elf to allow the player to manually increase two stats by one.
     public void halfElfPickStats(Player player, Scanner s) {
-        System.out.println("Half-elf can increase their stats by choice");
-        if (player.getRace().getRaceName().equals("Half-Elf"))
+        if (player.getRace().getRaceName().matches("Half-elf")) {
+            System.out.println("Half-elf can increase their stats by choice");
             System.out.println("You can now increase two stats by 1: press 1,2,3,4,5,6 for the respective stats: ");
             for (int i = 0; i < 2; i++) {
                 int n = 1;
@@ -244,14 +250,15 @@ public class ConsoleReader {
                         System.out.println(String.format("Your Wisdom has increased by: %d. It is now: %d", n, Statroller.wis));
                     }
                     case "6": {
-                        Statroller.chari +=n;
+                        Statroller.chari += n;
                         System.out.println(String.format("Your Charisma has increased by: %d. It is now: %d", n, Statroller.chari));
                     }
 
                 }
             }
         }
-    
+    }
+
 
     // Enables the player to choose the race they want. Generates the array with stats that increase for IncreasePlayerStats Method.
     //Todo Add rest of the races in core game, maybe add example of custom race?
@@ -275,7 +282,7 @@ public class ConsoleReader {
             }
             case "4": {
                 String[] stats = {"cons"};
-                return new Dwarf("Dwarf", 350, 2, "Common, Dwarfish", stats, "Can see in the dark", "has dwarwen weapon training", "can identify stonework");
+                return new Dwarf("Dwarf", 350, 2, "Common, Dwarfish", stats, "Can see in the dark", "has dwarwen weapon training", "can identify stonework", "Has advantage on saving throws against poisen", "You can choose proficiency in any of these artistans tools.");
             }
             case "5": {
                 String[] stats = {"dex"};
@@ -284,6 +291,18 @@ public class ConsoleReader {
             case "6": {
                 String[] stats = {"chari"};
                 return new HalfElf("Half-elf", 180, 2, "Common, Elvish", stats, "advantage on charm and sleep", "can see in the dark", "can pick 2 extra skills");
+            }
+            case "7": {
+                String[] stats = {"intl"};
+                return new Gnome("Gnome", 500, 2, "Common, Gnomish", stats, "Has advvantage on intelligence, wisdom and charisma saving throws against magic", "can see in the dark");
+            }
+            case "8": {
+                String[] stats = {"str", "str", "cons"};
+                return new HalfOrc("Half-orc", 75,1,"Common, Orc",stats,"Can see in the dark","When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can’t use this feature again until you finish a long rest.", "When you score a critical hit, you can add an extra damage dice to your roll","gain proficiency in Intimidation" );
+            }
+            case "9": {
+                String[] stats = {"intl", "chari","chari"};
+                return new Tiefling("Tiefling", 110,1,"Common, Infernal",stats,"Can see in the dark","Gains resistance to fire damage", "gets Thaumathurgy cantrip");
             }
             default:
                 System.out.println("you have not chosen a race, please type 1, 2, 3, 4, 5 or 7");
