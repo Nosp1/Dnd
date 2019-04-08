@@ -5,7 +5,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-
+/*
+Test class for creating a new race of type Race.
+@Author Trym Staurheim
+ */
 public class RaceTest {
 
     private String raceName;

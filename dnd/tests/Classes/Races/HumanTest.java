@@ -1,10 +1,10 @@
 package Classes.Races;
 
 import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
+/*
+The test for asserting human as a race.
+@Author Trym Staurheim
+ */
 public class HumanTest {
 
     private String raceName;

@@ -1,6 +1,10 @@
 package Classes.Roles;
 
 import Classes.Role;
+/*
+The Fighter Role/class
+@Author Trym Staurheim
+ */
 
 public class Fighter extends Role {
 

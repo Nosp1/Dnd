@@ -5,7 +5,10 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-
+/*
+Test class for creating new races. currently test the creation of a rogue race.
+@Author Trym Staurheim
+ */
 public class RoleTest {
     private Role role;
 

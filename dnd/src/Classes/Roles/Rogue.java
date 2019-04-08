@@ -1,6 +1,10 @@
 package Classes.Roles;
 
 import Classes.Role;
+/*
+The Rogue class.
+@Author Trym Staurheim
+ */
 
 public class Rogue extends Role {
     private String expertise; //doubles the proficieny bonus for selected skill

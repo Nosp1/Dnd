@@ -4,7 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-
+/*
+Player test class. Tests whether the given methods works as intended.
+@Author Trym Staurheim
+ */
 public class PlayerTest {
 
     private String playerName;

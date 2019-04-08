@@ -1,5 +1,6 @@
 package Classes;
 /*
+@Author Trym Staurheim
 The Player class only handles getters and setters from other classes to set values on the player.
 Todo add Alignment choice.. if needed
 

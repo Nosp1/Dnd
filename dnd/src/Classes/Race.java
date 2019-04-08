@@ -1,6 +1,7 @@
 package Classes;
 /*
-This is the Race class. It serves as a skeleton for inheretans
+This is the Race class. It serves as a skeleton for inheritance for all Races.
+@Author Trym Staurheim
  */
 public abstract class Race {
     private String raceName;

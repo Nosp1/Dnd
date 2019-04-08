@@ -1,8 +1,11 @@
 package Classes.Races;
 
 import Classes.Race;
+
+
 /*
 The Race of Dragon Born. Currently has two intrinsic properties.
+@Author Trym Staurheim
 Todo need to add color choice for your dragon -> ref: dragon breath.
 Todo needs to add a print for dragon breath properties.
  */

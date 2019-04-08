@@ -5,7 +5,14 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+/*
+The Statroller testclass.
+This class intends to test whether the statrolling functions work,
+and returns integers that are within the boundaries of the DnD environment and rule set.
 
+
+@Author Trym Staurheim
+ */
 public class StatrollerTest {
 
     private Statroller statrollerUnderTest;
@@ -36,7 +43,11 @@ public class StatrollerTest {
 
         // Verify the results
     }
+/*
+ Get RandInt() is suppose to generate a roll between 1 and 6 to simulate a 6-sided dice (d6).
+ This test is to confirm whether GetRandInt() functions by asserting the minimum values and max values of the expected result.
 
+ */
     @Test
     public void testGetRandInt()  throws Exception{
 

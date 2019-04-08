@@ -1,6 +1,10 @@
 package Classes.Races;
 
 import Classes.Race;
+/*
+The Half-Orc Race.
+@Author Trym Staurheim
+ */
 
 public class HalfOrc extends Race {
     private  String darkVision, relentlessEndurance, savageAttacks;

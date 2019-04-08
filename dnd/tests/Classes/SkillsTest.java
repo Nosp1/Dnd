@@ -4,7 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-
+/*
+The Test class for skills. Currently in the works.
+@Author Trym Staurheim
+ */
 public class SkillsTest {
 
     private Skills skillsUnderTest;

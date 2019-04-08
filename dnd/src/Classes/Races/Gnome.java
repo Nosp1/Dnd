@@ -1,6 +1,10 @@
 package Classes.Races;
 
 import Classes.Race;
+/*
+The Standard Gnome Race.
+@Author Trym Staurheim
+ */
 
 public class Gnome extends Race {
     private String darkVision, gnomeCunning;

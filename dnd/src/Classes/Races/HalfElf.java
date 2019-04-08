@@ -1,6 +1,10 @@
 package Classes.Races;
 
 import Classes.Race;
+/*
+The half elf race.
+@Author Trym Staurheim
+ */
 
 public class HalfElf extends Race {
     private String feyAncestry, darkVision, skillVersatility;

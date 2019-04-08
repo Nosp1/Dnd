@@ -1,6 +1,10 @@
 package Classes.Races;
 
 import Classes.Race;
+/*
+The Halfling Race.
+@Author Trym Staurheim
+ */
 
 public class Halfling extends Race {
     private String lucky, naturallyStealthy, halflingNimbleness;

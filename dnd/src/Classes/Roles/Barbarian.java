@@ -1,6 +1,10 @@
 package Classes.Roles;
 
 import Classes.Role;
+/*
+The Barbarian Class contains all information intrinsic to the barbarian Role/class.
+@Author Trym Staurheim.
+ */
 
 public class Barbarian extends Role {
     private String rage, unArmoredDefense;

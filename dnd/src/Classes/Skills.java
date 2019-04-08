@@ -4,7 +4,8 @@ package Classes;
 import java.util.ArrayList;
 
 /*
-The skills class is intended to handle the proficieny bonuses based on the stats of each skill.  It will in the future handle Skills information:
+The skills class is intended to handle the proficiency bonuses based on the stats of each skill.  It will in the future handle Skills information:
+@Author Trym Staurheim
 todo add printable information on each skill.
 todo add printable information proficiency.
  */

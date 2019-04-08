@@ -3,8 +3,8 @@ package Classes;
 
 import java.util.Arrays;
 /*
-The statroller class. Generates the rolls for the player and enables the player to assign the values to specific stat attributes.
-
+The Statroller class. Generates the rolls for the player and enables the player to assign the values to specific stat attributes.
+@Author Trym Staurheim
  */
 
 public final class Statroller {

@@ -6,6 +6,7 @@ import Classes.Race;
 
 /*
 Human in dnd: has only one intrinsic property.
+@Author Trym Staurheim
 Todo need to add a method for  extra language choice.
  */
 public class Human extends Race {

@@ -13,6 +13,7 @@ import java.util.Scanner;
 ConsoleReader serves as the main data handler of the project. ConsoleReader uses intrinsic methods to assign player
 values: Such as the players name, age, gender, race, role, skills, spells and background.
 Prints the user input in the terminal.
+@Author Trym Staurheim
  */
 public class ConsoleReader {
 
@@ -261,7 +262,7 @@ public class ConsoleReader {
 
 
     // Enables the player to choose the race they want. Generates the array with stats that increase for IncreasePlayerStats Method.
-    //Todo Add rest of the races in core game, maybe add example of custom race?
+    //Todo maybe add example of custom race?
     private Race chooseRace(String input) {
 
         switch (input.toLowerCase()) {
