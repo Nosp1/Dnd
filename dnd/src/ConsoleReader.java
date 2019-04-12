@@ -18,8 +18,6 @@ Prints the user input in the terminal.
 public class ConsoleReader {
 
 
-    private Object Integer;
-
     //the constructor for consolereader that handles all the input from the reader.
     public ConsoleReader() {
 
@@ -58,14 +56,14 @@ public class ConsoleReader {
         isAgeSat(s, player);
 
         System.out.println("Chose your Class: press 1 for Rogue \n " +
-                        "press 2 for Fighter\n " +
-                        "press 3 for Cleric\n " +
-                        "press 4 for Paladin\n " +
-                        "press 5 for Barbarian\n ");
+                "press 2 for Fighter\n " +
+                "press 3 for Cleric\n " +
+                "press 4 for Paladin\n " +
+                "press 5 for Barbarian\n " +
+                "press 6 for Druid\n");
 
 
-
-                Role role = selectRole(s);
+        Role role = selectRole(s);
         player.setRole(role);
         printPlayerRoleChosen(player);
         chooseRoleSkills(s, player.getRole());
@@ -219,7 +217,8 @@ public class ConsoleReader {
             }
         }
     }
-// Help method for when player chooses Half-elf to allow the player to manually increase two stats by one.
+
+    // Help method for when player chooses Half-elf to allow the player to manually increase two stats by one.
     public void halfElfPickStats(Player player, Scanner s) {
         if (player.getRace().getRaceName().matches("Half-elf")) {
             System.out.println("Half-elf can increase their stats by choice");
@@ -299,11 +298,11 @@ public class ConsoleReader {
             }
             case "8": {
                 String[] stats = {"str", "str", "cons"};
-                return new HalfOrc("Half-orc", 75,1,"Common, Orc",stats,"Can see in the dark","When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can’t use this feature again until you finish a long rest.", "When you score a critical hit, you can add an extra damage dice to your roll","gain proficiency in Intimidation" );
+                return new HalfOrc("Half-orc", 75, 1, "Common, Orc", stats, "Can see in the dark", "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can’t use this feature again until you finish a long rest.", "When you score a critical hit, you can add an extra damage dice to your roll", "gain proficiency in Intimidation");
             }
             case "9": {
-                String[] stats = {"intl", "chari","chari"};
-                return new Tiefling("Tiefling", 110,1,"Common, Infernal",stats,"Can see in the dark","Gains resistance to fire damage", "gets Thaumathurgy cantrip");
+                String[] stats = {"intl", "chari", "chari"};
+                return new Tiefling("Tiefling", 110, 1, "Common, Infernal", stats, "Can see in the dark", "Gains resistance to fire damage", "gets Thaumathurgy cantrip");
             }
             default:
                 System.out.println("you have not chosen a race, please type 1, 2, 3, 4, 5 or 7");
@@ -380,7 +379,8 @@ public class ConsoleReader {
     Chooses which Role object to store on the players based on case input: E.g 1,2,3 etc.
     @Params String input
     @Returns new Role object
-    Todo: Further inplement the missing core classes/roles.
+    Todo: Further implement the missing core classes/roles.
+    Todo: Add druidic, paladin, and Cleric spells.
      */
     private Role chooseRole(String input) {
 
@@ -404,11 +404,16 @@ public class ConsoleReader {
                 String[] skills = {"Medicine", "Religion", "Intimidation", "persuasion", "Insight", "Athletics"};
                 return new Paladin("Paladin", 10, skills, 2, "can heal for total amount of 5 x level", "can sense evil");
             }
-            case "5":
+            case "5": {
                 String[] skills = {"Animal Handling", "Intimidation", "Athletics", "Nature", "Survival", "Perception"};
                 return new Barbarian("Barbarian", 12, skills, 2, "can rage to decrease damage and increase damage", "as long as not wearing armor: AC equals 10 + dex mod + cons mod. You can also use a shield.");
+            }
+            case "6": {
+                String[] skills = {"Animal Handling", "Arcana", "Nature", "Medicine", "Insight", "Perception", "Religion", "Survival"};
+                return new Druid("Druid", 8, skills, 2, "Can speak the druidic language", "can choose spells", "Is proficient in Herbalist kit");
+            }
             default:
-                System.out.println("you have not chosen a role, please type 1,2,3,4 or 5");
+                System.out.println("you have not chosen a role, please type 1,2,3,4,5 or 6");
                 return null;
         }
     }
