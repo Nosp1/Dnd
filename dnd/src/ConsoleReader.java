@@ -1,10 +1,10 @@
-import Classes.Player;
-import Classes.Race;
+import Classes.*;
+import Classes.Backgrounds.Acolyte;
+import Classes.Backgrounds.CriminalSpy;
 import Classes.Races.*;
-import Classes.Role;
 import Classes.Roles.*;
-import Classes.Statroller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -54,6 +54,13 @@ public class ConsoleReader {
         halfElfPickStats(player, s);
         System.out.println("Choose your age, type it in. ");
         isAgeSat(s, player);
+        System.out.println("Choose your Background\n" +
+                "press 1 for Acolyte \n" +
+                "press 2 for Criminal/Spy");
+        Background background = selectBackGround(s);
+        player.setBackGround(background);
+        System.out.println("you have chosen " + player.getBackGround().getBackGroundName() + "\n" +
+                "You have learned the feature " + player.getBackGround().getFeature() + "\n");
 
         System.out.println("Chose your Class: press 1 for Rogue \n " +
                 "press 2 for Fighter\n " +
@@ -178,7 +185,12 @@ public class ConsoleReader {
 
         }
     }
-
+    //Todo fix Background so the skills from background are checked against class.
+private void CheckSkills(Role role, Player player){
+        if (player.getBackGround().getBackGroundName().matches("Acolyte")){
+            role.getAvailableSkills();
+        }
+}
 
     // iterer over players sine stats og øker de med x amount hvor x er race sin statøkning.
     // Iterates over the players assigned stat-values and increments them by x amount.
@@ -244,14 +256,17 @@ public class ConsoleReader {
                     case "4": {
                         Statroller.intl += n;
                         System.out.println(String.format("Your Intelligence has increased by: %d. It is now: %d", n, Statroller.intl));
+                        break;
                     }
                     case "5": {
                         Statroller.wis += n;
                         System.out.println(String.format("Your Wisdom has increased by: %d. It is now: %d", n, Statroller.wis));
+                        break;
                     }
                     case "6": {
                         Statroller.chari += n;
                         System.out.println(String.format("Your Charisma has increased by: %d. It is now: %d", n, Statroller.chari));
+                        break;
                     }
 
                 }
@@ -383,6 +398,17 @@ public class ConsoleReader {
         }
         return role;
     }
+    //A While loop that cheks whether background is not null.
+    private Background selectBackGround(Scanner s){
+        boolean isBackGroundChosen = false;
+        Background background = null;
+        while(!isBackGroundChosen){
+            background = chooseBackGround(s.next());
+            if (background != null)
+                isBackGroundChosen = true;
+        }
+        return background;
+    }
 
     /*
     Chooses which Role object to store on the players based on case input: E.g 1,2,3 etc.
@@ -426,7 +452,30 @@ public class ConsoleReader {
                 return null;
         }
     }
+    /*
+    Chooses which Background to store on the player based on case input: e.g 1,2,3 etc
+    @params String input from the user.
+    @returns a new Background object
+     */
+    private Background chooseBackGround(String input){
+        switch (input.toLowerCase()){
+            case "1": {
+                String[] skills = {"Religion, Insight"};
+                String[] equipment = {"Holy Symbol", "A prayer book", "5 sticks of inscense", "Vestments", "set of fine clothes", " pouch with 15 gold pieces."};
 
+                return new Acolyte("Acolyte","Shelter Of the faithful", "none",skills,equipment,"worships a diety");
+            }
+            case "2": {
+                String[] skills = {"Deception", "Stealth"};
+                String[] equipment = {"A crowbar", " A set of common clothes, including a hood", "pouch with 15gp" };
+
+                return new CriminalSpy("Criminal/Spy","Criminal Contact", "Thieves tools, A gaming set",skills,equipment );
+            }
+            default:
+                System.out.println("you have not chosen a backroungd, please type 1,2,3,4");
+                return null;
+        }
+    }
 
     // Currently not used.
     private boolean ensureString(Object string) {

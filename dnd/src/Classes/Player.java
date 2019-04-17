@@ -13,6 +13,7 @@ public class Player {
     private Skills skills; // skills chosen by the player.
     private String Alignment; //alignment chosen by player.
     private Role role; // to handle role objects on the player
+    private Background backGround; // to hanle background objects on the player.
 
     public String getAlignment() {
         return Alignment;
@@ -74,4 +75,10 @@ public class Player {
         this.role = role;
     }
 
+    public void setBackGround(Background backGround) {
+        this.backGround = backGround;
+    }
+    public  Background getBackGround(){
+        return backGround;
+    }
 }
