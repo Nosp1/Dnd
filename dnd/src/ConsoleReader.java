@@ -18,7 +18,7 @@ Prints the user input in the terminal.
 public class ConsoleReader {
 
 
-    //the constructor for consolereader that handles all the input from the reader.
+    //the constructor for consolereader that handles all input and output.
     public ConsoleReader() {
 
         Statroller.rollstats();
@@ -312,15 +312,16 @@ public class ConsoleReader {
     }
 
     /*
-    Velger rollens skills basert på tilgjengelige skills og antall skills de kan velge
     @Params Scanner S & Role role
     Enables the player to choose skills to be proficient in: Based on the role chosen.
 
      */
     private void chooseRoleSkills(Scanner s, Role role) {
-
+        //gets the chosen roles skills, and stores them in a temporary array,
         String[] temp = role.getChosenRoleSkills();
+        // local variable to handle the player input.
         int ans;
+        //prints the available skills for the chosen role.
         printAvaiableRoleSkills(role);
         for (int i = 0; i < role.getAmountOfSkills(); i++) {
             try {
@@ -331,21 +332,29 @@ public class ConsoleReader {
                     continue;
                 }
                 int pos = ans;
-
+                // Checks to see if ans matches any of the positions in the available skills.
                 if (Arrays.stream(temp).anyMatch(x -> x == role.getAvailableSkills()[pos])) {
+                    //prints message to the user that the skill chosen has already been used.
                     System.out.println("Value has already been used, try again");
                     i--;
                     continue;
                 }
+                // changes the array to store the answered skill
                 temp[i] = role.getAvailableSkills()[ans];
+                // prints the chosen skill.
                 System.out.println("You have chosen the skill: " + temp[i]);
-
+                //Checks is the entire array is filled
                 if (temp[temp.length - 1] != null) {
+                    //sets all the values in temp to the role object.
                     role.setChosenRoleSkills(temp);
+                    //prints message to the user.
                     System.out.println("You have selected all your skills ");
                 }
+                //catches error.
             } catch (Exception ex) {
+                //error message to the user.
                 System.out.println("The Value is invalid, try again");
+                //assigns new scanner to reset.
                 s = new Scanner(System.in);
                 if (temp != null) {
                     temp = role.getChosenRoleSkills();
@@ -354,7 +363,7 @@ public class ConsoleReader {
         }
     }
 
-    //printer tilgjengelig skills for spilleren
+
     //Prints the available skills for the player
     private void printAvaiableRoleSkills(Role role) {
         for (int i = 0; i < role.getAvailableSkills().length; i++) {
@@ -362,7 +371,7 @@ public class ConsoleReader {
         }
     }
 
-    //Sørger for at Role blir satt på Role objektet
+
     // A While loop that checks whether a Role object is put on the player object.
     private Role selectRole(Scanner s) {
         boolean isRoleChosen = false;
@@ -377,7 +386,7 @@ public class ConsoleReader {
 
     /*
     Chooses which Role object to store on the players based on case input: E.g 1,2,3 etc.
-    @Params String input
+    @Params String input from the user.
     @Returns new Role object
     Todo: Further implement the missing core classes/roles.
     Todo: Add druidic, paladin, and Cleric spells.
