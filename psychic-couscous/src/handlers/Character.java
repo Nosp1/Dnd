@@ -3,11 +3,17 @@ package handlers;
 import Races.*;
 import Roles.Role;
 
+import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-
+/**
+ *
+ * todo add Skills
+ * todo add Race proficiencies: dwarf, orc, elf, half-elf
+ */
 public class Character {
     private String name;
     private int age;
@@ -23,6 +29,9 @@ public class Character {
     private ResourceBundle stats = SettingsReader.getResourceBundle("Stat");
 
 
+    /**
+     *
+     */
     public Character() {
 
         System.out.println(Utilities.renderColoredString(text.getString("newCharacterWelcome"), "yellow"));
@@ -37,6 +46,7 @@ public class Character {
         raceInfo();
         increaseCharacterStats();
         halfElfIncreaseStat();
+        chooseAge();
 
 
     }
@@ -122,26 +132,14 @@ public class Character {
                                 break;
 
                         }
-
                         validChoice = true;
-
-
                     }
-
-
                 } catch (NumberFormatException nfe) {
-
                     System.out.println(Utilities.renderColoredString(text.getString("invalidRoll"), "red"));
-
                 }
-
             }
-
             while (!validChoice);
-
         }
-
-
     }
 
     /**
@@ -216,6 +214,32 @@ public class Character {
         gender = genderScanner.nextLine();
         setGender(gender);
         System.out.println(Utilities.renderColoredString(text.getString("characterGenderChosen") + ": ", "green") + gender);
+    }
+
+    private void chooseAge() throws NumberFormatException {
+        boolean isAgeSat = false;
+        System.out.println(text.getString("characterAge"));
+        Scanner ageScanner = new Scanner(System.in);
+
+        while (!isAgeSat) {
+            try {
+                age = Integer.parseInt(ageScanner.nextLine());
+                if (age > race.getMaxAge()) {
+                    System.out.println(Utilities.renderColoredString(text.getString("characterAgeTohigh") + " " + race.getName(), "red"));
+
+                } else if (age <= 10) {
+                    System.out.println(Utilities.renderColoredString(text.getString("characterAgeToLow"), "red"));
+
+                } else if (age < race.getMaxAge()) {
+                    isAgeSat = true;
+                    setAge(age);
+                }
+
+            } catch (NumberFormatException err) {
+                System.out.println(Utilities.renderColoredString(text.getString("invalidAge"), "red"));
+            }
+        }
+        System.out.println(Utilities.renderColoredString(text.getString("characterAgeSat"), "green") + " " +  age);
     }
 
     /**
@@ -378,7 +402,7 @@ public class Character {
                         break;
                     }
                     default:
-                        System.out.println(Utilities.renderColoredString(stats.getString("nostatincreased"),"red"));
+                        System.out.println(Utilities.renderColoredString(stats.getString("nostatincreased"), "red"));
                         h--;
                         break;
 
@@ -412,9 +436,24 @@ public class Character {
 
     }
 
+    /**
+     * The RandomRoll class handles the integers parsed with scanner to SetStats Method.
+     *
+     * @author Trym staurheim
+     * @return value
+     */
+
     class RandomRoll {
         int value;
         boolean isChosen;
+
+        /**
+         * Constructor for RandomRoll.
+         *
+         * @param value
+         * @param isChosen
+         * @author Trym Staurheim
+         */
 
         RandomRoll(int value, boolean isChosen) {
             this.value = value;
