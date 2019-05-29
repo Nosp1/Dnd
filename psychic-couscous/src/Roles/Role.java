@@ -1,5 +1,7 @@
 package Roles;
 
+import handlers.Skill;
+
 import java.util.ArrayList;
 /*
 This is the Roles.Role Class. It serves as a skeleton for any types of sub classes of Roles.Role made,
@@ -16,16 +18,24 @@ to make implementation easier for  the extended DnD library, as well as custom R
 public abstract class Role {
     private String roleName;
     private int baseHp;
-    private ArrayList<String> availableRoleSkills;
+    private  ArrayList<String> availableRoleSkills;
     private int amountOfSkills;
-    private ArrayList<String> chosenRoleSkills;
+    private ArrayList<Skill> chosenRoleSkills;
 
-    public Role(String roleNameIn, int baseHpIn, ArrayList<String> availableRoleSkillsIn, int amountOfSkillsIn, ArrayList<String> chosenRoleSkillsIn) {
+    public Role(String roleNameIn, int baseHpIn, int amountOfSkillsIn, ArrayList<Skill> chosenRoleSkillsIn, int valueIn) {
         setRoleName(roleNameIn);
         setBaseHp(baseHpIn);
-        setAvailableRoleSkills(availableRoleSkillsIn);
+        //setAvailableRoleSkills(availableRoleSkillsIn);
         setAmountOfSkills(amountOfSkillsIn);
         setChosenRoleSkills(chosenRoleSkillsIn);
+        changeHp(valueIn);
+
+    }
+
+    public abstract ArrayList<String> availableRoleSkills();
+
+    public void changeHp(int valueIn){
+        baseHp += valueIn;
     }
 
     public String getRoleName() {
@@ -44,13 +54,16 @@ public abstract class Role {
         this.baseHp = baseHpIn;
     }
 
-    public ArrayList<String> getAvailableRoleSkills() {
-        return availableRoleSkills;
-    }
+
+
+
+
 
     public void setAvailableRoleSkills(ArrayList<String> availableRoleSkillsIn) {
         this.availableRoleSkills = availableRoleSkillsIn;
     }
+
+
 
     public int getAmountOfSkills() {
         return amountOfSkills;
@@ -60,11 +73,13 @@ public abstract class Role {
         this.amountOfSkills = amountOfSkillsIn;
     }
 
-    public ArrayList<String> getChosenRoleSkills() {
+
+
+    public ArrayList<Skill> getChosenRoleSkills() {
         return chosenRoleSkills;
     }
 
-    public void setChosenRoleSkills(ArrayList<String> chosenRoleSkillsIn) {
+    public void setChosenRoleSkills(ArrayList<Skill> chosenRoleSkillsIn) {
         this.chosenRoleSkills = chosenRoleSkillsIn;
     }
 }

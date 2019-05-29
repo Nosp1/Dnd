@@ -1,6 +1,7 @@
 package handlers;
 
 import Races.*;
+import Roles.*;
 import Roles.Role;
 
 import javax.rmi.CORBA.Util;
@@ -10,9 +11,11 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 /**
+ * todo add Skills choice method.
+ * todo complete switch case for roles.
+ * todo add Race proficiencies: dwarf, orc, elf, half-elf -> Ref.Background
+ * todo add Background choice method
  *
- * todo add Skills
- * todo add Race proficiencies: dwarf, orc, elf, half-elf
  */
 public class Character {
     private String name;
@@ -27,6 +30,7 @@ public class Character {
     private ResourceBundle text = SettingsReader.getResourceBundle("Character");
     private ResourceBundle races = SettingsReader.getResourceBundle("Race");
     private ResourceBundle stats = SettingsReader.getResourceBundle("Stat");
+    private ResourceBundle roles = SettingsReader.getResourceBundle("Role");
 
 
     /**
@@ -47,6 +51,10 @@ public class Character {
         increaseCharacterStats();
         halfElfIncreaseStat();
         chooseAge();
+        IsRoleChosen();
+        roleInfo();
+
+
 
 
     }
@@ -91,14 +99,14 @@ public class Character {
 
                 try {
 
-                    int chosenRoll = Integer.parseInt(statReader.nextLine()) - 1; //added -1 to match array.length
+                    int chosenRoll = Integer.parseInt(statReader.nextLine()) - 1;
 
                     if (chosenRoll < 0 || chosenRoll >= 6) {
 
                         System.out.println(Utilities.renderColoredString(text.getString("invalidRoll"),
                                 "red"));
 
-                    } else if (rolls[chosenRoll].isChosen) {  //rolls[i]
+                    } else if (rolls[chosenRoll].isChosen) {
 
                         System.out.println(Utilities.renderColoredString(text.getString("alreadyChosenRoll"),
                                 "red"));
@@ -239,7 +247,7 @@ public class Character {
                 System.out.println(Utilities.renderColoredString(text.getString("invalidAge"), "red"));
             }
         }
-        System.out.println(Utilities.renderColoredString(text.getString("characterAgeSat"), "green") + " " +  age);
+        System.out.println(Utilities.renderColoredString(text.getString("characterAgeSat"), "green") + " " + age);
     }
 
     /**
@@ -250,13 +258,9 @@ public class Character {
     private Race isRaceChosen() {
         System.out.println(text.getString("characterRace") + ", " + text.getString("characterRaceOptions") + " : ");
         String[] temp = Utilities.getRACES();
-        int counter = 0;
-        for (String s : temp) {
-            System.out.println(" # " + (counter + 1) + " " + s);
-            counter++;
-        }
-        System.out.println();
+        printChoices(temp);
         Scanner raceScanner = new Scanner(System.in);
+        Stat.statModifier(stat);
         boolean isRaceSet = false;
         while (!isRaceSet) {
             race = chooseRace(raceScanner.nextLine());
@@ -265,6 +269,19 @@ public class Character {
             }
         }
         return race;
+    }
+
+    /**
+     * @param temp
+     */
+
+    private void printChoices(String[] temp) {
+        int counter = 0;
+        for (String s : temp) {
+            System.out.println(" # " + (counter + 1) + " " + s);
+            counter++;
+        }
+        System.out.println();
     }
 
     /**
@@ -322,16 +339,19 @@ public class Character {
                 return new Tiefling(races.getString("tiefling"), 110, "Common, Infernal", 1, temp, races.getString("darkvision"), "learns some spells", "learns langauge");
             }
             default:
-                System.out.println(races.getString("norace"));
+                System.out.println(Utilities.renderColoredString(races.getString("norace"),"red"));
                 return null;
         }
 
     }
 
     private void raceInfo() {
-        System.out.println(Utilities.renderColoredString(races.getString("satRace") + " the race" + ": ", "Green") + this.race.getName());
+        System.out.println(Utilities.renderColoredString(races.getString("satRace")  + ": ", "green") + this.race.getName());
     }
+    private void roleInfo(){
+        System.out.println(Utilities.renderColoredString(roles.getString("chosenrole") + ": ","green") + this.role.getRoleName());
 
+    }
     private void halfElfIncreaseStat() {
 
         if (race.getName().matches(races.getString("halfelf"))) {
@@ -414,6 +434,83 @@ public class Character {
 
     }
 
+    private Role IsRoleChosen() {
+        System.out.println(text.getString("characterRole") + ", " + text.getString("characterRoleOptions") + " : ");
+        String[] temp = Utilities.getROLES();
+        printChoices(temp);
+        boolean isRoleSet = false;
+        Scanner roleScanner = new Scanner(System.in);
+        while (!isRoleSet) {
+            role = chooseRole(roleScanner.nextLine());
+            if (role != null) {
+                isRoleSet = true;
+            }
+        }
+        return role;
+    }
+//todo add spells, to cleric and druid. + properties
+    private Role chooseRole(String input) {
+        switch (input.toLowerCase()) {
+            case "1": {
+                ArrayList<Skill> temp = new ArrayList<>();
+                return new Barbarian(roles.getString("barbarian"), 12,2,temp, roles.getString("rage"),roles.getString("unarmoreddefense"), constitution.getModifier());
+            }
+            case "2":{
+                ArrayList<Skill> temp = new ArrayList<>();
+                return new Cleric(roles.getString("cleric"),8,2,temp,constitution.getModifier());
+            }
+            case "3":{
+                ArrayList<Skill> temp = new ArrayList<>();
+                return new Druid(roles.getString("druid"),8,2,temp,constitution.getModifier());
+
+            }
+            case "4":{
+                ArrayList<Skill> temp = new ArrayList<>();
+                return new Fighter(roles.getString("fighter"),10,2,temp,"fightingstyle", roles.getString("secondwind"),constitution.getModifier());
+
+            }
+            case "5":{
+                ArrayList<Skill> temp = new ArrayList<>();
+                return new Paladin(roles.getString("paladin"),10,2,temp,roles.getString("layonhands"),roles.getString("divinesense"),constitution.getModifier());
+
+            }
+            case "6":{
+                ArrayList<Skill> temp = new ArrayList<>();
+                return new Rogue(roles.getString("rogue"),8, 4,temp,"add method",roles.getString("sneakattack"),roles.getString("thievescant"),constitution.getModifier());
+
+            }
+            default:
+                System.out.println(Utilities.renderColoredString(roles.getString("norole"),"red"));
+                return null;
+        }
+
+    }
+
+    public void printRoleSkills(){
+        int counter = 0;
+        for (String r:role.availableRoleSkills()){
+            System.out.println(" # " + (counter + 1) + " " + r);
+            counter++;
+        }
+
+    }
+    public void chooseRoleSkills() throws NumberFormatException {
+        printRoleSkills();
+        Scanner roleSkills = new Scanner(System.in);
+
+        try {
+            int choice = Integer.parseInt(roleSkills.nextLine());
+            for (int i = 0; i < role.getAmountOfSkills(); i++) {
+
+
+            }
+        }
+        catch (NumberFormatException nfe){
+
+
+        }    }
+
+
     /* getters and setters.
      *
      *
@@ -435,6 +532,7 @@ public class Character {
         gender = genderIn;
 
     }
+
 
     /**
      * The RandomRoll class handles the integers parsed with scanner to SetStats Method.

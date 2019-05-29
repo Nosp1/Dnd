@@ -11,6 +11,7 @@ public class Utilities {
     private static ResourceBundle backgrounds = SettingsReader.getResourceBundle("Background");
     private static ResourceBundle tools = SettingsReader.getResourceBundle("Tool");
     private static ResourceBundle draconicancestries = SettingsReader.getResourceBundle("DraconicAncestry");
+    private static ResourceBundle skills = SettingsReader.getResourceBundle("Skill");
 
     public final static String[] RACES = {
             races.getString("dragonborn"),
@@ -31,6 +32,27 @@ public class Utilities {
             stats.getString("intelligence"),
             stats.getString("wisdom"),
             stats.getString("charisma")
+    };
+
+    public final static String[] SKILLS = {
+            skills.getString("acrobatics"),
+            skills.getString("animalhandling"),
+            skills.getString("arcana"),
+            skills.getString("athletics"),
+            skills.getString("deception"),
+            skills.getString("history"),
+            skills.getString("insight"),
+            skills.getString("intimidation"),
+            skills.getString("investigation"),
+            skills.getString("medicine"),
+            skills.getString("nature"),
+            skills.getString("perception"),
+            skills.getString("performance"),
+            skills.getString("persuasion"),
+            skills.getString("religion"),
+            skills.getString("sleightofhand"),
+            skills.getString("stealth"),
+            skills.getString("survival"),
     };
 
     public final static String[] ROLES = {
@@ -151,11 +173,15 @@ public class Utilities {
     public static ResourceBundle getStats() {
         return stats;
     }
+    public static ResourceBundle getSkills() {return skills;}
 
     public static String[] getRACES() {
         return RACES;
     }
+    public static String[] getROLES(){
+        return ROLES;
 
+    }
     public static String[] getTOOLS() {
         return TOOLS;
     }

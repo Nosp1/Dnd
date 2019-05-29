@@ -1,6 +1,10 @@
 package Roles;
 
+import handlers.Skill;
+
 import java.util.ArrayList;
+
+import static handlers.Utilities.getSkills;
 /*
 The Paladin Class
 @Author Trym Staurheim
@@ -10,8 +14,8 @@ public class Paladin extends Role {
     private String layOnHands; //Heal target for your x hp, where x is your lvl + d4.
     private String divineSense; //Can sense evil and desecrated items
 
-    public Paladin(String roleNameIn, int baseHpIn, ArrayList<String> availableRoleSkillsIn, int amountOfSkillsIn, ArrayList<String> chosenRoleSkillsIn, String layOnHandsIn, String divineSenseIn) {
-        super(roleNameIn, baseHpIn, availableRoleSkillsIn, amountOfSkillsIn, chosenRoleSkillsIn);
+    public Paladin(String roleNameIn, int baseHpIn, int amountOfSkillsIn, ArrayList<Skill> chosenRoleSkillsIn, String layOnHandsIn, String divineSenseIn, int valueIn) {
+        super(roleNameIn, baseHpIn, amountOfSkillsIn, chosenRoleSkillsIn, valueIn);
         setDivineSense(divineSenseIn);
         setLayOnHands(layOnHandsIn);
     }
@@ -30,5 +34,17 @@ public class Paladin extends Role {
 
     public void setDivineSense(String divineSenseIn) {
         this.divineSense = divineSenseIn;
+    }
+
+    @Override
+    public ArrayList<String> availableRoleSkills() {
+        ArrayList<String> availableRoleSkills = new ArrayList<>();
+        availableRoleSkills.add(getSkills().getString("athletics"));
+        availableRoleSkills.add(getSkills().getString("insight"));
+        availableRoleSkills.add(getSkills().getString("intimidation"));
+        availableRoleSkills.add(getSkills().getString("medicine"));
+        availableRoleSkills.add(getSkills().getString("persuasion"));
+        availableRoleSkills.add(getSkills().getString("religion"));
+        return availableRoleSkills;
     }
 }

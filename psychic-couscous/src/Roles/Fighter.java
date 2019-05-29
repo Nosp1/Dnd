@@ -1,17 +1,22 @@
 package Roles;
 
+import handlers.Skill;
+
 import java.util.ArrayList;
+
+import static handlers.Utilities.getSkills;
 /*
 The Fighter Role/class
 @Author Trym Staurheim
+todo add fighting style choice method.
  */
 
 public class Fighter extends Role {
     private String secondWind;
     private String fightingStyle;
 
-    public Fighter(String roleNameIn, int baseHpIn, ArrayList<String> availableRoleSkillsIn, int amountOfSkillsIn, ArrayList<String> chosenRoleSkillsIn, String fightingStyleIn, String secondWindIn) {
-        super(roleNameIn, baseHpIn, availableRoleSkillsIn, amountOfSkillsIn, chosenRoleSkillsIn);
+    public Fighter(String roleNameIn, int baseHpIn, int amountOfSkillsIn, ArrayList<Skill> chosenRoleSkillsIn, String fightingStyleIn, String secondWindIn, int valueIn) {
+        super(roleNameIn, baseHpIn, amountOfSkillsIn, chosenRoleSkillsIn, valueIn);
         setFightingStyle(fightingStyleIn);
         setSecondWind(secondWindIn);
     }
@@ -31,4 +36,19 @@ public class Fighter extends Role {
     private void setFightingStyle(String fightingStyleIn) {
         this.fightingStyle = fightingStyleIn;
     }
+
+    @Override
+    public ArrayList<String> availableRoleSkills() {
+        ArrayList<String> availableRoleSkills = new ArrayList<>();
+        availableRoleSkills.add(getSkills().getString("acrobatics"));
+        availableRoleSkills.add(getSkills().getString("animalhandling"));
+        availableRoleSkills.add(getSkills().getString("athletics"));
+        availableRoleSkills.add(getSkills().getString("history"));
+        availableRoleSkills.add(getSkills().getString("insight"));
+        availableRoleSkills.add(getSkills().getString("intimidation"));
+        availableRoleSkills.add(getSkills().getString("perception"));
+        availableRoleSkills.add(getSkills().getString("survival"));
+        return availableRoleSkills;
+    }
+
 }
