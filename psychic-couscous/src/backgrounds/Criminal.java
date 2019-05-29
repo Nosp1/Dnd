@@ -7,7 +7,17 @@ The Crimal Background.
  */
 public class Criminal extends Background {
 
-    public Criminal(String backGroundNameIn, String featureIn, String toolsIn, ArrayList<String> equipmentIn, ArrayList<String> skillsIn) {
-        super(backGroundNameIn, featureIn, toolsIn, equipmentIn, skillsIn);
+    public Criminal(String backGroundNameIn, String featureIn, String toolsIn) {
+        super(backGroundNameIn, featureIn, toolsIn);
+    }
+
+    @Override
+    public ArrayList<String> equipment() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> backgroundSkills() {
+        return null;
     }
 }

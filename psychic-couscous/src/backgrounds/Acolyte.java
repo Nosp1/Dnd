@@ -1,18 +1,34 @@
 package backgrounds;
 
+import handlers.SettingsReader;
+import handlers.Utilities;
+
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.Scanner;
 
 /**
-The Acolyte Background
+ * The Acolyte Background
  *
  * @Author Trym Staurheim
  */
 public class Acolyte extends Background {
+    private static ResourceBundle gods = SettingsReader.getResourceBundle("God");
     private String acolyteworships; //which diety the player worhips.
 
-    public Acolyte(String backGroundNameIn, String featureIn, String toolsIn, ArrayList<String> equipmentIn, ArrayList<String> skillsIn, String acolyteWorshipsIn) {
-        super(backGroundNameIn, featureIn, toolsIn, equipmentIn, skillsIn);
-        setAcolyteworhips(acolyteWorshipsIn);
+    public Acolyte(String backGroundNameIn, String featureIn, String toolsIn) {
+        super(backGroundNameIn, featureIn, toolsIn);
+        setAcolyteworhips(isGodSat());
+    }
+
+    @Override
+    public ArrayList<String> equipment() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> backgroundSkills() {
+        return null;
     }
 
     public String getAcolyteworhips() {
@@ -22,4 +38,57 @@ public class Acolyte extends Background {
     private void setAcolyteworhips(String acolyteWorshipsIn) {
         this.acolyteworships = acolyteWorshipsIn;
     }
+
+    private String isGodSat() {
+        System.out.println(gods.getString("chooseGod"));
+        String temp[] = Utilities.getGODS();
+        int counter = 0;
+        Background.printbackgroundProperties(temp, counter);
+        Scanner godScanner = new Scanner(System.in);
+        boolean isGodSat = false;
+        while (!isGodSat) {
+            acolyteworships = chooseGod(godScanner.nextLine());
+            if (acolyteworships != null) {
+                isGodSat = true;
+            }
+        }
+        System.out.println(Utilities.renderColoredString(gods.getString("godchosen") + ": ", "green") + getAcolyteworhips());
+        return acolyteworships;
+    }
+
+    private String chooseGod(String input) {
+        switch (input) {
+            case "1": {
+                return gods.getString("auril");
+            }
+            case "2": {
+                return gods.getString("azuth");
+            }
+            case "3": {
+                return gods.getString("bane");
+            }
+            case "4": {
+                return gods.getString("bhaal");
+            }
+            case "5": {
+                return gods.getString("chauntea");
+
+            }
+            case "6": {
+                return gods.getString("deneir");
+            }
+            case "7": {
+                return gods.getString("eldath");
+            }
+            case "8": {
+                return gods.getString("gond");
+            }
+            default:{
+                System.out.println(Utilities.renderColoredString(gods.getString("notchosengod"), "red"));
+                return null;
+            }
+        }
+
+    }
+
 }

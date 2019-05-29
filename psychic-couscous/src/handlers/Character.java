@@ -3,6 +3,8 @@ package handlers;
 import Races.*;
 import Roles.Role;
 import Roles.*;
+import backgrounds.Acolyte;
+import backgrounds.Background;
 
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -30,6 +32,7 @@ public class Character {
     private ResourceBundle races = SettingsReader.getResourceBundle("Race");
     private ResourceBundle stats = SettingsReader.getResourceBundle("Stat");
     private ResourceBundle roles = SettingsReader.getResourceBundle("Role");
+    private ResourceBundle backgrounds = SettingsReader.getResourceBundle("Background");
 
 
     /**
@@ -537,6 +540,17 @@ public class Character {
         System.out.println(Utilities.renderColoredString(getSkills().getString("skillsuccess"), "green"));
     }
 
+
+    public Background chooseBackground(String input){
+        switch (input){
+            case "1":{
+                return new Acolyte(backgrounds.getString("acolyte"),backgrounds.getString("acolytefeature"), backgrounds.getString("notools"));
+            }
+            default:
+                System.out.println("background not chosen");
+                return null;
+        }
+    }
 
     /* getters and setters.
      *

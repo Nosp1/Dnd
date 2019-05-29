@@ -12,15 +12,13 @@ public abstract class Background{
     private String backGroundName;
     private String feature;
     private String tools;
-    private ArrayList<String> Equipment;
-    private ArrayList<String> Skills;
 
-    public Background(String backGroundNameIn,String featureIn, String toolsIn, ArrayList<String> equipmentIn, ArrayList<String> skillsIn){
+
+    public Background(String backGroundNameIn,String featureIn, String toolsIn){
         setBackGroundName(backGroundNameIn);
         setFeature(featureIn);
         setTools(toolsIn);
-        setEquipment(equipmentIn);
-        setSkills(skillsIn);
+
     }
 
     public String getBackGroundName() {
@@ -47,19 +45,17 @@ public abstract class Background{
         this.tools = toolsIn;
     }
 
-    public ArrayList<String> getEquipment() {
-        return Equipment;
-    }
 
-    private void setEquipment(ArrayList<String> equipmentIn) {
-        Equipment = equipmentIn;
-    }
 
-    public ArrayList<String> getSkills() {
-        return Skills;
-    }
 
-    private void setSkills(ArrayList<String> skillsIn) {
-        Skills = skillsIn;
+
+    public abstract ArrayList<String> equipment();
+    public abstract ArrayList<String> backgroundSkills();
+
+    protected static void printbackgroundProperties(String[] temp, int counter) {
+        for (String s : temp) {
+            System.out.println(" # " + (counter + 1) + " " + s);
+            counter++;
+        }
     }
 }

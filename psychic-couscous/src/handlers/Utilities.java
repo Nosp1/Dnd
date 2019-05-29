@@ -12,6 +12,7 @@ public class Utilities {
     private static ResourceBundle tools = SettingsReader.getResourceBundle("Tool");
     private static ResourceBundle draconicancestries = SettingsReader.getResourceBundle("DraconicAncestry");
     private static ResourceBundle skills = SettingsReader.getResourceBundle("Skill");
+    private static ResourceBundle gods = SettingsReader.getResourceBundle("God");
 
     public final static String[] RACES = {
             races.getString("dragonborn"),
@@ -86,6 +87,19 @@ public class Utilities {
             draconicancestries.getString("red"),
             draconicancestries.getString("silver"),
             draconicancestries.getString("white"),
+    };
+    public final static String[] GODS = {
+            gods.getString("auril"),
+            gods.getString("azuth"),
+            gods.getString("bane"),
+            gods.getString("beshaba"),
+            gods.getString("bhaal"),
+            gods.getString("chauntea"),
+            gods.getString("cyric"),
+            gods.getString("deneir"),
+            gods.getString("eldath"),
+            gods.getString("gond"),
+            gods.getString("helm"),
     };
 
     private final static String RESET_ESCAPE_CODE = "\u001b[0m";
@@ -174,6 +188,9 @@ public class Utilities {
         return stats;
     }
     public static ResourceBundle getSkills() {return skills;}
+    public static ResourceBundle getGods(){
+        return gods;
+    }
 
     public static String[] getRACES() {
         return RACES;
@@ -181,6 +198,9 @@ public class Utilities {
     public static String[] getROLES(){
         return ROLES;
 
+    }
+    public static String[] getGODS(){
+        return GODS;
     }
     public static String[] getTOOLS() {
         return TOOLS;
