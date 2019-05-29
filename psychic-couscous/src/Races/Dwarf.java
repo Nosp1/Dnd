@@ -5,7 +5,7 @@ This is the Core Dwarf. Currently has String properties for all dwarf features.
 todo needs method to get intrinsic properties information. e.g., darkvision and dwaren combatraining etc.
  */
 
-import com.sun.tools.internal.xjc.api.util.ToolsJarNotFoundException;
+
 import handlers.SettingsReader;
 import handlers.Utilities;
 

@@ -1,14 +1,14 @@
 package handlers;
 
 import Races.*;
-import Roles.*;
 import Roles.Role;
-
+import Roles.*;
 
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-import  static handlers.Utilities.getSkills;
+
+import static handlers.Utilities.getSkills;
 
 /**
  * todo add Skills choice method.
@@ -497,12 +497,12 @@ public class Character {
     }
 
     public void chooseRoleSkills() throws NumberFormatException {
-        System.out.println(getSkills().getString("chooseskills") + " " +  role.getRoleName() + " " +  getSkills().getString("choices") + " " + role.getAmountOfSkills() );
+        System.out.println(getSkills().getString("chooseskills") + " " + role.getRoleName() + " " + getSkills().getString("choices") + " " + role.getAmountOfSkills());
 
         System.out.println();
         printRoleSkills();
         Scanner roleSkills = new Scanner(System.in);
-        int pos = 0;
+
         try {
 
             for (int i = 0; i < role.getAmountOfSkills(); i++) {
@@ -512,81 +512,21 @@ public class Character {
                     System.out.println(Utilities.renderColoredString(text.getString("numbertohigh"), "red"));
                     i--;
 
-                }  if (role.getChosenRoleSkills().size() != 0) {
+                }
+                String chosenskill = role.availableRoleSkills().get(choice);
+                if (role.isProficient(chosenskill)) {
 
                     for (Skill s : role.getChosenRoleSkills()) {
-
-                        if (s.getName().matches(role.availableRoleSkills().get(choice))) {
-
-                            System.out.println("you are already proficient in" + s.getName());
-                            i--;
-
-                        }
-
+                        System.out.println("you are already proficient in" + s.getName());
+                        i--;
                     }
                 } else {
-                    pos = choice;
-                    switch (choice) {
-
-                        case 0: {
-                            Skill skill = new Skill(role.availableRoleSkills().get(choice), true);
-                            role.getChosenRoleSkills().add(skill);
-                            break;
-                        }
-                        case 1: {
-                            Skill skill1 = new Skill(role.availableRoleSkills().get(choice), true);
-                            role.getChosenRoleSkills().add(skill1);
-                            break;
-                        }
-                        case 2: {
-                            Skill skill2 = new Skill(role.availableRoleSkills().get(choice), true);
-                            role.getChosenRoleSkills().add(skill2);
-                            break;
-                        }
-                        case 3: {
-                            Skill skill3 = new Skill(role.availableRoleSkills().get(pos), true);
-                            role.getChosenRoleSkills().add(skill3);
-                            break;
-                        }
-                        case 4: {
-                            Skill skill4 = new Skill(role.availableRoleSkills().get(pos), true);
-                            role.getChosenRoleSkills().add(skill4);
-                            break;
-                        }
-                        case 5: {
-                            Skill skill5 = new Skill(role.availableRoleSkills().get(pos), true);
-                            role.getChosenRoleSkills().add(skill5);
-                            break;
-                        }
-                        case 6: {
-                            Skill skill6 = new Skill(role.availableRoleSkills().get(pos), true);
-                            role.getChosenRoleSkills().add(skill6);
-                            break;
-                        }
-                        case 7: {
-                            Skill skill7 = new Skill(role.availableRoleSkills().get(pos), true);
-                            role.getChosenRoleSkills().add(skill7);
-                            break;
-                        }
-                        case 8: {
-                            Skill skill8 = new Skill(role.availableRoleSkills().get(pos), true);
-                            role.getChosenRoleSkills().add(skill8);
-                            break;
-                        }
-                        case 9: {
-                            Skill skill9 = new Skill(role.availableRoleSkills().get(pos), true);
-                            role.getChosenRoleSkills().add(skill9);
-                            break;
-                        }
-                        case 10: {
-                            Skill skill9 = new Skill(role.availableRoleSkills().get(pos), true);
-                            role.getChosenRoleSkills().add(skill9);
-                            break;
-                        }
-                    }
+                    Skill skill = new Skill(chosenskill, true);
+                    role.getChosenRoleSkills().add(skill);
                 }
             }
-        }catch (NumberFormatException nfe) {
+
+        } catch (NumberFormatException nfe) {
             System.out.println("thats not a number");
 
         }

@@ -54,6 +54,15 @@ public abstract class Role {
         this.baseHp = baseHpIn;
     }
 
+    public boolean isProficient(String s) {
+        for(int i=0; i<this.chosenRoleSkills.size(); i++) {
+            if(this.chosenRoleSkills.get(i).getName().matches(s))
+                return true;
+        }
+
+        return false;
+    }
+
 
 
 
