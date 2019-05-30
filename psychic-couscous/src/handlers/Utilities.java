@@ -1,7 +1,7 @@
 package handlers;
 
 import java.util.ResourceBundle;
-import java.util.Set;
+
 
 public class Utilities {
 
@@ -187,9 +187,15 @@ public class Utilities {
     public static ResourceBundle getStats() {
         return stats;
     }
-    public static ResourceBundle getSkills() {return skills;}
+    public static ResourceBundle getTools(){
+        return tools;
+
+    }    public static ResourceBundle getSkills() {return skills;}
     public static ResourceBundle getGods(){
         return gods;
+    }
+    public static String[] getBACKGROUNDS(){
+        return BACKGROUNDS;
     }
 
     public static String[] getRACES() {

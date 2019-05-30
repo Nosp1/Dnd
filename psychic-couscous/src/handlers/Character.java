@@ -5,12 +5,15 @@ import Roles.Role;
 import Roles.*;
 import backgrounds.Acolyte;
 import backgrounds.Background;
+import backgrounds.Criminal;
+
 
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import static handlers.Utilities.getSkills;
+import static handlers.Utilities.getTools;
 
 /**
  * todo add Skills choice method.
@@ -24,8 +27,8 @@ public class Character {
     private String gender;
     private Race race;
     private Role role;
-    private ArrayList<Skill> skills;
     private ArrayList<Stat> stat;
+    private Background background;
     private Stat strength, dexterity, constitution, intelligence, wisdom, charisma;
 
     private ResourceBundle text = SettingsReader.getResourceBundle("Character");
@@ -45,7 +48,6 @@ public class Character {
         System.out.println();
 
         setStats();
-        printStats();
         chooseName();
         chooseGender();
         isRaceChosen();
@@ -56,6 +58,9 @@ public class Character {
         IsRoleChosen();
         roleInfo();
         chooseRoleSkills();
+        isBackGroundChosen();
+        backGroundInfo();
+        printCompleteCharacter();
 
 
     }
@@ -149,16 +154,42 @@ public class Character {
             }
             while (!validChoice);
         }
+        printStats();
+        System.out.println(Utilities.renderColoredString(text.getString("yourStatsWereChosen"), "green"));
     }
+
 
     /**
      *
      */
 
     private void printStats() {
-        System.out.println(text.getString("yourstatsare") + " ");
+        System.out.println(Utilities.renderColoredString(text.getString("yourstatsare"),"green" + " "));
         for (Stat stat1 : stat) System.out.println(stat1);
-        System.out.println(Utilities.renderColoredString(text.getString("yourStatsWereChosen"), "green"));
+    }
+
+    private void printCompleteCharacter() {
+
+        System.out.println("\n");
+        System.out.println(Utilities.renderColoredString(text.getString("comepletecharacter"), "green") + "\n" +
+                Utilities.renderColoredString(text.getString("characterNameChosen"), "green") + " " + name + "\n" +
+                Utilities.renderColoredString(text.getString("characterAgeChosen"), "green") + " " + age + "\n" +
+                Utilities.renderColoredString(text.getString("characterGenderChosen") + ": ", "green") + " " + gender + "\n" +
+                Utilities.renderColoredString(text.getString("characterRaceChosen"), "green") + " " + race.getName() + "\n" +
+                Utilities.renderColoredString(text.getString("characterRoleChosen"), "green") + " " + role.getRoleName() + "\n" +
+                Utilities.renderColoredString(text.getString("characterHp"), "green") + " " + role.getBaseHp() + "\n" +
+                Utilities.renderColoredString(text.getString("characterSkills"), "green") + " ");
+        printChosenSkills();
+        printStats();
+
+
+    }
+
+    private void printChosenSkills() {
+        for (Skill skill : role.getChosenRoleSkills()) {
+            System.out.println(skill.getName());
+        }
+
     }
 
     /**
@@ -248,7 +279,7 @@ public class Character {
                 System.out.println(Utilities.renderColoredString(text.getString("invalidAge"), "red"));
             }
         }
-        System.out.println(Utilities.renderColoredString(text.getString("characterAgeSat"), "green") + " " + age);
+        System.out.println(Utilities.renderColoredString(text.getString("characterAgeChosen"), "green") + " " + age);
     }
 
     /**
@@ -352,6 +383,11 @@ public class Character {
 
     private void roleInfo() {
         System.out.println(Utilities.renderColoredString(roles.getString("chosenrole") + ": ", "green") + this.role.getRoleName());
+
+    }
+
+    private void backGroundInfo() {
+        System.out.println(Utilities.renderColoredString(backgrounds.getString("chosenbackground") + ": ", "green") + this.background.getBackGroundName());
 
     }
 
@@ -520,31 +556,46 @@ public class Character {
                 if (role.isProficient(chosenskill)) {
 
                     for (Skill s : role.getChosenRoleSkills()) {
-                        System.out.println("you are already proficient in" + s.getName());
+                        System.out.println(Utilities.renderColoredString(getSkills().getString("alreadyproficient"), "red") + s.getName());
                         i--;
                     }
                 } else {
                     Skill skill = new Skill(chosenskill, true);
                     role.getChosenRoleSkills().add(skill);
                 }
+                System.out.println(getSkills().getString("proficient") + " " + chosenskill);
             }
 
         } catch (NumberFormatException nfe) {
-            System.out.println("thats not a number");
+            System.out.println(Utilities.renderColoredString(text.getString("notvalidinput"), "red"));
 
         }
-        System.out.println("you have chosen");
-        for (Skill skill : role.getChosenRoleSkills()) {
-            System.out.println(skill.getName());
-        }
+
         System.out.println(Utilities.renderColoredString(getSkills().getString("skillsuccess"), "green"));
     }
 
+    private Background isBackGroundChosen() {
+        System.out.println(text.getString("characterBackGround") + " " + text.getString("characterBackGroundOptions") + ": ");
+        String[] temp = Utilities.getBACKGROUNDS();
+        printChoices(temp);
+        Scanner backGroundScanner = new Scanner(System.in);
+        boolean isBackGroundSat = false;
+        while (!isBackGroundSat) {
+            background = chooseBackground(backGroundScanner.nextLine());
+            if (background != null) {
+                isBackGroundSat = true;
+            }
+        }
+        return background;
+    }
 
-    public Background chooseBackground(String input){
-        switch (input){
-            case "1":{
-                return new Acolyte(backgrounds.getString("acolyte"),backgrounds.getString("acolytefeature"), backgrounds.getString("notools"));
+    private Background chooseBackground(String input) {
+        switch (input) {
+            case "1": {
+                return new Acolyte(backgrounds.getString("acolyte"), backgrounds.getString("acolytefeature"), backgrounds.getString("notools"));
+            }
+            case "2": {
+                return new Criminal(backgrounds.getString("criminal"), backgrounds.getString("criminalfeature"), getTools().getString("thievestool"));
             }
             default:
                 System.out.println("background not chosen");

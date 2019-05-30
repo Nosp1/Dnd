@@ -97,7 +97,6 @@ public class  ConsoleReader {
                 String characterName = charactersFound[i].getName().split("\\.")[0];
 
                 System.out.println("[" + (i + 1) + "] " + characterName);
-
             }
 
         }
