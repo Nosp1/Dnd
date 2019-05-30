@@ -164,7 +164,9 @@ public class Character {
      */
 
     private void printStats() {
-        System.out.println(Utilities.renderColoredString(text.getString("yourstatsare"),"green" + " "));
+        System.out.println(Utilities.renderColoredString(text.getString("yourstatsare"), "green"));
+        
+
         for (Stat stat1 : stat) System.out.println(stat1);
     }
 
