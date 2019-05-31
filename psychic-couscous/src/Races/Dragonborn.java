@@ -42,7 +42,7 @@ public class Dragonborn extends Race {
     }
 
     private String setDraconicAncestor() {
-        System.out.println("as a Dragonborn you need to choose your Ancestry: " + "\n");
+        System.out.println(Utilities.renderColoredString(draconicancestries.getString("dragonchoice"), "green") + "\n");
         String[] temp = Utilities.DRACONICANCESTRY;
         int counter = 0;
         Race.printProperties(temp, counter);
@@ -54,7 +54,7 @@ public class Dragonborn extends Race {
                 isDraconicAncestrySat = true;
             }
         }
-        System.out.println(Utilities.renderColoredString("You have chosen to be a: ", "green") + getDraconicAncestry());
+        System.out.println(Utilities.renderColoredString(draconicancestries.getString("dragonchosen"), "green") + " " + getDraconicAncestry());
         return draconicAncestry;
     }
 

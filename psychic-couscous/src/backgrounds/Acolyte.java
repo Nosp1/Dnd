@@ -42,7 +42,7 @@ public class Acolyte extends Background {
     }
 
     private String isGodSat() {
-        System.out.println(gods.getString("choosegod") + " " );
+        System.out.println(Utilities.renderColoredString(gods.getString("choosegod") + " " ,"green"));
         String temp[] = Utilities.getGODS();
         int counter = 0;
         Background.printbackgroundProperties(temp, counter);
