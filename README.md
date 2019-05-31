@@ -10,6 +10,12 @@
 
 <hr>
 
+<p align="center">
+  LATEST RELEASE: StoryTeller v0.0.1.
+</p>
+
+<hr>
+
 ### How does it work?
 
 *StoryTeller* follows the official Dungeons and Dragons character creations steps.  
