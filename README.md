@@ -56,16 +56,16 @@ You will then have to pick your age, that has to be within the limits set by the
 
 StoryTeller currently supports *six* roles. You can choose between *Barbarian*, *Cleric*, *Druid*, *Fighter*, *Paladin* and *Rogue*.  
 
-##### STEP 8: Selecting your skills.
+##### Selecting your skills.
 
 Each role has access to a different set of skills among which you can choose.  
 To check which skill each role has available, check our wiki pages.
 
-### STEP 9: Choosing a background.
+#### STEP 8: Choosing a background.
 
 StoryTeller supports backgrounds. At the moment, you can be an *Acolyte* or a *Criminal*.
 To find out the differences between these backgrounds, check our wiki pages.
 
-### STEP 10: See a summary of your character.
+#### STEP 9: See a summary of your character.
 
 When all the steps above have been completed, you will be able to see a summary of your character, and you will be able to choose whether you want to save it or not.
