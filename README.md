@@ -52,7 +52,7 @@ To support diversity and ease impersonation of the characters, you will be able 
 #### STEP 5: Choosing a race.
 
 At this point, StoryTeller supports *nine* races. You can choose between *Dragonborn*, *Dwarf*, *Elf*, *Gnome*, *Half Elf*, *Half Orc*, *Halfling*, *Human* and *Tiefling*.  
-Each race has its own perks and limits, that can be found in our wiki pages.
+Each race has its own perks and limits, that can be found in [our wiki page](https://github.com/Nosp1/Dnd/wiki/Races).
 
 #### STEP 6: Choosing your age.
 
@@ -65,12 +65,12 @@ StoryTeller currently supports *six* roles. You can choose between *Barbarian*, 
 ##### Selecting your skills.
 
 Each role has access to a different set of skills among which you can choose.  
-To check which skill each role has available, check our wiki pages.
+To check which skill each role has available, check [our wiki page](https://github.com/Nosp1/Dnd/wiki/Roles).
 
 #### STEP 8: Choosing a background.
 
 StoryTeller supports backgrounds. At the moment, you can be an *Acolyte* or a *Criminal*.
-To find out the differences between these backgrounds, check our wiki pages.
+To find out the differences between these backgrounds, check [our wiki page](https://github.com/Nosp1/Dnd/wiki/Backgrounds).
 
 #### STEP 9: See a summary of your character.
 
