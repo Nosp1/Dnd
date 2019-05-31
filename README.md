@@ -76,6 +76,8 @@ To find out the differences between these backgrounds, check our wiki pages.
 
 When all the steps above have been completed, you will be able to see a summary of your character, and you will be able to choose whether you want to save it or not.
 
+<hr>
+
 ### Future features.
 
 To check out what we are working on or suggest something to implement, check out our Issues page.
