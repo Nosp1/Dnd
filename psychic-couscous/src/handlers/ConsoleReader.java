@@ -22,6 +22,9 @@ public class  ConsoleReader {
     public void start() {
     	
     	Scanner reader = new Scanner(System.in);
+        System.out.println(text.getString("copyDnD"));
+
+        System.out.println();
     	
     	System.out.println(text.getString("start"));
 
