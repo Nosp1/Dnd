@@ -11,7 +11,7 @@
 <hr>
 
 <p align="center">
-  LATEST RELEASE: StoryTeller v0.0.1.
+  LATEST RELEASE - StoryTeller v0.0.1.
 </p>
 
 <hr>
