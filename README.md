@@ -2,7 +2,7 @@
   <img src="/logo.png">
   <br/>
   <br/>
-  <b>StoryTeller</b> is a terminal based character generator for Dungeons and Dragons.
+  <b>StoryTeller</b> is a terminal based character generator for Dungeons and Dragons 5th Edition SRD content.
   <br/>
   Thanks to our software, the character creation is streamlined with step by step instructions.
   <br/>
