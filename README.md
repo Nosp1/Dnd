@@ -30,5 +30,6 @@ If you select to **create** a new character, StoryTeller will initialize the cha
 #### STEP 2: Rolling and assigning stats.
 
 When the character creation starts, the program will automatically simulate dice rolls to calculate six random values that the user will be able to assign to each of the Dungeons and Dragons stats: *Charisma*, *Constitution*, *Dexterity*, *Intelligence*, *Strength* and *Wisdom*.  
+
 Each roll's value is determined by generating four random numbers and adding up the three highest ones.  
 Once the rolls have been generated and displayed, the user can assign each value to a stat.
