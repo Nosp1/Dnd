@@ -1,5 +1,4 @@
-package backgrounds;
-
+package Backgrounds;
 
 
 import handlers.SettingsReader;
@@ -12,7 +11,7 @@ import java.util.Scanner;
 /**
  * The Acolyte Background
  *
- * @Author Trym Staurheim
+ * @author Trym Staurheim
  */
 public class Acolyte extends Background {
     private static ResourceBundle gods = SettingsReader.getResourceBundle("God");
@@ -42,7 +41,7 @@ public class Acolyte extends Background {
     }
 
     private String isGodSat() {
-        System.out.println(Utilities.renderColoredString(gods.getString("choosegod") + " " ,"green"));
+        System.out.println(Utilities.renderColoredString(gods.getString("choosegod") + " ", "green"));
         String temp[] = Utilities.getGODS();
         int counter = 0;
         Background.printbackgroundProperties(temp, counter);
@@ -94,7 +93,7 @@ public class Acolyte extends Background {
             case "11": {
                 return gods.getString("helm");
             }
-            default:{
+            default: {
                 System.out.println(Utilities.renderColoredString(gods.getString("notchosengod"), "red"));
                 return null;
             }

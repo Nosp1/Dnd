@@ -1,10 +1,10 @@
-package backgrounds;
+package Backgrounds;
 
 import java.util.ArrayList;
 /*
-The Background class serves a  skeleton for all the DnD backgrounds,
+The Background class serves a  skeleton for all the DnD Backgrounds,
 containing all the specific properties a background needs.
-Enables the user to create custom backgrounds by inheriting from this class.
+Enables the user to create custom Backgrounds by inheriting from this class.
 @Author Trym Staurheim
  */
 

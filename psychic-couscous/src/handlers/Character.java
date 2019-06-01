@@ -3,9 +3,9 @@ package handlers;
 import Races.*;
 import Roles.Role;
 import Roles.*;
-import backgrounds.Acolyte;
-import backgrounds.Background;
-import backgrounds.Criminal;
+import Backgrounds.Acolyte;
+import Backgrounds.Background;
+import Backgrounds.Criminal;
 
 
 import java.util.ArrayList;
@@ -14,23 +14,48 @@ import java.util.Scanner;
 
 import static handlers.Utilities.getSkills;
 import static handlers.Utilities.getTools;
+//TODO: 2019-05-27 fix gnome, elf, half-orc, when skills are added.
 
 /**
- * todo add Skills choice method.
- * <p>
- * todo add Race proficiencies: dwarf, orc, elf, half-elf -> Ref.Background
- * todo add Background choice method
+ * The {@code Character} class represents the users character.
+ * @author Trym Staurheim
  */
 public class Character {
+    /**
+     * name stores the {@code String} on the instanced Character object
+     */
     private String name;
+    /**
+     * age stores the {@code int} on the instanced character object
+     */
     private int age;
+    /**
+     * stores the {@code String} on the instanced character object
+     */
     private String gender;
+    /**
+     * declared for further dynamic type change during program execution to store {@code Race }  child on object
+     */
     private Race race;
+    /**
+     * declared for further dynamic type change during program execution to store {@code Role} child on object
+     */
     private Role role;
-    private ArrayList<Stat> stat;
+    /**
+     * declared for dynamic type change during program execution to store {@code Background} child on object
+     */
     private Background background;
+    /**
+     * declared for storing type {@code Stat} objects in a list to access them during runtime
+     */
+    private ArrayList<Stat> stat;
+    /**
+     * These  {@code Stat} variables are declared to differentiate between the different stats
+     */
     private Stat strength, dexterity, constitution, intelligence, wisdom, charisma;
-
+    /**
+     * these {@code ResourceBundle} variables are used access the property bundles for  {@code String} handling
+     */
     private ResourceBundle text = SettingsReader.getResourceBundle("Character");
     private ResourceBundle races = SettingsReader.getResourceBundle("Race");
     private ResourceBundle stats = SettingsReader.getResourceBundle("Stat");
@@ -39,7 +64,9 @@ public class Character {
 
 
     /**
+     * Constructor for the Character class. Creates an object of type Character with properties from Stat, Race, Role and Background
      *
+     * @author Trym Staurheim
      */
     public Character() {
 
@@ -69,10 +96,22 @@ public class Character {
      *
      */
 
-    /**
-     * @author Trym Staurheim
-     */
 
+    /**
+     * The method setStats() generates the characters stat values from {@code Roller} and
+     * instances a {@code RandomRoll} Array to store these values. These values are then
+     * assigned to {@code Stat} objects that are initialized and put into the ArrayList stat.
+     * These Stat values are then stored on the character object.
+     * The method uses the {@code RandomRoll} inner class to control for used integers.
+     * The method also calls on the  printStats() to iterate and print all elements of type Stat
+     *
+     * @throws NumberFormatException if the Integer converted to string is of incorrect format
+     * @author Trym Staurheim
+     * @author Kevin Rateni Laturo
+     * @see Roller class for how the integers are generated.
+     * @see Stat for how Stat type objets are constructed.
+     * @see RandomRoll for methods
+     */
     private void setStats() {
 
         stat = new ArrayList<>();
@@ -160,16 +199,26 @@ public class Character {
 
 
     /**
+     * Handles the printing of the characters Stats
+     * Uses the {@code Utilities} to format the type String and ResourceBundles to get the property file "Character".
+     * prints to the user a colored text string: Your stats are:
+     * followed by a for each loop that prints out  Elements of type {@code Stat} in ArrayList stat.
      *
+     * @author Trym Staurheim
      */
 
     private void printStats() {
         System.out.println(Utilities.renderColoredString(text.getString("yourstatsare"), "green"));
-        
-
         for (Stat stat1 : stat) System.out.println(stat1);
     }
 
+    /**
+     * Prints the entire character to the user, when the character is complete.
+     * uses printChosenSkills for easier printing of the characters skills.
+     * uses printStats for printing the characters stats.
+     *
+     * @author Trym Staurheim
+     */
     private void printCompleteCharacter() {
 
         System.out.println("\n");
@@ -180,12 +229,21 @@ public class Character {
                 Utilities.renderColoredString(text.getString("characterRaceChosen"), "green") + " " + race.getName() + "\n" +
                 Utilities.renderColoredString(text.getString("characterRoleChosen"), "green") + " " + role.getRoleName() + "\n" +
                 Utilities.renderColoredString(text.getString("characterHp"), "green") + " " + role.getBaseHp() + "\n" +
+                Utilities.renderColoredString(text.getString("backgroundchosen"), "green") + " " + background.getBackGroundName() + "\n" +
+                Utilities.renderColoredString(text.getString("chosenbackgroundfeature"), "green") + " " + background.getFeature() + "\n" +
                 Utilities.renderColoredString(text.getString("characterSkills"), "green") + " ");
         printChosenSkills();
         printStats();
 
 
     }
+
+    /**
+     * Prints the stored {@code Skill} objects in the {@code Role} objects ArrayList of Type {@code Skill}
+     * which are then printed with a for each loop.
+     *
+     * @author Trym Staurheim
+     */
 
     private void printChosenSkills() {
         for (Skill skill : role.getChosenRoleSkills()) {
@@ -195,7 +253,9 @@ public class Character {
     }
 
     /**
-     *
+     * The method increases the Character objects stored {@code Stat} values by the amount asserted
+     * by the instanced {@code Race} objects getRaceIncreaseStats method and getAvailableStats method.
+     * These values are instanced by the {@code Race ChooseRace} method.
      */
 
     private void increaseCharacterStats() {
@@ -232,7 +292,10 @@ public class Character {
     }
 
     /**
-     * Sets the character name.
+     * Sets the character name on {@code Character} object
+     * with a instanced Scanner and prints the name to the user
+     * note: as this is a program for a fantasy game,
+     * there are no limit for what a name can be, thus any symbol is allowed.
      *
      * @author Trym Staurheim
      */
@@ -246,7 +309,9 @@ public class Character {
     }
 
     /**
-     * Sets characters gender
+     * Sets the character gender on {@code Character} object
+     * with a instanced Scanner and prints the gender to the user,
+     * note: We have no limits on gender to support gender diversity in a fantasy setting.
      *
      * @author Trym Staurheim
      */
@@ -258,6 +323,13 @@ public class Character {
         System.out.println(Utilities.renderColoredString(text.getString("characterGenderChosen") + ": ", "green") + gender);
     }
 
+    /**
+     * Sets the character age on {@code Character} object
+     * with a instanced Scanner and prints the age to the user.
+     * The age is affected by the {@code Race} child objects maxAge value variable.
+     *
+     * @throws NumberFormatException if the Integer converted to String is of the wrong format
+     */
     private void chooseAge() throws NumberFormatException {
         boolean isAgeSat = false;
         System.out.println(text.getString("characterAge"));
@@ -285,7 +357,11 @@ public class Character {
     }
 
     /**
-     * @returns race object
+     * This method asserts through a loop that the instanced {@code Race} object is not null
+     * by instancing a scanner that runs the {@code chooseRace} method
+     * when the instanced race object is not equal to null the loop exits.
+     *
+     * @return race with a dynamic type of the chosen race child instanced by the chooseRace() method.
      * @author Trym Staurheim
      */
 
@@ -306,7 +382,10 @@ public class Character {
     }
 
     /**
-     * @param temp
+     * printChoices() is a helper method that loops over an Array and prints the choices.
+     *
+     * @param temp represents the temporary {@code String} array that printChoices() loops over.
+     * @author Trym Staurheim
      */
 
     private void printChoices(String[] temp) {
@@ -319,9 +398,23 @@ public class Character {
     }
 
     /**
-     * @param input reader from isRaceChosen()
-     * @return new race object
-     */// TODO: 2019-05-27 fix gnome, elf, half-orc, when skills are added.
+     * chooseRace() uses the instanced Scanner from isRaceChosen() method and returns a new {@code Race} child
+     * based on the users input.
+     *
+     * @param input reader from isRaceChosen() to set a child on {@code Race} object.
+     * @return new race object child with the child properties from the {@code Race} child constructors.
+     * @author Trym Staurheim
+     * @see Races.Dragonborn
+     * @see Races.Dwarf
+     * @see Races.Elf
+     * @see Races.Gnome
+     * @see Races.HalfElf
+     * @see Races.Halfling
+     * @see Races.HalfOrc
+     * @see Races.Human
+     * @see Races.Race
+     * @see Races.Tiefling
+     **/
     private Race chooseRace(String input) {
         switch (input.toLowerCase()) {
 
@@ -379,23 +472,49 @@ public class Character {
 
     }
 
+    /**
+     * Helper method to print the instanced {@code Race} child {@code String} name with race.getName() method.
+     *
+     * @author Trym Staurheim
+     */
     private void raceInfo() {
         System.out.println(Utilities.renderColoredString(races.getString("satRace") + ": ", "green") + this.race.getName());
     }
+
+    /**
+     * Helper method to print the instanced {@code Role} child {@code String} name with role.getRoleName() method.
+     *
+     * @author Trym Staurheim
+     */
 
     private void roleInfo() {
         System.out.println(Utilities.renderColoredString(roles.getString("chosenrole") + ": ", "green") + this.role.getRoleName());
 
     }
 
+    /**
+     * Helper method to print the instanced {@code Background} child {@code String} name with background.getBackGroundName() method.
+     *
+     * @author Trym Staurheim
+     */
+
     private void backGroundInfo() {
         System.out.println(Utilities.renderColoredString(backgrounds.getString("chosenbackground") + ": ", "green") + this.background.getBackGroundName());
 
     }
 
+    /**
+     * This method handles the manual stat increase done by the user
+     * if the instanced (@code Race) child String {@code String} name is of dynamic type Half-Elf.
+     * Else it prints that the user have successfully increased all their stats.
+     *
+     * @author Trym Staurheim
+     */
+
     private void halfElfIncreaseStat() {
 
         if (race.getName().matches(races.getString("halfelf"))) {
+
 
             System.out.println(races.getString("halfelfincreasestat") + "\n");
             int i = 1;
@@ -405,12 +524,11 @@ public class Character {
             }
             Scanner halfElf = new Scanner(System.in);
             for (int h = 0; h < 2; h++) {
-                int elfIncrese = 1;
+                int elfIncrease = 1;
                 switch (halfElf.nextLine()) {
-
                     case "1": {
-                        if (strength.changeValueIfAvailable(elfIncrese)) {
-                            System.out.println(String.format(stats.getString("strengthincrease"), elfIncrese, strength.getValue()));
+                        if (strength.changeValueIfAvailable(elfIncrease)) {
+                            System.out.println(String.format(stats.getString("strengthincrease"), elfIncrease, strength.getValue()));
                         } else {
                             System.out.println(Utilities.renderColoredString(stats.getString("statincreased"), "red"));
                             h--;
@@ -418,8 +536,8 @@ public class Character {
                         break;
                     }
                     case "2": {
-                        if (dexterity.changeValueIfAvailable(elfIncrese)) {
-                            System.out.println(String.format(stats.getString("dexterityincrease"), elfIncrese, dexterity.getValue()));
+                        if (dexterity.changeValueIfAvailable(elfIncrease)) {
+                            System.out.println(String.format(stats.getString("dexterityincrease"), elfIncrease, dexterity.getValue()));
                         } else {
                             System.out.println(Utilities.renderColoredString(stats.getString("statincreased"), "red"));
                             h--;
@@ -427,8 +545,8 @@ public class Character {
                         break;
                     }
                     case "3": {
-                        if (constitution.changeValueIfAvailable(elfIncrese)) {
-                            System.out.println(String.format(stats.getString("constitutionincrease"), elfIncrese, constitution.getValue()));
+                        if (constitution.changeValueIfAvailable(elfIncrease)) {
+                            System.out.println(String.format(stats.getString("constitutionincrease"), elfIncrease, constitution.getValue()));
                         } else {
                             System.out.println(Utilities.renderColoredString(stats.getString("statincreased"), "red"));
                             h--;
@@ -436,8 +554,8 @@ public class Character {
                         break;
                     }
                     case "4": {
-                        if (intelligence.changeValueIfAvailable(elfIncrese)) {
-                            System.out.println(String.format(stats.getString("intelligenceincrease"), elfIncrese, intelligence.getValue()));
+                        if (intelligence.changeValueIfAvailable(elfIncrease)) {
+                            System.out.println(String.format(stats.getString("intelligenceincrease"), elfIncrease, intelligence.getValue()));
                         } else {
                             System.out.println(Utilities.renderColoredString(stats.getString("statincreased"), "red"));
                             h--;
@@ -445,8 +563,8 @@ public class Character {
                         break;
                     }
                     case "5": {
-                        if (wisdom.changeValueIfAvailable(elfIncrese)) {
-                            System.out.println(String.format(stats.getString("wisdomincrease"), elfIncrese, wisdom.getValue()));
+                        if (wisdom.changeValueIfAvailable(elfIncrease)) {
+                            System.out.println(String.format(stats.getString("wisdomincrease"), elfIncrease, wisdom.getValue()));
                         } else {
                             System.out.println(Utilities.renderColoredString(stats.getString("statincreased"), "red"));
                             h--;
@@ -454,8 +572,8 @@ public class Character {
                         break;
                     }
                     case "6": {
-                        if (charisma.changeValueIfAvailable(elfIncrese)) {
-                            System.out.println(String.format(stats.getString("charismaincrease"), elfIncrese, charisma.getValue()));
+                        if (charisma.changeValueIfAvailable(elfIncrease)) {
+                            System.out.println(String.format(stats.getString("charismaincrease"), elfIncrease, charisma.getValue()));
                         } else {
                             System.out.println(Utilities.renderColoredString(stats.getString("statincreased"), "red"));
                             h--;
@@ -475,6 +593,16 @@ public class Character {
 
     }
 
+    /**
+     * This method asserts through a loop that the instanced {@code Role} object is not null
+     * by instancing a scanner that runs the {@code chooseRole} method
+     * when the instanced race object is not equal to null the loop exits.
+     *
+     * @return role with a dynamic type of the chosen {@code Role} child instanced by the chooseRace() method.
+     * @author Trym Staurheim
+     */
+
+
     private Role IsRoleChosen() {
         System.out.println(text.getString("characterRole") + ", " + text.getString("characterRoleOptions") + " : ");
         String[] temp = Utilities.getROLES();
@@ -490,7 +618,23 @@ public class Character {
         return role;
     }
 
-    //todo add spells, to cleric and druid. + properties
+    // TODO: 2019-06-01  add spells, to cleric and druid. + properties
+
+    /**
+     * chooseRole() uses the instanced Scanner from isRoleChosen() method and returns a new {@code Role} child
+     * based on the users input.
+     * It also instances an arrayList of type {@code Skills} to store of skills object of that type on object
+     *
+     * @param input reader from isRoleChosen() to set a child on {@code Role} object.
+     * @return new role object child with the child properties from the {@code Role} child constructors.
+     * @author Trym Staurheim
+     * @see Roles.Barbarian
+     * @see Roles.Cleric
+     * @see Roles.Druid
+     * @see Roles.Fighter
+     * @see Roles.Paladin
+     * @see Roles.Rogue
+     */
     private Role chooseRole(String input) {
         switch (input.toLowerCase()) {
             case "1": {
@@ -528,7 +672,14 @@ public class Character {
 
     }
 
-    public void printRoleSkills() {
+    /**
+     * Helper method that prints the available type {@code String} objects
+     * stored in the instanced {@code Role} child objects role.availableRoleSkills() method
+     *
+     * @author Trym Staurheim
+     */
+
+    private void printRoleSkills() {
         int counter = 0;
         for (String r : role.availableRoleSkills()) {
             System.out.println(" # " + (counter + 1) + " " + r);
@@ -537,9 +688,20 @@ public class Character {
 
     }
 
-    public void chooseRoleSkills() throws NumberFormatException {
-        System.out.println(getSkills().getString("chooseskills") + " " + role.getRoleName() + " " + getSkills().getString("choices") + " " + role.getAmountOfSkills());
+    /**
+     * chooseRoleSkills() uses the instanced {@code Role} child get.AmountOfSkills() method.
+     * It instances a {@code Scanner} object for the user to choose which skills they want to be proficient in.
+     * The method loops til the amountOfSkills condition is met and adds the selected skill to the
+     * {@code Role} child objects {@code Skill} ArrayList getChosenRoleSkills().
+     * @author Trym Staurheim
+     * @deprecated  error this method has a currently unhandled error of InputMissMatch exception that exits the loop. It will be fixed for v.02
+     * @throws NumberFormatException if the parsed  {@code String} is of the wrong format.
+     *
+     */
 
+    private void chooseRoleSkills() throws NumberFormatException {
+        System.out.println(getSkills().getString("chooseskills") + " " +
+                role.getRoleName() + " " + getSkills().getString("choices") + " " + role.getAmountOfSkills());
         System.out.println();
         printRoleSkills();
         Scanner roleSkills = new Scanner(System.in);
@@ -554,18 +716,17 @@ public class Character {
                     i--;
 
                 }
-                String chosenskill = role.availableRoleSkills().get(choice);
-                if (role.isProficient(chosenskill)) {
-
+                String chosenSkill = role.availableRoleSkills().get(choice);
+                if (role.isProficient(chosenSkill)) {
                     for (Skill s : role.getChosenRoleSkills()) {
                         System.out.println(Utilities.renderColoredString(getSkills().getString("alreadyproficient"), "red") + s.getName());
                         i--;
                     }
                 } else {
-                    Skill skill = new Skill(chosenskill, true);
+                    Skill skill = new Skill(chosenSkill, true);
                     role.getChosenRoleSkills().add(skill);
                 }
-                System.out.println(getSkills().getString("proficient") + " " + chosenskill);
+                System.out.println(getSkills().getString("proficient") + " " + chosenSkill);
             }
 
         } catch (NumberFormatException nfe) {
@@ -576,6 +737,13 @@ public class Character {
         System.out.println(Utilities.renderColoredString(getSkills().getString("skillsuccess"), "green"));
     }
 
+    /**This method asserts through a loop that the instanced {@code Background} object is not null
+     * by instancing a scanner that runs the {@code chooseBackground} method.
+     * When the instanced race object is not equal to null the loop exits.
+     * @author Trym Staurheim
+     * @return background with a dynamic type of the chosen {@code Background} child instanced by the chooseBackground() method.
+     *
+     */
     private Background isBackGroundChosen() {
         System.out.println(text.getString("characterBackGround") + " " + text.getString("characterBackGroundOptions") + ": ");
         String[] temp = Utilities.getBACKGROUNDS();
@@ -591,6 +759,18 @@ public class Character {
         return background;
     }
 
+    /**
+     * chooseBackground() uses the instanced Scanner from isBackGroundChosen() method and
+     * returns a new {@code Background} child based on the users input.
+     * It also runs any inherent methods of the {@code Background} child, if there are any
+     * during instancing of the new {@code Background} child object.
+     * @author Trym Staurheim
+     * @param input reader from isBackGroundChosen() to set a child on {@code Background} object.
+     * @return new Background object child with the child properties from the {@code Background} child constructors.
+     * @see Backgrounds.Acolyte
+     * @see Backgrounds.Criminal
+     * @see Backgrounds.Background
+     */
     private Background chooseBackground(String input) {
         switch (input) {
             case "1": {
@@ -600,14 +780,19 @@ public class Character {
                 return new Criminal(backgrounds.getString("criminal"), backgrounds.getString("criminalfeature"), getTools().getString("thievestool"));
             }
             default:
-                System.out.println("background not chosen");
+                System.out.println(Utilities.renderColoredString(backgrounds.getString("nobackground"),"red"));
                 return null;
         }
     }
 
-    /* getters and setters.
-     *
-     *
+    /*
+    Below are getters and Setters and inner-classes.
+     */
+
+    /**
+     * sets the name of the instanced  {@code Character} object during construction.
+     * @author Trym Staurheim
+     * @param nameIn takes the {@code String} characters and sets in on the variable name.
      */
     private void setName(String nameIn) {
 
@@ -615,12 +800,22 @@ public class Character {
 
     }
 
+    /**
+     * sets the age of the instanced {@code Character} object during construction.
+     * @author Trym Staurheim
+     * @param ageIn takes the {@code int} value and sets it on the variable age.
+     */
     private void setAge(int ageIn) {
 
         age = ageIn;
 
     }
 
+    /**
+     * sets the gener of the instanced {@code Character} object during construction.
+     * @author Trym Staurheim
+     * @param genderIn takes the {@code String} characters and sets it on the variable gender.
+     */
     private void setGender(String genderIn) {
 
         gender = genderIn;
@@ -632,7 +827,6 @@ public class Character {
      * The RandomRoll class handles the integers parsed with scanner to SetStats Method.
      *
      * @author Trym staurheim
-     * @return value
      */
 
     class RandomRoll {
@@ -642,8 +836,8 @@ public class Character {
         /**
          * Constructor for RandomRoll.
          *
-         * @param value
-         * @param isChosen
+         * @param value    represents the integer enumeration of the variable.
+         * @param isChosen represents whether the Roll instanced is chosen
          * @author Trym Staurheim
          */
 
@@ -651,6 +845,13 @@ public class Character {
             this.value = value;
             this.isChosen = isChosen;
         }
+
+        /**
+         * getValueAndSetChosen()  is used as a getter and changes the boolean value of the instanced Roll to true.
+         * Used to assert that a Integer has been used. For simpler conditioning when handling user input.
+         *
+         * @return value. value is returned as pre-method call.
+         */
 
         int getValueAndSetChosen() {
             this.isChosen = true;
