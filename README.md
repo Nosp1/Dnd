@@ -16,7 +16,7 @@
 
 <hr>
 
-### Why we are making it?
+### Why are we making it?
 
 We decided to make this software because we are both eager enthusiasts when it comes to Roleplaying games, especiallly Dungeons and Dragons, and wanted to give something back to the community, as the community surrounding roleplaying games have given us the tools to use in our games and as a result improved our experience playing the game.
 
