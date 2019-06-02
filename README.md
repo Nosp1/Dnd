@@ -42,7 +42,6 @@ If you select to **create** a new character, StoryTeller will initialize the cha
 
 When the character creation starts, the program will automatically simulate dice rolls to calculate six random values that the user will be able to assign to each of the characters stats: *Charisma*, *Constitution*, *Dexterity*, *Intelligence*, *Strength* and *Wisdom*.  
 
-##### Just like 4d6, drop the lowest.
 Each roll's value is determined by generating four random numbers and adding up the three highest ones.  
 Once the rolls have been generated and displayed, the user can assign each value to a stat.
 
@@ -91,11 +90,13 @@ To check out what we are working on check out [our Issues page](https://github.c
 
 ### How can you contribute?
 This project is made in the spirit of open source and as such any form contribution is gladly accepted.
-We the developers are mostly focused on the coding aspects of this application and will further improve on each features.
+We the developers are mostly focused on the coding aspects of this application and will further improve on the applications features.
 
-We currently have not set an end goal for this software, other than delivering a character creator, as we wish for it to evolve into something not only made by us but a greater community, therefore we glady accept any of form of ideas or general comments or concerns you might have reagarding future development of this project as long as the comments are kept healthy and
+We currently have not set an end goal for this software, other than delivering a minimalistic character creator, as we wish for it to evolve into something not only made by us but a greater community, therefore we glady accept any of form of ideas or general comments or concerns you might have reagarding future development of this project as long as the comments are kept healthy and
 in a civil manor, as we are pretty inexperienced with open source and development in general. 
 
-If you wish to contribute with code or any ideas to further develop this project we sugest that you follow our [contribution guide](https://github.com/Nosp1/Dnd/wiki/Contributions-guide).
+If you wish to contribute with code or any ideas to further develop this project, or simply wish for your awsome custom Race or Role to be implemented, we sugest that you follow our [contribution guide](https://github.com/Nosp1/Dnd/wiki/Contributions-guide).
+
+
 
   
