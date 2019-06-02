@@ -16,6 +16,11 @@
 
 <hr>
 
+### Why we are making it?
+
+We decided to make this software because we are both eager enthusiasts when it comes to Roleplaying games, especiallly Dungeons and Dragons, and wanted to give something back to the community, as the community surrounding roleplaying games have given us the tools to use in our games and as a result improved our experience playing the game.  
+
+
 ### How does it work?
 
 *StoryTeller* follows the official Dungeons and Dragons character creations steps.  
@@ -35,10 +40,12 @@ If you select to **create** a new character, StoryTeller will initialize the cha
 
 #### STEP 2: Rolling and assigning stats.
 
-When the character creation starts, the program will automatically simulate dice rolls to calculate six random values that the user will be able to assign to each of the Dungeons and Dragons stats: *Charisma*, *Constitution*, *Dexterity*, *Intelligence*, *Strength* and *Wisdom*.  
+When the character creation starts, the program will automatically simulate dice rolls to calculate six random values that the user will be able to assign to each of the characters stats: *Charisma*, *Constitution*, *Dexterity*, *Intelligence*, *Strength* and *Wisdom*.  
 
+##### Just like 4d6, drop the lowest.
 Each roll's value is determined by generating four random numbers and adding up the three highest ones.  
 Once the rolls have been generated and displayed, the user can assign each value to a stat.
+
 
 #### STEP 3: Choosing your character's name.
 
@@ -51,7 +58,7 @@ To support diversity and ease impersonation of the characters, you will be able 
 
 #### STEP 5: Choosing a race.
 
-At this point, StoryTeller supports *nine* races. You can choose between *Dragonborn*, *Dwarf*, *Elf*, *Gnome*, *Half Elf*, *Half Orc*, *Halfling*, *Human* and *Tiefling*.  
+At this point, StoryTeller supports all the *nine* races. You can choose between *Dragonborn*, *Dwarf*, *Elf*, *Gnome*, *Half Elf*, *Half Orc*, *Halfling*, *Human* and *Tiefling*.  
 Each race has its own perks and limits, that can be found in [our wiki page](https://github.com/Nosp1/Dnd/wiki/Races).
 
 #### STEP 6: Choosing your age.
@@ -60,11 +67,11 @@ You will then have to pick your age, that has to be within the limits set by the
 
 #### STEP 7: Choosing a role.
 
-StoryTeller currently supports *six* roles. You can choose between *Barbarian*, *Cleric*, *Druid*, *Fighter*, *Paladin* and *Rogue*.  
+StoryTeller currently supports *six* roles. You can choose between *Barbarian*, *Cleric*, *Druid*, *Fighter*, *Paladin* and *Rogue* with more to come in later releases.  
 
 ##### Selecting your skills.
 
-Each role has access to a different set of skills among which you can choose.  
+Each role has access to a different set of skills among which you can choose proficiency in.  
 To check which skill each role has available, check [our wiki page](https://github.com/Nosp1/Dnd/wiki/Roles).
 
 #### STEP 8: Choosing a background.
@@ -78,6 +85,17 @@ When all the steps above have been completed, you will be able to see a summary 
 
 <hr>
 
-### Future features.
+### Future features:
 
-To check out what we are working on or suggest something to implement, check out {our Issues page}(https://github.com/nosp1/Dnd/issues).
+To check out what we are working on check out [our Issues page](https://github.com/nosp1/Dnd/issues).
+
+### How can you contribute?
+This project is made in the spirit of open source and as such any form contribution is gladly accepted.
+We the developers are mostly focused on the coding aspects of this application and will further improve on each features.
+
+We currently have not set an end goal for this software, other than delivering a character creator, as we wish for it to evolve into something not only made by us but a greater community, therefore we glady accept any of form of ideas or general comments or concerns you might have reagarding future development of this project as long as the comments are kept healthy and
+in a civil manor, as we are pretty inexperienced with open source and development in general. 
+
+If you wish to contribute with code or any ideas to further develop this project we sugest that you follow our [contribution guide](https://github.com/Nosp1/Dnd/wiki/Contributions-guide).
+
+  
