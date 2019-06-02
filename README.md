@@ -18,7 +18,10 @@
 
 ### Why we are making it?
 
-We decided to make this software because we are both eager enthusiasts when it comes to Roleplaying games, especiallly Dungeons and Dragons, and wanted to give something back to the community, as the community surrounding roleplaying games have given us the tools to use in our games and as a result improved our experience playing the game.  
+We decided to make this software because we are both eager enthusiasts when it comes to Roleplaying games, especiallly Dungeons and Dragons, and wanted to give something back to the community, as the community surrounding roleplaying games have given us the tools to use in our games and as a result improved our experience playing the game.
+
+We are also making it as most of the character creation tools out there are quite complicated and require alot of knowledge to make a character. With that in mind we wanted to make a minimalistic character creator that you can simply run on your computer and it will handle all the potentially difficult stuff of understanding how modifiers work when selecting your stats
+to deciding a background, by limiting the options and handling what features these options give you in the background, while at the same time giving you the information to keep up with your character during the creation process.  
 
 
 ### How does it work?
