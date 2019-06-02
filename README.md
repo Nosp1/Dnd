@@ -80,4 +80,4 @@ When all the steps above have been completed, you will be able to see a summary 
 
 ### Future features.
 
-To check out what we are working on or suggest something to implement, check out our Issues page.
+To check out what we are working on or suggest something to implement, check out {our Issues page}(https://github.com/nosp1/Dnd/issues).
