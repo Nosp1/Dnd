@@ -9,15 +9,16 @@ import Backgrounds.Criminal;
 
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import static handlers.Utilities.getSkills;
 import static handlers.Utilities.getTools;
-//TODO: 2019-05-27 fix gnome, elf, half-orc, when skills are added.
 
 /**
  * The {@code Character} class represents the users character.
+ *  TODO: 2019-06-13  Add Half Elf versatility options...
  * @author Trym Staurheim
  */
 public class Character {
@@ -83,6 +84,7 @@ public class Character {
         halfElfIncreaseStat();
         chooseAge();
         IsRoleChosen();
+        checkRaceSkills();
         roleInfo();
         chooseRoleSkills();
         isBackGroundChosen();
@@ -672,6 +674,24 @@ public class Character {
 
     }
 
+    private void checkRaceSkills() {
+        String raceName = race.getName();
+        if (raceName.matches("Elf") | raceName.matches("Half-Orc") | raceName.matches("Half-Elf")) {
+            switch (raceName) {
+                case "Elf": {
+                    Skill skill = new Skill(Utilities.getSkills().getString("perception"), true);
+                    role.getChosenRoleSkills().add(skill);
+                    break;
+                }
+                case "Half-Orc":
+                    Skill skill = new Skill(Utilities.getSkills().getString("intimidation"), true);
+                    role.getChosenRoleSkills().add(skill);
+                    break;
+            }
+        }
+    }
+
+
     /**
      * Helper method that prints the available type {@code String} objects
      * stored in the instanced {@code Role} child objects role.availableRoleSkills() method
@@ -693,56 +713,56 @@ public class Character {
      * It instances a {@code Scanner} object for the user to choose which skills they want to be proficient in.
      * The method loops til the amountOfSkills condition is met and adds the selected skill to the
      * {@code Role} child objects {@code Skill} ArrayList getChosenRoleSkills().
-     * @author Trym Staurheim
-     * @deprecated  error this method has a currently unhandled error of InputMissMatch exception that exits the loop. It will be fixed for v.02
-     * @throws NumberFormatException if the parsed  {@code String} is of the wrong format.
      *
+     * @throws NumberFormatException if the parsed  {@code String} is of the wrong format.
+     * @author Trym Staurheim
      */
 
-    private void chooseRoleSkills() throws NumberFormatException {
+    private void chooseRoleSkills() throws NumberFormatException, InputMismatchException {
         System.out.println(getSkills().getString("chooseskills") + " " +
                 role.getRoleName() + " " + getSkills().getString("choices") + " " + role.getAmountOfSkills());
         System.out.println();
         printRoleSkills();
         Scanner roleSkills = new Scanner(System.in);
 
-        try {
 
-            for (int i = 0; i < role.getAmountOfSkills(); i++) {
-                int choice = Integer.parseInt(roleSkills.nextLine()) - 1;
-
+        for (int i = 0; i < role.getAmountOfSkills(); i++) {
+            int choice = Integer.parseInt(roleSkills.nextLine()) - 1;
+            try {
                 if (choice > role.availableRoleSkills().size()) {
-                    System.out.println(Utilities.renderColoredString(text.getString("numbertohigh"), "red"));
+                    System.out.println(Utilities.renderColoredString(text.getString("numbertohigh"), "red") + "\n" +
+                            "please try another number.");
                     i--;
-
+                    continue;
                 }
                 String chosenSkill = role.availableRoleSkills().get(choice);
                 if (role.isProficient(chosenSkill)) {
                     for (Skill s : role.getChosenRoleSkills()) {
-                        System.out.println(Utilities.renderColoredString(getSkills().getString("alreadyproficient"), "red") + s.getName());
+                        System.out.println(Utilities.renderColoredString(getSkills().getString("alreadyproficient"), "red") + " " + s.getName());
                         i--;
+
                     }
                 } else {
                     Skill skill = new Skill(chosenSkill, true);
                     role.getChosenRoleSkills().add(skill);
+                    System.out.println(getSkills().getString("proficient") + " " + chosenSkill);
                 }
-                System.out.println(getSkills().getString("proficient") + " " + chosenSkill);
+            } catch (NumberFormatException | InputMismatchException ex) {
+                System.out.println(Utilities.renderColoredString(text.getString("notvalidinput"), "red"));
+                i--;
             }
-
-        } catch (NumberFormatException nfe) {
-            System.out.println(Utilities.renderColoredString(text.getString("notvalidinput"), "red"));
-
         }
-
         System.out.println(Utilities.renderColoredString(getSkills().getString("skillsuccess"), "green"));
+
     }
 
-    /**This method asserts through a loop that the instanced {@code Background} object is not null
+    /**
+     * This method asserts through a loop that the instanced {@code Background} object is not null
      * by instancing a scanner that runs the {@code chooseBackground} method.
      * When the instanced race object is not equal to null the loop exits.
-     * @author Trym Staurheim
-     * @return background with a dynamic type of the chosen {@code Background} child instanced by the chooseBackground() method.
      *
+     * @return background with a dynamic type of the chosen {@code Background} child instanced by the chooseBackground() method.
+     * @author Trym Staurheim
      */
     private Background isBackGroundChosen() {
         System.out.println(text.getString("characterBackGround") + " " + text.getString("characterBackGroundOptions") + ": ");
@@ -759,14 +779,16 @@ public class Character {
         return background;
     }
 
+
     /**
      * chooseBackground() uses the instanced Scanner from isBackGroundChosen() method and
      * returns a new {@code Background} child based on the users input.
      * It also runs any inherent methods of the {@code Background} child, if there are any
      * during instancing of the new {@code Background} child object.
-     * @author Trym Staurheim
+     *
      * @param input reader from isBackGroundChosen() to set a child on {@code Background} object.
      * @return new Background object child with the child properties from the {@code Background} child constructors.
+     * @author Trym Staurheim
      * @see Backgrounds.Acolyte
      * @see Backgrounds.Criminal
      * @see Backgrounds.Background
@@ -780,7 +802,7 @@ public class Character {
                 return new Criminal(backgrounds.getString("criminal"), backgrounds.getString("criminalfeature"), getTools().getString("thievestool"));
             }
             default:
-                System.out.println(Utilities.renderColoredString(backgrounds.getString("nobackground"),"red"));
+                System.out.println(Utilities.renderColoredString(backgrounds.getString("nobackground"), "red"));
                 return null;
         }
     }
@@ -791,8 +813,9 @@ public class Character {
 
     /**
      * sets the name of the instanced  {@code Character} object during construction.
-     * @author Trym Staurheim
+     *
      * @param nameIn takes the {@code String} characters and sets in on the variable name.
+     * @author Trym Staurheim
      */
     private void setName(String nameIn) {
 
@@ -802,8 +825,9 @@ public class Character {
 
     /**
      * sets the age of the instanced {@code Character} object during construction.
-     * @author Trym Staurheim
+     *
      * @param ageIn takes the {@code int} value and sets it on the variable age.
+     * @author Trym Staurheim
      */
     private void setAge(int ageIn) {
 
@@ -813,8 +837,9 @@ public class Character {
 
     /**
      * sets the gener of the instanced {@code Character} object during construction.
-     * @author Trym Staurheim
+     *
      * @param genderIn takes the {@code String} characters and sets it on the variable gender.
+     * @author Trym Staurheim
      */
     private void setGender(String genderIn) {
 
@@ -861,4 +886,5 @@ public class Character {
 
 
 }
+
 

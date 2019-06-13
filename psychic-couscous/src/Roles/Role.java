@@ -25,7 +25,6 @@ public abstract class Role {
     public Role(String roleNameIn, int baseHpIn, int amountOfSkillsIn, ArrayList<Skill> chosenRoleSkillsIn, int valueIn) {
         setRoleName(roleNameIn);
         setBaseHp(baseHpIn);
-        //setAvailableRoleSkills(availableRoleSkillsIn);
         setAmountOfSkills(amountOfSkillsIn);
         setChosenRoleSkills(chosenRoleSkillsIn);
         changeHp(valueIn);

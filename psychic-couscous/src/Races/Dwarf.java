@@ -2,7 +2,6 @@ package Races;
 /*
 This is the Core Dwarf. Currently has String properties for all dwarf features.
 @Author Trym Staurheim
-todo needs method to get intrinsic properties information. e.g., darkvision and dwaren combatraining etc.
  */
 
 
