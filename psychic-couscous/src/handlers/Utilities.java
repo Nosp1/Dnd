@@ -203,12 +203,14 @@ public class Utilities {
     }
     public static String[] getROLES(){
         return ROLES;
-
     }
     public static String[] getGODS(){
         return GODS;
     }
     public static String[] getTOOLS() {
         return TOOLS;
+    }
+    public static String[] getSKILLS() {
+        return SKILLS;
     }
 }

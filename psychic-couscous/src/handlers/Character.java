@@ -8,17 +8,15 @@ import Backgrounds.Background;
 import Backgrounds.Criminal;
 
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.ResourceBundle;
-import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.util.*;
 
-import static handlers.Utilities.getSkills;
-import static handlers.Utilities.getTools;
+import static handlers.Utilities.*;
 
 /**
  * The {@code Character} class represents the users character.
- *  TODO: 2019-06-13  Add Half Elf versatility options...
+ * TODO: 2019-06-13  Add Half Elf versatility options...
+ *
  * @author Trym Staurheim
  */
 public class Character {
@@ -676,7 +674,7 @@ public class Character {
 
     /**
      * Checks if selected Race has intrinsic proficiency in any of the skills and adds that skill to Role.get.Chosenskillslist.
-     * 
+     *
      * @author Trym Staurheim
      */
     private void checkRaceSkills() {
@@ -692,8 +690,52 @@ public class Character {
                     Skill skill = new Skill(Utilities.getSkills().getString("intimidation"), true);
                     role.getChosenRoleSkills().add(skill);
                     break;
+
+                case "Half-Elf": {
+                    halfElfSkillVersatility();
+                }
             }
+
         }
+    }
+
+    private void halfElfSkillVersatility() throws NumberFormatException, InputMismatchException {
+        System.out.println(Utilities.renderColoredString(Utilities.getRaces().getString("halfelfskillversatility"), "yellow"));
+        int i = 1;
+        for (String e : Utilities.getSKILLS()) {
+            System.out.println(i + ": " + e);
+            i++;
+        }
+        Scanner halfElf = new Scanner(System.in);
+        for (int h = 0; h < 2; h++) {
+            int halfElfChoice = Integer.parseInt(halfElf.nextLine()) - 1;
+            try {
+                if (halfElfChoice > getSKILLS().length) {
+                    System.out.println(renderColoredString(text.getString("numbertohigh"), "red") + "\n" +
+                            "please try another number.");
+                    i--;
+                    continue;
+                }
+
+                String halfElfChosen = getSKILLS()[halfElfChoice];
+                if (role.isProficient(halfElfChosen)) {
+                    for (Skill s : role.getChosenRoleSkills()) {
+                        System.out.println(Utilities.renderColoredString(getSkills().getString("alreadyproficient"), "red") + s.getName());
+                        h--;
+                    }
+
+                } else {
+                    Skill skill = new Skill(halfElfChosen, true);
+                    role.getChosenRoleSkills().add(skill);
+                    System.out.println(getSkills().getString("proficient") + " " + halfElfChosen);
+                }
+            } catch (NumberFormatException | InputMismatchException err) {
+                System.out.println("thats not a number");
+                h--;
+            }
+
+        }
+
     }
 
 
@@ -734,6 +776,7 @@ public class Character {
         for (int i = 0; i < role.getAmountOfSkills(); i++) {
             int choice = Integer.parseInt(roleSkills.nextLine()) - 1;
             try {
+
                 if (choice > role.availableRoleSkills().size()) {
                     System.out.println(Utilities.renderColoredString(text.getString("numbertohigh"), "red") + "\n" +
                             "please try another number.");
@@ -742,10 +785,11 @@ public class Character {
                 }
                 String chosenSkill = role.availableRoleSkills().get(choice);
                 if (role.isProficient(chosenSkill)) {
+                    System.out.println(Utilities.renderColoredString(getSkills().getString("alreadyproficient"), "red"));
+                    i--;
                     for (Skill s : role.getChosenRoleSkills()) {
-                        System.out.println(Utilities.renderColoredString(getSkills().getString("alreadyproficient"), "red") + " " + s.getName());
-                        i--;
-
+                        System.out.print(s.getName() + " ");
+                        System.out.println();
                     }
                 } else {
                     Skill skill = new Skill(chosenSkill, true);
