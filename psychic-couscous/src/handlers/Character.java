@@ -699,6 +699,14 @@ public class Character {
         }
     }
 
+    /**
+     * Helper method for {@code checkRaceSkills} in the case chosen Race is Half-Elf.
+     * Initiates a Scanner that gets the skill from array and instances that skill into the chosenRoleSkill list.
+     * @author Trym Staurheim
+     * @throws NumberFormatException if the input is of wrong format this error is thrown.
+     * @throws InputMismatchException  required type is: integers: if the input is of wrong type; in this case a char or symbol.
+     */
+
     private void halfElfSkillVersatility() throws NumberFormatException, InputMismatchException {
         System.out.println(Utilities.renderColoredString(Utilities.getRaces().getString("halfelfskillversatility"), "yellow"));
         int i = 1;
