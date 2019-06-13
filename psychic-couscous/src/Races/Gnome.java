@@ -2,7 +2,6 @@ package Races;
 /*
 The Core Gnome Race. Has all Gnome features added.
 @Author Trym Staurheim
-todo needs informaton on properties.
  */
 
 public class Gnome extends Race {

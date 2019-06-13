@@ -2,7 +2,6 @@ package Races;
 /*
 This is the Core Elf race. Currently has all standard elf features added as strings.
 @Author Trym Staurheim
-Todo, add information to the property strings. e.g., darkvision, feyancestry etc.
  */
 
 public class Elf extends Race {

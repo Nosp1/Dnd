@@ -1,19 +1,22 @@
 package Roles;
 
+import handlers.SettingsReader;
 import handlers.Skill;
 
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import static handlers.Utilities.getSkills;
-/*
+/**
 The Fighter Role/class
-@Author Trym Staurheim
-todo add fighting style choice method.
+* @author Trym Staurheim
+@// TODO: 2019-06-13 fix fighting style choice method. 
  */
 
 public class Fighter extends Role {
     private String secondWind;
     private String fightingStyle;
+    private ResourceBundle fightingStyles = SettingsReader.getResourceBundle("FightingStyles");
 
     public Fighter(String roleNameIn, int baseHpIn, int amountOfSkillsIn, ArrayList<Skill> chosenRoleSkillsIn, String fightingStyleIn, String secondWindIn, int valueIn) {
         super(roleNameIn, baseHpIn, amountOfSkillsIn, chosenRoleSkillsIn, valueIn);

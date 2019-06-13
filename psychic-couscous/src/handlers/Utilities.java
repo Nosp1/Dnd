@@ -13,7 +13,13 @@ public class Utilities {
     private static ResourceBundle draconicancestries = SettingsReader.getResourceBundle("DraconicAncestry");
     private static ResourceBundle skills = SettingsReader.getResourceBundle("Skill");
     private static ResourceBundle gods = SettingsReader.getResourceBundle("God");
+    private static ResourceBundle fightingstyles = SettingsReader.getResourceBundle("FightingStyle");
 
+    public  final static String[] FIGHTINGSTYLES = {
+            fightingstyles.getString("archery"),
+            fightingstyles.getString("defense"),
+            fightingstyles.getString("dueling")
+    };
     public final static String[] RACES = {
             races.getString("dragonborn"),
             races.getString("dwarf"),

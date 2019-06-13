@@ -15,7 +15,7 @@ import static handlers.Utilities.*;
 
 /**
  * The {@code Character} class represents the users character.
- * TODO: 2019-06-13  Add Half Elf versatility options...
+ *
  *
  * @author Trym Staurheim
  */
