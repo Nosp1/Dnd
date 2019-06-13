@@ -674,6 +674,11 @@ public class Character {
 
     }
 
+    /**
+     * Checks if selected Race has intrinsic proficiency in any of the skills and adds that skill to Role.get.Chosenskillslist.
+     * 
+     * @author Trym Staurheim
+     */
     private void checkRaceSkills() {
         String raceName = race.getName();
         if (raceName.matches("Elf") | raceName.matches("Half-Orc") | raceName.matches("Half-Elf")) {
