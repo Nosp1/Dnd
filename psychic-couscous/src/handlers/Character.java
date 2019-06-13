@@ -652,7 +652,7 @@ public class Character {
             }
             case "4": {
                 ArrayList<Skill> temp = new ArrayList<>();
-                return new Fighter(roles.getString("fighter"), 10, 2, temp, "fightingstyle", roles.getString("secondwind"), constitution.getModifier());
+                return new Fighter(roles.getString("fighter"), 10, 2, temp, roles.getString("secondwind"), constitution.getModifier());
 
             }
             case "5": {

@@ -78,7 +78,7 @@ public abstract class Race {
 
     }
 
-    protected static void printProperties(String[] temp, int counter) {
+    public static void printProperties(String[] temp, int counter) {
         for (String s : temp) {
             System.out.println(" # " + (counter + 1) + " " + s);
             counter++;

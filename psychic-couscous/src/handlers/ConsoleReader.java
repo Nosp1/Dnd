@@ -70,8 +70,7 @@ public class  ConsoleReader {
     }
 
     private void newCharacter() {
-
-        character = new Character();
+        this.character = new Character();
     }
     
     private void loadCharacter() {

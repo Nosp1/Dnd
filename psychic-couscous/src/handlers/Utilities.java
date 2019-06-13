@@ -18,7 +18,10 @@ public class Utilities {
     public  final static String[] FIGHTINGSTYLES = {
             fightingstyles.getString("archery"),
             fightingstyles.getString("defense"),
-            fightingstyles.getString("dueling")
+            fightingstyles.getString("dueling"),
+            fightingstyles.getString("greatweaponfighting"),
+            fightingstyles.getString("protection"),
+            fightingstyles.getString("twoweaponfighting"),
     };
     public final static String[] RACES = {
             races.getString("dragonborn"),
@@ -218,5 +221,8 @@ public class Utilities {
     }
     public static String[] getSKILLS() {
         return SKILLS;
+    }
+    public static String[] getFIGHTINGSTYLES(){
+        return FIGHTINGSTYLES;
     }
 }
