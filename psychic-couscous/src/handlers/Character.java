@@ -102,8 +102,8 @@ public class Character {
                 races.getString("darkvision"), races.getString("feyancestry"), "proficient in Perception", races.getString("trance"));
 
         ArrayList<Skill> skillsTemp = new ArrayList<>();
-        this.role = new Druid(roles.getString("druid"), 8, 2, skillsTemp, constitution.getModifier());
-
+//        this.role = new Druid(roles.getString("druid"), 8, 2, skillsTemp, constitution.getModifier());
+        this.role = null;
         this.background = new Criminal(backgrounds.getString("criminal"), backgrounds.getString("criminalfeature"), getTools().getString("thievestool"));
 
         stat = new ArrayList<>();
@@ -179,7 +179,7 @@ public class Character {
 
                 try {
 
-                    int chosenRoll = Integer.parseInt(statReader.nextLine()) - 1;
+                    int chosenRoll = Integer.parseInt(statReader.nextLine().trim()) - 1;
 
                     if (chosenRoll < 0 || chosenRoll >= 6) {
 
@@ -338,7 +338,7 @@ public class Character {
     private void chooseName() {
         System.out.println(text.getString("characterName"));
         Scanner nameScanner = new Scanner(System.in);
-        name = nameScanner.nextLine();
+        name = nameScanner.nextLine().trim();
         setName(name);
         System.out.println(Utilities.renderColoredString(text.getString("characterNameChosen") + ": ", "green") + name);
     }
@@ -353,7 +353,7 @@ public class Character {
     private void chooseGender() {
         System.out.println(text.getString("characterGender"));
         Scanner genderScanner = new Scanner(System.in);
-        gender = genderScanner.nextLine();
+        gender = genderScanner.nextLine().trim();
         setGender(gender);
         System.out.println(Utilities.renderColoredString(text.getString("characterGenderChosen") + ": ", "green") + gender);
     }
@@ -372,7 +372,7 @@ public class Character {
 
         while (!isAgeSat) {
             try {
-                age = Integer.parseInt(ageScanner.nextLine());
+                age = Integer.parseInt(ageScanner.nextLine().trim());
                 if (age > race.getMaxAge()) {
                     System.out.println(Utilities.renderColoredString(text.getString("characterAgeTohigh") + " " + race.getName(), "red"));
 
@@ -408,7 +408,7 @@ public class Character {
         Stat.statModifier(stat);
         boolean isRaceSet = false;
         while (!isRaceSet) {
-            race = chooseRace(raceScanner.nextLine());
+            race = chooseRace(raceScanner.nextLine().trim());
             if (race != null) {
                 isRaceSet = true;
             }
@@ -560,7 +560,7 @@ public class Character {
             Scanner halfElf = new Scanner(System.in);
             for (int h = 0; h < 2; h++) {
                 int elfIncrease = 1;
-                switch (halfElf.nextLine()) {
+                switch (halfElf.nextLine().trim()) {
                     case "1": {
                         if (strength.changeValueIfAvailable(elfIncrease)) {
                             System.out.println(String.format(stats.getString("strengthincrease"), elfIncrease, strength.getValue()));
@@ -645,7 +645,7 @@ public class Character {
         boolean isRoleSet = false;
         Scanner roleScanner = new Scanner(System.in);
         while (!isRoleSet) {
-            role = chooseRole(roleScanner.nextLine());
+            role = chooseRole(roleScanner.nextLine().trim());
             if (role != null) {
                 isRoleSet = true;
             }
@@ -751,7 +751,7 @@ public class Character {
         }
         Scanner halfElf = new Scanner(System.in);
         for (int h = 0; h < 2; h++) {
-            int halfElfChoice = Integer.parseInt(halfElf.nextLine()) - 1;
+            int halfElfChoice = Integer.parseInt(halfElf.nextLine().trim()) - 1;
             try {
                 if (halfElfChoice > getSKILLS().length) {
                     System.out.println(renderColoredString(text.getString("numbertohigh"), "red") + "\n" +
@@ -817,7 +817,7 @@ public class Character {
 
 
         for (int i = 0; i < role.getAmountOfSkills(); i++) {
-            int choice = Integer.parseInt(roleSkills.nextLine()) - 1;
+            int choice = Integer.parseInt(roleSkills.nextLine().trim()) - 1;
             try {
 
                 if (choice > role.availableRoleSkills().size()) {
@@ -863,7 +863,7 @@ public class Character {
         Scanner backGroundScanner = new Scanner(System.in);
         boolean isBackGroundSat = false;
         while (!isBackGroundSat) {
-            background = chooseBackground(backGroundScanner.nextLine());
+            background = chooseBackground(backGroundScanner.nextLine().trim());
             if (background != null) {
                 isBackGroundSat = true;
             }
@@ -968,6 +968,18 @@ public class Character {
 
     public ArrayList<Stat> getStat() {
         return stat;
+    }
+
+    @Override
+    public String toString() {
+        return "Character [name="
+                + name
+                + ", age="
+                + age
+                + ", gender="
+                + gender
+                + ", race="
+                + race.toString() + "]";
     }
 
     /**

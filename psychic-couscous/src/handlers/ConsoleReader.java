@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.codehaus.jackson.map.ObjectMapper;
 
 public class  ConsoleReader {
 
@@ -38,7 +39,7 @@ public class  ConsoleReader {
 
     	System.out.print(text.getString("enterChoice") + ": ");
 
-    	String choice = reader.nextLine();
+    	String choice = reader.nextLine().trim();
 
     	while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3")) {
 
@@ -60,9 +61,11 @@ public class  ConsoleReader {
 
             case "1":
                 newCharacter();
+                saveCharacter(character);
                 break;
 
             case "2":
+                displayCharacters();
                 loadCharacter();
                 break;
 
@@ -85,6 +88,33 @@ public class  ConsoleReader {
 
     private void saveCharacter(Character character) {
         //TODO: gjøre om karakterens attributer til JSON og lagre det i en fil
+
+        ObjectMapper mapper = new ObjectMapper();
+        String json;
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("./characters/" + character.getName() + ".json"));
+            json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(character);
+
+            try {
+                writer.write(json);
+            } catch(IOException ioe) {
+                ioe.printStackTrace();
+            } finally {
+
+                try {
+                    writer.close();
+                } catch(IOException ioe) {
+                    ioe.printStackTrace();
+                }
+
+            }
+
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+
+        /* Forsøk med GSON; fikk det ikke til
         GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
 
         //gsonBuilder.registerTypeAdapter(Character.class, new CharacterSerializer());
@@ -94,7 +124,6 @@ public class  ConsoleReader {
         String json = gson.toJson(character.toString());
         System.out.println(json);
 
-/*
         // Skriving til fil
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(character.getName() + ".json"));
@@ -118,15 +147,19 @@ public class  ConsoleReader {
         }
         */
     }
-    
+
     private void loadCharacter() {
+
+    }
+    
+    private void displayCharacters() {
 
         System.out.println(text.getString("loadReminder"));
 
         System.out.println();
 
         File characterFolder = new File("./characters");
-        File[] charactersFound = characterFolder.listFiles((dir, name) -> name.endsWith(".stc"));
+        File[] charactersFound = characterFolder.listFiles((dir, name) -> name.endsWith(".json"));
 
         if (charactersFound == null || charactersFound.length == 0) {
 
