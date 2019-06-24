@@ -1,5 +1,4 @@
-package Backgrounds;
-
+package backgrounds;
 
 import handlers.SettingsReader;
 import handlers.Utilities;

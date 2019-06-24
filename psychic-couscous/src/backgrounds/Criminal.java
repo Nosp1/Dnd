@@ -1,4 +1,4 @@
-package Backgrounds;
+package backgrounds;
 
 import java.util.ArrayList;
 /*

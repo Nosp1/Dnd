@@ -1,17 +1,18 @@
 package handlers;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class  ConsoleReader {
 
     private Character character;
     private ResourceBundle text;
+
+    private Gson gson;
 
     public ConsoleReader() {
     	
@@ -39,7 +40,7 @@ public class  ConsoleReader {
 
     	String choice = reader.nextLine();
 
-    	while (!choice.equals("1") && !choice.equals("2")) {
+    	while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3")) {
 
     	    System.out.println();
 
@@ -65,12 +66,57 @@ public class  ConsoleReader {
                 loadCharacter();
                 break;
 
+            case "3":
+                testChar();
+                break;
         }
     	
     }
 
+    private void testChar() {
+        this.character = new Character(true);
+        saveCharacter(character);
+    }
+
     private void newCharacter() {
         this.character = new Character();
+        saveCharacter(character);
+    }
+
+    private void saveCharacter(Character character) {
+        //TODO: gjøre om karakterens attributer til JSON og lagre det i en fil
+        GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
+
+        //gsonBuilder.registerTypeAdapter(Character.class, new CharacterSerializer());
+
+        gson = gsonBuilder.create();
+
+        String json = gson.toJson(character.toString());
+        System.out.println(json);
+
+/*
+        // Skriving til fil
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(character.getName() + ".json"));
+
+            try {
+                writer.write(json);
+            } catch(IOException ioe) {
+                ioe.printStackTrace();
+            } finally {
+
+                try {
+                    writer.close();
+                } catch(IOException ioe) {
+                    ioe.printStackTrace();
+                }
+
+            }
+
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        */
     }
     
     private void loadCharacter() {

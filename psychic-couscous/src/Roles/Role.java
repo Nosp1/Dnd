@@ -18,7 +18,7 @@ to make implementation easier for  the extended DnD library, as well as custom R
 public abstract class Role {
     private String roleName;
     private int baseHp;
-    private  ArrayList<String> availableRoleSkills;
+    private ArrayList<String> availableRoleSkills;
     private int amountOfSkills;
     private ArrayList<Skill> chosenRoleSkills;
 
@@ -62,16 +62,9 @@ public abstract class Role {
         return false;
     }
 
-
-
-
-
-
     public void setAvailableRoleSkills(ArrayList<String> availableRoleSkillsIn) {
         this.availableRoleSkills = availableRoleSkillsIn;
     }
-
-
 
     public int getAmountOfSkills() {
         return amountOfSkills;
@@ -81,8 +74,6 @@ public abstract class Role {
         this.amountOfSkills = amountOfSkillsIn;
     }
 
-
-
     public ArrayList<Skill> getChosenRoleSkills() {
         return chosenRoleSkills;
     }
@@ -90,4 +81,10 @@ public abstract class Role {
     public void setChosenRoleSkills(ArrayList<Skill> chosenRoleSkillsIn) {
         this.chosenRoleSkills = chosenRoleSkillsIn;
     }
+
+    /*@Override
+    public String toString() {
+
+    }
+    */
 }

@@ -3,9 +3,9 @@ package handlers;
 import Races.*;
 import Roles.Role;
 import Roles.*;
-import Backgrounds.Acolyte;
-import Backgrounds.Background;
-import Backgrounds.Criminal;
+import backgrounds.Acolyte;
+import backgrounds.Background;
+import backgrounds.Criminal;
 
 
 import java.lang.reflect.Array;
@@ -90,6 +90,41 @@ public class Character {
         printCompleteCharacter();
 
 
+    }
+
+    public Character(boolean test) {
+        this.name = "Brynf";
+        this.age = 50;
+        this.gender = "Male";
+
+        String[] statsTemp = {stats.getString("dexterity")};
+        this.race = new Elf(races.getString("elf"), 700, "Elvish, Common", 2, statsTemp,
+                races.getString("darkvision"), races.getString("feyancestry"), "proficient in Perception", races.getString("trance"));
+
+        ArrayList<Skill> skillsTemp = new ArrayList<>();
+        this.role = new Druid(roles.getString("druid"), 8, 2, skillsTemp, constitution.getModifier());
+
+        this.background = new Criminal(backgrounds.getString("criminal"), backgrounds.getString("criminalfeature"), getTools().getString("thievestool"));
+
+        stat = new ArrayList<>();
+
+        strength = new Stat(stats.getString("strength"), 0);
+        stat.add(strength);
+
+        dexterity = new Stat(stats.getString("dexterity"), 1);
+        stat.add(dexterity);
+
+        constitution = new Stat(stats.getString("constitution"), 10);
+        stat.add(constitution);
+
+        intelligence = new Stat(stats.getString("intelligence"), 11);
+        stat.add(intelligence);
+
+        wisdom = new Stat(stats.getString("wisdom"), 100);
+        stat.add(wisdom);
+
+        charisma = new Stat(stats.getString("charisma"), 101);
+        stat.add(charisma);
     }
 
     /* This section includes all methods that handles the character creation.
@@ -846,9 +881,9 @@ public class Character {
      * @param input reader from isBackGroundChosen() to set a child on {@code Background} object.
      * @return new Background object child with the child properties from the {@code Background} child constructors.
      * @author Trym Staurheim
-     * @see Backgrounds.Acolyte
-     * @see Backgrounds.Criminal
-     * @see Backgrounds.Background
+     * @see backgrounds.Acolyte
+     * @see backgrounds.Criminal
+     * @see backgrounds.Background
      */
     private Background chooseBackground(String input) {
         switch (input) {
@@ -904,6 +939,36 @@ public class Character {
 
     }
 
+    /**
+     * Getters
+     */
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public Race getRace() {
+        return race;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public Background getBackground() {
+        return background;
+    }
+
+    public ArrayList<Stat> getStat() {
+        return stat;
+    }
 
     /**
      * The RandomRoll class handles the integers parsed with scanner to SetStats Method.
@@ -940,7 +1005,6 @@ public class Character {
             return value;
         }
     }
-
 
 }
 
