@@ -66,7 +66,12 @@ public class  ConsoleReader {
 
             case "2":
                 displayCharacters();
-                loadCharacter();
+                String path = "characters/" + reader.nextLine() + ".json";
+                try {
+                    loadCharacter(path);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
 
             case "3":
@@ -82,7 +87,7 @@ public class  ConsoleReader {
     }
 
     private void newCharacter() {
-        this.character = new Character();
+        this.character = new Character("Let's go!");
         saveCharacter(character);
     }
 
@@ -148,8 +153,10 @@ public class  ConsoleReader {
         */
     }
 
-    private void loadCharacter() {
-
+    private void loadCharacter(String path) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Character jsonCharacter = objectMapper.readValue(new File(path), Character.class);
+        System.out.println(jsonCharacter.toString());
     }
     
     private void displayCharacters() {

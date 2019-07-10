@@ -82,9 +82,14 @@ public abstract class Role {
         this.chosenRoleSkills = chosenRoleSkillsIn;
     }
 
-    /*@Override
+    @Override
     public String toString() {
-
+        return "Role [role name="
+                + roleName
+                + "base HP="
+                + baseHp
+                + "chosen role skills=["
+                + chosenRoleSkills
+                + "]";
     }
-    */
 }

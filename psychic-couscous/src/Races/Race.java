@@ -1,9 +1,10 @@
 package Races;
 
 import handlers.SettingsReader;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 import java.util.ResourceBundle;
-
+@JsonDeserialize(as = Elf.class)
 public abstract class Race {
 
     private String name;
@@ -13,7 +14,6 @@ public abstract class Race {
     private String[] availableStats;
 
     private ResourceBundle text = SettingsReader.getResourceBundle("Race");
-
 
     public Race(String nameIn, int maxAgeIn, String languagesIn, int raceIncreaseStatsIn, String[] availableStatsIn) {
 

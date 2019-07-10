@@ -66,8 +66,10 @@ public class Character {
      * Constructor for the Character class. Creates an object of type Character with properties from Stat, Race, Role and Background
      *
      * @author Trym Staurheim
+     *
+     * Modified by @author brisdalen for testing purposes
      */
-    public Character() {
+    public Character(String characterCreation) {
 
         System.out.println(Utilities.renderColoredString(text.getString("newCharacterWelcome"), "yellow"));
 
@@ -88,10 +90,14 @@ public class Character {
         isBackGroundChosen();
         backGroundInfo();
         printCompleteCharacter();
-
-
     }
 
+    /**
+     * Constructor for a test-character. Used for debugging.
+     *
+     * @param test unused boolean, only to use a different constructor.
+     * @author brisdalen
+     */
     public Character(boolean test) {
         this.name = "Brynf";
         this.age = 50;
@@ -126,6 +132,11 @@ public class Character {
         charisma = new Stat(stats.getString("charisma"), 101);
         stat.add(charisma);
     }
+
+    /**
+     * Empty constructor for testing purposes
+     */
+    public Character() { }
 
     /* This section includes all methods that handles the character creation.
      *
@@ -979,7 +990,10 @@ public class Character {
                 + ", gender="
                 + gender
                 + ", race="
-                + race.toString() + "]";
+                + race.toString()
+                + ", role="
+                + role.toString()
+                + "]";
     }
 
     /**

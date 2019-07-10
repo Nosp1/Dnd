@@ -15,10 +15,8 @@ public class Stat {
 		setName(nameIn);
 		setValue(valueIn);
 
-		
+
 	}
-
-
 
 	public static void statModifier (ArrayList<Stat> stat) {
 
@@ -58,11 +56,6 @@ public class Stat {
 			}
 		}
 	}
-
-
-
-
-
 	
 	private void setName(String nameIn) {
 		
