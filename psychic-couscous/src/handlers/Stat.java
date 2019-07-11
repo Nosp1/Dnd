@@ -9,13 +9,13 @@ public class Stat {
 	private boolean isUnavailable = false;
 	private int modifier;
 	private ArrayList<Stat> stat;
-	
+
+	public Stat() { }
+
 	public Stat(String nameIn, int valueIn) {
 
 		setName(nameIn);
 		setValue(valueIn);
-
-
 	}
 
 	public static void statModifier (ArrayList<Stat> stat) {

@@ -1,10 +1,25 @@
 package Races;
 
 import handlers.SettingsReader;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonSubTypes;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 import java.util.ResourceBundle;
-@JsonDeserialize(as = Elf.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Dragonborn.class, name = "Dragonborn"),
+        @JsonSubTypes.Type(value = Dwarf.class, name = "Dwarf"),
+        @JsonSubTypes.Type(value = Elf.class, name = "Elf"),
+        @JsonSubTypes.Type(value = Gnome.class, name = "Gnome"),
+        @JsonSubTypes.Type(value = HalfElf.class, name = "Halfelf"),
+        @JsonSubTypes.Type(value = Halfling.class, name = "Halfling"),
+        @JsonSubTypes.Type(value = HalfOrc.class, name = "HalfOrc"),
+        @JsonSubTypes.Type(value = Human.class, name = "Human"),
+        @JsonSubTypes.Type(value = Tiefling.class, name = "Tiefling")
+})
 public abstract class Race {
 
     private String name;
@@ -14,6 +29,8 @@ public abstract class Race {
     private String[] availableStats;
 
     private ResourceBundle text = SettingsReader.getResourceBundle("Race");
+
+    public Race() {}
 
     public Race(String nameIn, int maxAgeIn, String languagesIn, int raceIncreaseStatsIn, String[] availableStatsIn) {
 

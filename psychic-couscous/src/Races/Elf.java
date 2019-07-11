@@ -10,6 +10,7 @@ public class Elf extends Race {
     private String keenSenses;
     private String trance;
 
+    public Elf() { }
 
     public Elf(String nameIn, int maxAgeIn, String languagesIn, int raceIncreaseStatsIn, String[] availableStatsIn, String darkVisionIn, String feyAncestryIn, String keenSensesIn, String tranceIn) {
         super(nameIn, maxAgeIn, languagesIn, raceIncreaseStatsIn, availableStatsIn);

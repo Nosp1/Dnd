@@ -4,11 +4,16 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+
+import Races.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonSubTypes;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.codehaus.jackson.map.ObjectMapper;
 
-public class  ConsoleReader {
+public class ConsoleReader {
 
     private Character character;
     private ResourceBundle text;
@@ -95,6 +100,7 @@ public class  ConsoleReader {
         //TODO: gjøre om karakterens attributer til JSON og lagre det i en fil
 
         ObjectMapper mapper = new ObjectMapper();
+        mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_CONCRETE_AND_ARRAYS);
         String json;
 
         try {
