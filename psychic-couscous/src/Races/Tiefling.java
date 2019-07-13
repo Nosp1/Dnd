@@ -25,6 +25,18 @@ public class Tiefling extends Race {
         setInfernalLegacy(infernalLegacyIn);
     }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  dark vision"
+                + darkVision
+                + ",\n  hellish rebuke="
+                + hellishRebuke
+                + ",\n  infernal legacy="
+                + infernalLegacy
+                + ",\n }";
+    }
+
     public String getDarkVision() {
         return darkVision;
     }

@@ -21,6 +21,16 @@ public class Gnome extends Race {
         super(nameIn, maxAgeIn, languagesIn, raceIncreaseStatsIn, availableStatsIn);
     }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  dark vision="
+                + darkVision
+                + ",\n gnome cunning="
+                + gnomeCunning
+                + ",\n }";
+    }
+
     public String getDarkVision() {
         return darkVision;
     }

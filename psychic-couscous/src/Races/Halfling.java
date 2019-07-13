@@ -27,6 +27,20 @@ public class Halfling extends Race {
         setNaturallyStealthy(naturallyStealthyIn);
     }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  lucky="
+                + lucky
+                + ",\n  naturally stealthy="
+                + naturallyStealthy
+                + ",\n  halfling nimbleness="
+                + halflingNimbleness
+                + ",\n  brave="
+                + brave
+                + ",\n }";
+    }
+
     public String getLucky() {
         return lucky;
     }

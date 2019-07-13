@@ -27,11 +27,19 @@ public class HalfElf extends Race {
         setDarkVision(darkVisionIn);
         setFeyAncestry(feyAncestryIn);
         setSkillVersatility(skillVersatilityIn);
-
-
     }
 
-
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  fey ancestry="
+                + feyAncestry
+                + ",\n  darkvision="
+                + darkVision
+                + ",\n  skill versatility="
+                + skillVersatility
+                + ",\n }";
+    }
 
     public String getFeyAncestry() {
         return feyAncestry;

@@ -16,6 +16,7 @@ import java.util.Scanner;
 public class Dragonborn extends Race {
     @JsonProperty("@type")
     private final String type = "dragonborn";
+
     private String draconicAncestry;
     private String breathWeapon;
     private ResourceBundle draconicancestries = SettingsReader.getResourceBundle("DraconicAncestry");
@@ -28,6 +29,16 @@ public class Dragonborn extends Race {
         setDraconicAncestry(setDraconicAncestor());
         setBreathWeapon(breathWeaponIn);
 
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  draconigAncestry="
+                + draconicAncestry
+                + ",\n  breathWeapon="
+                + breathWeapon
+                + ",\n }";
     }
 
     private void setDraconicAncestry(String draconicAncestryIn) {

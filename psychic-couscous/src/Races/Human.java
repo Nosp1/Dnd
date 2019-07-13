@@ -22,6 +22,14 @@ public class Human extends Race {
         setExtraLanguage(languagesIn);
     }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n extra language="
+                + extraLanguage
+                + ",\n }";
+    }
+
     public String getExtraLanguage() {
         return extraLanguage;
     }

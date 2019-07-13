@@ -19,6 +19,7 @@ import static handlers.Utilities.getTOOLS;
 public class Dwarf extends Race {
     @JsonProperty("@type")
     private final String type = "dwarf";
+
     private String darkVision; // can see in the dark
     private String dwarvenCombatTraining; //gets proficiency with special dwarven weapons and armor
     private String stoneCunning; //Can identify stoneworks origin
@@ -35,8 +36,22 @@ public class Dwarf extends Race {
         setStoneCunning(stoneCunningIn);
         setDwarvenResilience(dwarvenResilienceIn);
         setToolProficiency(setDwarfToolproficiency());
+    }
 
-
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  dark vision="
+                + darkVision
+                + ",\n  dwarvern combat training="
+                + dwarvenCombatTraining
+                + ",\n  stone cunning="
+                + stoneCunning
+                + ",\n  dwarvern resilience="
+                + dwarvenResilience
+                + ",\n  tool proficiency="
+                + toolProficiency
+                + ",\n }";
     }
 
     private String setDwarfToolproficiency() {

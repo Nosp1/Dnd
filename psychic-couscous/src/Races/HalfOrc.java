@@ -27,6 +27,20 @@ public class HalfOrc extends Race {
         setSavageAttacks(savageAttacksIn);
     }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  dark vision="
+                + darkVision
+                + ",\n  relentless endurance="
+                + relentlessEndurance
+                + ",\n  savage attacks="
+                + savageAttacks
+                + ",\n  menacing="
+                + menacing
+                + ",\n }";
+    }
+
     public String getDarkVision() {
         return darkVision;
     }
