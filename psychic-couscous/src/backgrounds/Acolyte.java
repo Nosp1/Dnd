@@ -22,6 +22,8 @@ public class Acolyte extends Background {
     private static ResourceBundle gods = SettingsReader.getResourceBundle("God");
     private String acolyteWorships;
 
+    public Acolyte() { }
+
     public Acolyte(String backGroundNameIn, String featureIn, String toolsIn) {
         super(backGroundNameIn, featureIn, toolsIn);
         setAcolyteworhips(isGodSat());
@@ -30,9 +32,9 @@ public class Acolyte extends Background {
     @Override
     public String toString() {
         return super.toString()
-                + "acolyte worships="
+                + ",\n  acolyte worships="
                 + acolyteWorships
-                + "]";
+                + "\n }";
     }
 
     @Override

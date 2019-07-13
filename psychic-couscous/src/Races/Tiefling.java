@@ -1,5 +1,6 @@
 package Races;
 
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonTypeName;
 
 /*
@@ -8,11 +9,14 @@ The core race of Tiefling. All properties are strings.
  */
 @JsonTypeName("tiefling")
 public class Tiefling extends Race {
+    @JsonProperty("@type")
+    private final String type = "tiefling";
+
     private String darkVision;
     private String hellishRebuke; //restistance to fire damage?
     private String infernalLegacy; //can speak infernal
 
-
+    public Tiefling() { }
 
     public Tiefling(String nameIn, int maxAgeIn, String languagesIn, int raceIncreaseStatsIn, String[] availableStatsIn, String darkVisionIn, String hellishRebukeIn, String infernalLegacyIn) {
         super(nameIn, maxAgeIn, languagesIn, raceIncreaseStatsIn, availableStatsIn);

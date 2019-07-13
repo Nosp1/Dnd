@@ -1,6 +1,8 @@
 package Roles;
 
 import handlers.Skill;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonTypeName;
 
 import java.util.ArrayList;
 
@@ -10,7 +12,12 @@ The Druid Role/class
 @Author Trym Staurheim
  */
 
+@JsonTypeName("druid")
 public class Druid extends Role {
+    @JsonProperty("@type")
+    private final String type = "";
+
+    public Druid() { }
 
     public Druid(String roleNameIn, int baseHpIn, int amountOfSkillsIn, ArrayList<Skill> chosenRoleSkillsIn, int valueIn) {
         super(roleNameIn, baseHpIn, amountOfSkillsIn, chosenRoleSkillsIn, valueIn);

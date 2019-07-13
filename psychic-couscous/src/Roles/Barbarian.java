@@ -2,6 +2,8 @@ package Roles;
 
 import handlers.Skill;
 import handlers.Utilities;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonTypeName;
 
 import java.util.ArrayList;
 
@@ -13,9 +15,15 @@ The Barbarian Class contains all information intrinsic to the Barbarian Role/cla
 @Author Trym Staurheim
 
  */
+@JsonTypeName("barbarian")
 public class Barbarian extends Role {
+    @JsonProperty("@type")
+    private final String type = "barbarian";
+
     private String rage; //Takes half damage from slashing, blunt and piercing damage. for x turns.
     private String unArmoredDefense; // as long as the barbarian does not wear heavy or medium armor add dex modifier to armor class.
+
+    public Barbarian() { }
 
     public Barbarian(String roleNameIn, int baseHpIn, int amountOfSkillsIn, ArrayList<Skill> chosenRoleSkillsIn, String rageIn, String unArmoredDefenseIn, int valueIn) {
         super(roleNameIn, baseHpIn, amountOfSkillsIn, chosenRoleSkillsIn, valueIn);

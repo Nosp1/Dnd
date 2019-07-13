@@ -23,6 +23,11 @@ public class Skill {
 
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
+
     /**
      * @author Trym Staurheim
      * @return name variables stored {@code String} properties.

@@ -7,6 +7,7 @@ This is the Core Dwarf. Currently has String properties for all dwarf features.
 
 import handlers.SettingsReader;
 import handlers.Utilities;
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonTypeName;
 
 import java.util.ResourceBundle;
@@ -16,6 +17,8 @@ import static handlers.Utilities.TOOLS;
 import static handlers.Utilities.getTOOLS;
 @JsonTypeName("dwarf")
 public class Dwarf extends Race {
+    @JsonProperty("@type")
+    private final String type = "dwarf";
     private String darkVision; // can see in the dark
     private String dwarvenCombatTraining; //gets proficiency with special dwarven weapons and armor
     private String stoneCunning; //Can identify stoneworks origin
@@ -23,6 +26,7 @@ public class Dwarf extends Race {
     private String toolProficiency; // gains proficiency in a toolset
     private ResourceBundle tools = SettingsReader.getResourceBundle("Tool");
 
+    public Dwarf() { }
 
     public Dwarf(String nameIn, int maxAgeIn, String languagesIn, int raceIncreaseStatsIn, String[] availableStatsIn, String darkVisionIn, String dwarvenCombatTrainingIn, String stoneCunningIn, String dwarvenResilienceIn) {
         super(nameIn, maxAgeIn, languagesIn, raceIncreaseStatsIn, availableStatsIn);

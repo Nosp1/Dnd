@@ -21,6 +21,7 @@ public abstract class Background{
     private String feature;
     private String tools;
 
+    public Background() { }
 
     public Background(String backGroundNameIn,String featureIn, String toolsIn){
         setBackGroundName(backGroundNameIn);
@@ -31,12 +32,14 @@ public abstract class Background{
 
     @Override
     public String toString() {
-        return "Background [background name="
+        return "{"
+                + "\n  background name="
                 + backGroundName
-                + "feature="
+                + ",\n  feature="
                 + feature
-                + "tools=["
-                + tools;
+                + ",\n  tools=["
+                + tools
+                + "]";
     }
 
     public String getBackGroundName() {

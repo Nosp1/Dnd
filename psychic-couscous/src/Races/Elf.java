@@ -7,12 +7,11 @@ import org.codehaus.jackson.annotate.JsonTypeName;
 This is the Core Elf race. Currently has all standard elf features added as strings.
 @Author Trym Staurheim
  */
-// TODO: @JsonTypeName må legges til i hver sub-klasse av Race
 @JsonTypeName("elf")
 public class Elf extends Race {
-    //TODO: @JsonProperty og stringen på linjen under på legges til i hver sub-klasse av Race
     @JsonProperty("@type")
     private final String type = "elf";
+
     private String darkVision;
     private String feyAncestry;
     private String keenSenses;

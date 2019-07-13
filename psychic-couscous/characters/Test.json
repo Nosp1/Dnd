@@ -1,5 +1,5 @@
 {
-  "name" : "Evelyn",
+  "name" : "Test",
   "age" : 110,
   "gender" : "Female",
   "race" : {
@@ -18,48 +18,51 @@
   "role" : {
     "type" : "cleric",
     "roleName" : "Cleric",
-    "baseHp" : 8,
+    "baseHp" : 7,
     "amountOfSkills" : 2,
     "chosenRoleSkills" : [ {
       "name" : "Perception",
       "proficient" : true
     }, {
-      "name" : "Medicine",
+      "name" : "History",
       "proficient" : true
     }, {
-      "name" : "Religion",
+      "name" : "Insight",
       "proficient" : true
-    } ]
+    } ],
+    "@type" : "cleric"
   },
   "background" : {
+    "type" : "acolyte",
     "backGroundName" : "Acolyte",
     "feature" : "Shelter of the Faithful",
     "tools" : "You have no tools.",
-    "acolyteworhips" : "Helm, god of protection"
+    "acolyteworhips" : "Helm, god of protection",
+    "@type" : "acolyte"
   },
   "stat" : [ {
     "name" : "Strength",
-    "value" : 9,
-    "modifier" : -1
+    "value" : 18,
+    "modifier" : 4
   }, {
     "name" : "Dexterity",
-    "value" : 9,
-    "modifier" : -2
+    "value" : 13,
+    "modifier" : 0
   }, {
     "name" : "Constitution",
-    "value" : 10,
-    "modifier" : 0
+    "value" : 8,
+    "modifier" : -1
   }, {
     "name" : "Intelligence",
-    "value" : 11,
-    "modifier" : 0
-  }, {
-    "name" : "Wisdom",
     "value" : 14,
     "modifier" : 2
   }, {
+    "name" : "Wisdom",
+    "value" : 9,
+    "modifier" : -1
+  }, {
     "name" : "Charisma",
-    "value" : 11,
-    "modifier" : 0
+    "value" : 17,
+    "modifier" : 3
   } ]
 }
