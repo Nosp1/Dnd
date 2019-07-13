@@ -3,6 +3,8 @@ package Roles;
 
 
 import handlers.Skill;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonTypeName;
 
 import java.util.ArrayList;
 
@@ -13,10 +15,21 @@ The Cleric Role/class
 todo add domain choice
  */
 
-public class Cleric  extends Role{
+@JsonTypeName("cleric")
+public class Cleric extends Role{
+    @JsonProperty("@type")
+    private final String type = "cleric";
+
+    public Cleric() { }
 
     public Cleric(String roleNameIn, int baseHpIn, int amountOfSkillsIn, ArrayList<Skill> chosenRoleSkillsIn, int valueIn) {
         super(roleNameIn, baseHpIn, amountOfSkillsIn, chosenRoleSkillsIn, valueIn);
+    }
+
+    //TODO: Hver sub-klasse må override sin egen toString, og kalle på super.toString() først
+    public String toString() {
+        return super.toString()
+                + "\n }";
     }
 
     @Override

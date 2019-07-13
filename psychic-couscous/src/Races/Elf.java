@@ -1,15 +1,23 @@
 package Races;
+
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonTypeName;
+
 /*
 This is the Core Elf race. Currently has all standard elf features added as strings.
 @Author Trym Staurheim
  */
-
+@JsonTypeName("elf")
 public class Elf extends Race {
+    @JsonProperty("@type")
+    private final String type = "elf";
+
     private String darkVision;
     private String feyAncestry;
     private String keenSenses;
     private String trance;
 
+    public Elf() { }
 
     public Elf(String nameIn, int maxAgeIn, String languagesIn, int raceIncreaseStatsIn, String[] availableStatsIn, String darkVisionIn, String feyAncestryIn, String keenSensesIn, String tranceIn) {
         super(nameIn, maxAgeIn, languagesIn, raceIncreaseStatsIn, availableStatsIn);
@@ -19,7 +27,20 @@ public class Elf extends Race {
         setTrance(tranceIn);
     }
 
-
+    //TODO: Hver sub-klasse må override sin egen toString, og kalle på super.toString() først
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  darkvision="
+                + darkVision
+                +",\n  feyAncestry="
+                + feyAncestry
+                +",\n  keenSenses="
+                + keenSenses
+                +",\n  trance="
+                + trance
+                + "\n }";
+    }
 
     public String getDarkVision() {
         return darkVision;

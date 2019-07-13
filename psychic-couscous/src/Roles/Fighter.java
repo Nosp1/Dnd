@@ -4,6 +4,8 @@ import Races.Race;
 import handlers.SettingsReader;
 import handlers.Skill;
 import handlers.Utilities;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonTypeName;
 
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -18,16 +20,31 @@ import static handlers.Utilities.renderColoredString;
  * @author Trym Staurheim
  *
  */
-
+@JsonTypeName("fighter")
 public class Fighter extends Role {
+    @JsonProperty("@type")
+    private final String type = "fighter";
+
     private String secondWind;
     private String fightingStyle;
     private ResourceBundle fightingStyles = SettingsReader.getResourceBundle("FightingStyle");
+
+    public Fighter() { }
 
     public Fighter(String roleNameIn, int baseHpIn, int amountOfSkillsIn, ArrayList<Skill> chosenRoleSkillsIn, String secondWindIn, int valueIn) {
         super(roleNameIn, baseHpIn, amountOfSkillsIn, chosenRoleSkillsIn, valueIn);
         setFightingStyle(setFighterStyle());
         setSecondWind(secondWindIn);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  second wind="
+                + secondWind
+                + ",\n  fighting style="
+                + fightingStyle
+                + "\n }";
     }
 
     /**

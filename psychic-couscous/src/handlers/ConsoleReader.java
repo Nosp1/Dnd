@@ -1,17 +1,20 @@
 package handlers;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class  ConsoleReader {
+import Races.*;
+import com.google.gson.Gson;
+import org.codehaus.jackson.map.ObjectMapper;
+
+public class ConsoleReader {
 
     private Character character;
     private ResourceBundle text;
+
+    private Gson gson;
 
     public ConsoleReader() {
     	
@@ -37,9 +40,9 @@ public class  ConsoleReader {
 
     	System.out.print(text.getString("enterChoice") + ": ");
 
-    	String choice = reader.nextLine();
+    	String choice = reader.nextLine().trim();
 
-    	while (!choice.equals("1") && !choice.equals("2")) {
+    	while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3")) {
 
     	    System.out.println();
 
@@ -59,28 +62,77 @@ public class  ConsoleReader {
 
             case "1":
                 newCharacter();
+                saveCharacter(character);
                 break;
 
             case "2":
-                loadCharacter();
+                displayCharacters();
+                String path = "characters/" + reader.nextLine() + ".json";
+                try {
+                    loadCharacter(path);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
 
+            case "3":
+                testChar();
+                break;
         }
     	
     }
 
+    private void testChar() {
+        this.character = new Character(true);
+        saveCharacter(character);
+    }
+
     private void newCharacter() {
-        this.character = new Character();
+        this.character = new Character("Let's go!");
+        saveCharacter(character);
+    }
+
+    private void saveCharacter(Character character) {
+        ObjectMapper mapper = new ObjectMapper();
+        String json;
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("./characters/" + character.getName() + ".json"));
+            json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(character);
+
+            try {
+                writer.write(json);
+            } catch(IOException ioe) {
+                ioe.printStackTrace();
+            } finally {
+
+                try {
+                    writer.close();
+                } catch(IOException ioe) {
+                    ioe.printStackTrace();
+                }
+
+            }
+
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+
+    private void loadCharacter(String path) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Character jsonCharacter = objectMapper.readValue(new File(path), Character.class);
+        System.out.println(jsonCharacter.toString());
     }
     
-    private void loadCharacter() {
+    private void displayCharacters() {
 
         System.out.println(text.getString("loadReminder"));
 
         System.out.println();
 
         File characterFolder = new File("./characters");
-        File[] charactersFound = characterFolder.listFiles((dir, name) -> name.endsWith(".stc"));
+        File[] charactersFound = characterFolder.listFiles((dir, name) -> name.endsWith(".json"));
 
         if (charactersFound == null || charactersFound.length == 0) {
 

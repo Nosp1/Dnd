@@ -1,15 +1,23 @@
 package Races;
+
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonTypeName;
+
 /*
 The core Halfing Race. Has all properties as strings.
 @Author Trym Staurheim
  */
-
+@JsonTypeName("halfling")
 public class Halfling extends Race {
+    @JsonProperty("@type")
+    private final String type = "halfling";
+
     String lucky;
     String naturallyStealthy;
     String halflingNimbleness;
     String brave;
 
+    public Halfling() { }
 
     public Halfling(String nameIn, int maxAgeIn, String languagesIn, int raceIncreaseStatsIn, String[] availableStatsIn, String luckyIn, String naturallyStealthyIn, String halflingNimblenessIn, String braveIn) {
         super(nameIn, maxAgeIn, languagesIn, raceIncreaseStatsIn, availableStatsIn);
@@ -17,6 +25,20 @@ public class Halfling extends Race {
         setHalflingNimbleness(halflingNimblenessIn);
         setLucky(luckyIn);
         setNaturallyStealthy(naturallyStealthyIn);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  lucky="
+                + lucky
+                + ",\n  naturally stealthy="
+                + naturallyStealthy
+                + ",\n  halfling nimbleness="
+                + halflingNimbleness
+                + ",\n  brave="
+                + brave
+                + "\n }";
     }
 
     public String getLucky() {

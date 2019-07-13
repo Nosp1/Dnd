@@ -3,10 +3,9 @@ package handlers;
 import Races.*;
 import Roles.Role;
 import Roles.*;
-import Backgrounds.Acolyte;
-import Backgrounds.Background;
-import Backgrounds.Criminal;
-
+import backgrounds.Acolyte;
+import backgrounds.Background;
+import backgrounds.Criminal;
 
 import java.lang.reflect.Array;
 import java.util.*;
@@ -61,13 +60,19 @@ public class Character {
     private ResourceBundle roles = SettingsReader.getResourceBundle("Role");
     private ResourceBundle backgrounds = SettingsReader.getResourceBundle("Background");
 
+    /**
+     * Empty constructor for deserialization purposes
+     */
+    public Character() { }
 
     /**
      * Constructor for the Character class. Creates an object of type Character with properties from Stat, Race, Role and Background
      *
      * @author Trym Staurheim
+     *
+     * Modified by @author brisdalen for testing purposes
      */
-    public Character() {
+    public Character(String characterCreation) {
 
         System.out.println(Utilities.renderColoredString(text.getString("newCharacterWelcome"), "yellow"));
 
@@ -88,8 +93,67 @@ public class Character {
         isBackGroundChosen();
         backGroundInfo();
         printCompleteCharacter();
+    }
 
+    /**
+     * Constructor for a test-character. Used for debugging.
+     *
+     * @param test unused boolean, only to use a different constructor.
+     * @author brisdalen
+     */
+    public Character(boolean test) {
+        this.name = "Brynf";
+        this.age = 50;
+        this.gender = "Male";
 
+        String[] statsTemp = {stats.getString("dexterity")};
+        this.race = new Elf(races.getString("elf"), 700, "Elvish, Common", 2, statsTemp,
+                races.getString("darkvision"), races.getString("feyancestry"), "proficient in Perception", races.getString("trance"));
+
+        ArrayList<Skill> skillsTemp = new ArrayList<>();
+//        this.role = new Druid(roles.getString("druid"), 8, 2, skillsTemp, constitution.getModifier());
+        this.role = null;
+        this.background = new Criminal(backgrounds.getString("criminal"), backgrounds.getString("criminalfeature"), getTools().getString("thievestool"));
+
+        stat = new ArrayList<>();
+
+        strength = new Stat(stats.getString("strength"), 0);
+        stat.add(strength);
+
+        dexterity = new Stat(stats.getString("dexterity"), 1);
+        stat.add(dexterity);
+
+        constitution = new Stat(stats.getString("constitution"), 10);
+        stat.add(constitution);
+
+        intelligence = new Stat(stats.getString("intelligence"), 11);
+        stat.add(intelligence);
+
+        wisdom = new Stat(stats.getString("wisdom"), 100);
+        stat.add(wisdom);
+
+        charisma = new Stat(stats.getString("charisma"), 101);
+        stat.add(charisma);
+    }
+
+    @Override
+    public String toString() {
+        return "{"
+                + "\n name="
+                + name
+                + ",\n age="
+                + age
+                + ",\n gender="
+                + gender
+                + ",\n race="
+                + race.toString()
+                + ",\n role="
+                + role.toString()
+                + ",\n background="
+                + background.toString()
+                + ",\n stats="
+                + stat
+                + "\n}";
     }
 
     /* This section includes all methods that handles the character creation.
@@ -144,7 +208,7 @@ public class Character {
 
                 try {
 
-                    int chosenRoll = Integer.parseInt(statReader.nextLine()) - 1;
+                    int chosenRoll = Integer.parseInt(statReader.nextLine().trim()) - 1;
 
                     if (chosenRoll < 0 || chosenRoll >= 6) {
 
@@ -303,7 +367,7 @@ public class Character {
     private void chooseName() {
         System.out.println(text.getString("characterName"));
         Scanner nameScanner = new Scanner(System.in);
-        name = nameScanner.nextLine();
+        name = nameScanner.nextLine().trim();
         setName(name);
         System.out.println(Utilities.renderColoredString(text.getString("characterNameChosen") + ": ", "green") + name);
     }
@@ -318,7 +382,7 @@ public class Character {
     private void chooseGender() {
         System.out.println(text.getString("characterGender"));
         Scanner genderScanner = new Scanner(System.in);
-        gender = genderScanner.nextLine();
+        gender = genderScanner.nextLine().trim();
         setGender(gender);
         System.out.println(Utilities.renderColoredString(text.getString("characterGenderChosen") + ": ", "green") + gender);
     }
@@ -337,7 +401,7 @@ public class Character {
 
         while (!isAgeSat) {
             try {
-                age = Integer.parseInt(ageScanner.nextLine());
+                age = Integer.parseInt(ageScanner.nextLine().trim());
                 if (age > race.getMaxAge()) {
                     System.out.println(Utilities.renderColoredString(text.getString("characterAgeTohigh") + " " + race.getName(), "red"));
 
@@ -373,7 +437,7 @@ public class Character {
         Stat.statModifier(stat);
         boolean isRaceSet = false;
         while (!isRaceSet) {
-            race = chooseRace(raceScanner.nextLine());
+            race = chooseRace(raceScanner.nextLine().trim());
             if (race != null) {
                 isRaceSet = true;
             }
@@ -525,7 +589,7 @@ public class Character {
             Scanner halfElf = new Scanner(System.in);
             for (int h = 0; h < 2; h++) {
                 int elfIncrease = 1;
-                switch (halfElf.nextLine()) {
+                switch (halfElf.nextLine().trim()) {
                     case "1": {
                         if (strength.changeValueIfAvailable(elfIncrease)) {
                             System.out.println(String.format(stats.getString("strengthincrease"), elfIncrease, strength.getValue()));
@@ -610,7 +674,7 @@ public class Character {
         boolean isRoleSet = false;
         Scanner roleScanner = new Scanner(System.in);
         while (!isRoleSet) {
-            role = chooseRole(roleScanner.nextLine());
+            role = chooseRole(roleScanner.nextLine().trim());
             if (role != null) {
                 isRoleSet = true;
             }
@@ -716,7 +780,7 @@ public class Character {
         }
         Scanner halfElf = new Scanner(System.in);
         for (int h = 0; h < 2; h++) {
-            int halfElfChoice = Integer.parseInt(halfElf.nextLine()) - 1;
+            int halfElfChoice = Integer.parseInt(halfElf.nextLine().trim()) - 1;
             try {
                 if (halfElfChoice > getSKILLS().length) {
                     System.out.println(renderColoredString(text.getString("numbertohigh"), "red") + "\n" +
@@ -782,7 +846,7 @@ public class Character {
 
 
         for (int i = 0; i < role.getAmountOfSkills(); i++) {
-            int choice = Integer.parseInt(roleSkills.nextLine()) - 1;
+            int choice = Integer.parseInt(roleSkills.nextLine().trim()) - 1;
             try {
 
                 if (choice > role.availableRoleSkills().size()) {
@@ -827,8 +891,9 @@ public class Character {
         printChoices(temp);
         Scanner backGroundScanner = new Scanner(System.in);
         boolean isBackGroundSat = false;
+
         while (!isBackGroundSat) {
-            background = chooseBackground(backGroundScanner.nextLine());
+            background = chooseBackground(backGroundScanner.nextLine().trim());
             if (background != null) {
                 isBackGroundSat = true;
             }
@@ -846,9 +911,9 @@ public class Character {
      * @param input reader from isBackGroundChosen() to set a child on {@code Background} object.
      * @return new Background object child with the child properties from the {@code Background} child constructors.
      * @author Trym Staurheim
-     * @see Backgrounds.Acolyte
-     * @see Backgrounds.Criminal
-     * @see Backgrounds.Background
+     * @see backgrounds.Acolyte
+     * @see backgrounds.Criminal
+     * @see backgrounds.Background
      */
     private Background chooseBackground(String input) {
         switch (input) {
@@ -904,6 +969,37 @@ public class Character {
 
     }
 
+    /**
+     * Getters
+     */
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public Race getRace() {
+        return race;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public Background getBackground() {
+        return background;
+    }
+
+    public ArrayList<Stat> getStat() {
+        return stat;
+    }
+
 
     /**
      * The RandomRoll class handles the integers parsed with scanner to SetStats Method.
@@ -940,7 +1036,6 @@ public class Character {
             return value;
         }
     }
-
 
 }
 
