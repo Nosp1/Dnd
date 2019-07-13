@@ -43,6 +43,21 @@ public abstract class Race {
         setAvailablestats(availableStatsIn);
 
     }
+    
+    @Override
+    public String toString() {
+        return "{"
+                + "\n  race name="
+                + name
+                + ",\n  max age="
+                + maxAge
+                + ",\n  languages="
+                + languages
+                + ",\n  raceIncreaseStats="
+                + raceIncreaseStats
+                + ",\n  availableStats="
+                + availableStats;
+    }
 
     private void setAvailablestats(String[] availableStatsIn) {
         availableStats = new ArrayList<>(Arrays.asList(availableStatsIn));
@@ -104,19 +119,5 @@ public abstract class Race {
         }
     }
 
-    @Override
-    public String toString() {
-        return "{"
-                + "\n  race name="
-                + name
-                + ",\n  max age="
-                + maxAge
-                + ",\n  languages="
-                + languages
-                + ",\n  raceIncreaseStats="
-                + raceIncreaseStats
-                + ",\n  availableStats="
-                + availableStats;
-    }
 
 }

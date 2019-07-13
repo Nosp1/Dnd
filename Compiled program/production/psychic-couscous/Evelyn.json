@@ -18,7 +18,7 @@
   "role" : {
     "type" : "cleric",
     "roleName" : "Cleric",
-    "baseHp" : 8,
+    "baseHp" : 10,
     "amountOfSkills" : 2,
     "chosenRoleSkills" : [ {
       "name" : "Perception",
@@ -29,37 +29,40 @@
     }, {
       "name" : "Religion",
       "proficient" : true
-    } ]
+    } ],
+    "@type" : "cleric"
   },
   "background" : {
+    "type" : "acolyte",
     "backGroundName" : "Acolyte",
     "feature" : "Shelter of the Faithful",
     "tools" : "You have no tools.",
-    "acolyteworhips" : "Helm, god of protection"
+    "acolyteworhips" : "Helm, god of protection",
+    "@type" : "acolyte"
   },
   "stat" : [ {
     "name" : "Strength",
-    "value" : 9,
-    "modifier" : -1
-  }, {
-    "name" : "Dexterity",
-    "value" : 9,
+    "value" : 7,
     "modifier" : -2
   }, {
-    "name" : "Constitution",
-    "value" : 10,
-    "modifier" : 0
-  }, {
-    "name" : "Intelligence",
+    "name" : "Dexterity",
     "value" : 11,
-    "modifier" : 0
+    "modifier" : -1
   }, {
-    "name" : "Wisdom",
+    "name" : "Constitution",
     "value" : 14,
     "modifier" : 2
   }, {
-    "name" : "Charisma",
-    "value" : 11,
+    "name" : "Intelligence",
+    "value" : 17,
+    "modifier" : 3
+  }, {
+    "name" : "Wisdom",
+    "value" : 10,
     "modifier" : 0
+  }, {
+    "name" : "Charisma",
+    "value" : 16,
+    "modifier" : 3
   } ]
 }

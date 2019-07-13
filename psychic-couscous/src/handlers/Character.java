@@ -6,7 +6,6 @@ import Roles.*;
 import backgrounds.Acolyte;
 import backgrounds.Background;
 import backgrounds.Criminal;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.lang.reflect.Array;
 import java.util.*;
@@ -43,7 +42,6 @@ public class Character {
     /**
      * declared for dynamic type change during program execution to store {@code Background} child on object
      */
-    @JsonIgnore
     private Background background;
     /**
      * declared for storing type {@code Stat} objects in a list to access them during runtime
@@ -62,6 +60,10 @@ public class Character {
     private ResourceBundle roles = SettingsReader.getResourceBundle("Role");
     private ResourceBundle backgrounds = SettingsReader.getResourceBundle("Background");
 
+    /**
+     * Empty constructor for deserialization purposes
+     */
+    public Character() { }
 
     /**
      * Constructor for the Character class. Creates an object of type Character with properties from Stat, Race, Role and Background
@@ -134,10 +136,25 @@ public class Character {
         stat.add(charisma);
     }
 
-    /**
-     * Empty constructor for testing purposes
-     */
-    public Character() { }
+    @Override
+    public String toString() {
+        return "{"
+                + "\n name="
+                + name
+                + ",\n age="
+                + age
+                + ",\n gender="
+                + gender
+                + ",\n race="
+                + race.toString()
+                + ",\n role="
+                + role.toString()
+                + ",\n background="
+                + background.toString()
+                + ",\n stats="
+                + stat
+                + "\n}";
+    }
 
     /* This section includes all methods that handles the character creation.
      *
@@ -874,6 +891,7 @@ public class Character {
         printChoices(temp);
         Scanner backGroundScanner = new Scanner(System.in);
         boolean isBackGroundSat = false;
+
         while (!isBackGroundSat) {
             background = chooseBackground(backGroundScanner.nextLine().trim());
             if (background != null) {
@@ -982,23 +1000,6 @@ public class Character {
         return stat;
     }
 
-    @Override
-    public String toString() {
-        return "Character [\n"
-                + "name="
-                + name
-                + ",\n age="
-                + age
-                + ",\n gender="
-                + gender
-                + ",\n race="
-                + race.toString()
-                + ",\n role="
-                + role.toString()
-                + ",\n stats="
-                + stat
-                + "\n]";
-    }
 
     /**
      * The RandomRoll class handles the integers parsed with scanner to SetStats Method.

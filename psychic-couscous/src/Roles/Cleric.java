@@ -15,10 +15,8 @@ The Cleric Role/class
 todo add domain choice
  */
 
-// TODO: @JsonTypeName må legges til i hver sub-klasse av Race
 @JsonTypeName("cleric")
 public class Cleric extends Role{
-    //TODO: @JsonProperty og stringen på linjen under på legges til i hver sub-klasse av Role
     @JsonProperty("@type")
     private final String type = "cleric";
 
@@ -30,7 +28,8 @@ public class Cleric extends Role{
 
     //TODO: Hver sub-klasse må override sin egen toString, og kalle på super.toString() først
     public String toString() {
-        return super.toString();
+        return super.toString()
+                + "\n }";
     }
 
     @Override

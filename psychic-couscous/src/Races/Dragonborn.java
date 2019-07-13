@@ -7,15 +7,21 @@ The Race of Dragonborn. Currently has two defining properties.
 
 import handlers.SettingsReader;
 import handlers.Utilities;
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonTypeName;
 
 import java.util.ResourceBundle;
 import java.util.Scanner;
 @JsonTypeName("dragonborn")
 public class Dragonborn extends Race {
+    @JsonProperty("@type")
+    private final String type = "dragonborn";
+
     private String draconicAncestry;
     private String breathWeapon;
     private ResourceBundle draconicancestries = SettingsReader.getResourceBundle("DraconicAncestry");
+
+    public Dragonborn() { }
 
     public Dragonborn(String nameIn, int maxAgeIn, String languagesIn, int raceIncreaseStatIn, String[] availableStatsIn, String breathWeaponIn) {
 
@@ -23,6 +29,16 @@ public class Dragonborn extends Race {
         setDraconicAncestry(setDraconicAncestor());
         setBreathWeapon(breathWeaponIn);
 
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  draconigAncestry="
+                + draconicAncestry
+                + ",\n  breathWeapon="
+                + breathWeapon
+                + "\n }";
     }
 
     private void setDraconicAncestry(String draconicAncestryIn) {

@@ -1,5 +1,5 @@
 {
-  "name" : "Evelyn",
+  "name" : "Test",
   "age" : 110,
   "gender" : "Female",
   "race" : {
@@ -18,16 +18,16 @@
   "role" : {
     "type" : "cleric",
     "roleName" : "Cleric",
-    "baseHp" : 10,
+    "baseHp" : 7,
     "amountOfSkills" : 2,
     "chosenRoleSkills" : [ {
       "name" : "Perception",
       "proficient" : true
     }, {
-      "name" : "Medicine",
+      "name" : "History",
       "proficient" : true
     }, {
-      "name" : "Religion",
+      "name" : "Insight",
       "proficient" : true
     } ],
     "@type" : "cleric"
@@ -42,27 +42,27 @@
   },
   "stat" : [ {
     "name" : "Strength",
-    "value" : 7,
-    "modifier" : -2
+    "value" : 18,
+    "modifier" : 4
   }, {
     "name" : "Dexterity",
-    "value" : 11,
-    "modifier" : -1
+    "value" : 13,
+    "modifier" : 0
   }, {
     "name" : "Constitution",
+    "value" : 8,
+    "modifier" : -1
+  }, {
+    "name" : "Intelligence",
     "value" : 14,
     "modifier" : 2
   }, {
-    "name" : "Intelligence",
-    "value" : 17,
-    "modifier" : 3
-  }, {
     "name" : "Wisdom",
-    "value" : 10,
-    "modifier" : 0
+    "value" : 9,
+    "modifier" : -1
   }, {
     "name" : "Charisma",
-    "value" : 16,
+    "value" : 17,
     "modifier" : 3
   } ]
 }

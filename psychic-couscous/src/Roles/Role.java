@@ -47,13 +47,13 @@ public abstract class Role {
 
     @Override
     public String toString() {
-        return "Role [role name="
+        return "{"
+                + "\n  role name="
                 + roleName
-                + "base HP="
+                + ",\n  base HP="
                 + baseHp
-                + "chosen role skills=["
-                + chosenRoleSkills
-                + "]";
+                + ",\n  chosen role skills=["
+                + chosenRoleSkills;
     }
 
     public abstract ArrayList<String> availableRoleSkills();
