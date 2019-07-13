@@ -1,0 +1,64 @@
+{
+  "name" : "Brynf",
+  "age" : 32,
+  "gender" : "Male",
+  "race" : {
+    "type" : "human",
+    "name" : "Human",
+    "maxAge" : 100,
+    "languages" : "common",
+    "raceIncreaseStats" : 1,
+    "availableStats" : [ "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" ],
+    "extraLanguage" : "common",
+    "@type" : "human"
+  },
+  "role" : {
+    "type" : "barbarian",
+    "roleName" : "Barbarian",
+    "baseHp" : 13,
+    "amountOfSkills" : 2,
+    "chosenRoleSkills" : [ {
+      "name" : "Nature",
+      "proficient" : true
+    }, {
+      "name" : "Survival",
+      "proficient" : true
+    } ],
+    "rage" : "Rage",
+    "unArmoredDefense" : "Unarmored Defense: While you are not wearing any armor, \n your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier.\n You can use a shield and still gain this benefit.",
+    "@type" : "barbarian"
+  },
+  "background" : {
+    "type" : "acolyte",
+    "backGroundName" : "Acolyte",
+    "feature" : "Shelter of the Faithful",
+    "tools" : "You have no tools.",
+    "acolyteworhips" : "Chauntea, goddess of agriculture",
+    "@type" : "acolyte"
+  },
+  "stat" : [ {
+    "name" : "Strength",
+    "value" : 17,
+    "modifier" : 3
+  }, {
+    "name" : "Dexterity",
+    "value" : 10,
+    "modifier" : -1
+  }, {
+    "name" : "Constitution",
+    "value" : 13,
+    "modifier" : 1
+  }, {
+    "name" : "Intelligence",
+    "value" : 8,
+    "modifier" : -2
+  }, {
+    "name" : "Wisdom",
+    "value" : 10,
+    "modifier" : -1
+  }, {
+    "name" : "Charisma",
+    "value" : 11,
+    "modifier" : 0
+  } ]
+}
