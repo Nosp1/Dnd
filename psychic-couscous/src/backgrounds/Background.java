@@ -1,4 +1,4 @@
-package Backgrounds;
+package backgrounds;
 
 import java.util.ArrayList;
 /*
@@ -44,10 +44,6 @@ public abstract class Background{
     private void setTools(String toolsIn) {
         this.tools = toolsIn;
     }
-
-
-
-
 
     public abstract ArrayList<String> equipment();
     public abstract ArrayList<String> backgroundSkills();

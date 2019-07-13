@@ -1,10 +1,12 @@
 package Races;
+
+import org.codehaus.jackson.annotate.JsonTypeName;
+
 /*
 The Core Gnome Race. Has all Gnome features added.
 @Author Trym Staurheim
-todo needs informaton on properties.
  */
-
+@JsonTypeName("gnome")
 public class Gnome extends Race {
     private String darkVision;
     private String gnomeCunning;

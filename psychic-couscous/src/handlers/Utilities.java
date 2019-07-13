@@ -13,7 +13,16 @@ public class Utilities {
     private static ResourceBundle draconicancestries = SettingsReader.getResourceBundle("DraconicAncestry");
     private static ResourceBundle skills = SettingsReader.getResourceBundle("Skill");
     private static ResourceBundle gods = SettingsReader.getResourceBundle("God");
+    private static ResourceBundle fightingstyles = SettingsReader.getResourceBundle("FightingStyle");
 
+    public  final static String[] FIGHTINGSTYLES = {
+            fightingstyles.getString("archery"),
+            fightingstyles.getString("defense"),
+            fightingstyles.getString("dueling"),
+            fightingstyles.getString("greatweaponfighting"),
+            fightingstyles.getString("protection"),
+            fightingstyles.getString("twoweaponfighting"),
+    };
     public final static String[] RACES = {
             races.getString("dragonborn"),
             races.getString("dwarf"),
@@ -203,12 +212,17 @@ public class Utilities {
     }
     public static String[] getROLES(){
         return ROLES;
-
     }
     public static String[] getGODS(){
         return GODS;
     }
     public static String[] getTOOLS() {
         return TOOLS;
+    }
+    public static String[] getSKILLS() {
+        return SKILLS;
+    }
+    public static String[] getFIGHTINGSTYLES(){
+        return FIGHTINGSTYLES;
     }
 }

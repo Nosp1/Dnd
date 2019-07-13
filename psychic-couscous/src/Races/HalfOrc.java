@@ -1,14 +1,17 @@
 package Races;
 
+import org.codehaus.jackson.annotate.JsonTypeName;
+
 /*
 The Core HalfOrc with all properties as strings.
 @Author Trym staurheim
  */
+@JsonTypeName("halforc")
 public class HalfOrc extends Race {
     private String darkVision;
     private String relentlessEndurance; // when half-orcs is reduced to 0 hp, you are instead recued to 1hp
     private String savageAttacks; //can add dmg dice to crits
-    private String menacing; // gains profiency in intimdation todo make skill intimdation select for characther when half-orc race is chosen.
+    private String menacing; // gains profiency in intimdation
 
 
     public HalfOrc(String nameIn, int maxAgeIn, String languagesIn, int raceIncreaseStatsIn, String[] availableStatsIn, String darkVisionIn, String menacingIn, String relentlessEndurancIn, String savageAttacksIn) {
