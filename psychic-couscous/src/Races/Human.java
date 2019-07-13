@@ -27,7 +27,7 @@ public class Human extends Race {
         return super.toString()
                 + ",\n extra language="
                 + extraLanguage
-                + ",\n }";
+                + "\n }";
     }
 
     public String getExtraLanguage() {

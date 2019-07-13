@@ -38,7 +38,7 @@ public class Dragonborn extends Race {
                 + draconicAncestry
                 + ",\n  breathWeapon="
                 + breathWeapon
-                + ",\n }";
+                + "\n }";
     }
 
     private void setDraconicAncestry(String draconicAncestryIn) {

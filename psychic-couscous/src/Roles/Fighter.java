@@ -37,6 +37,16 @@ public class Fighter extends Role {
         setSecondWind(secondWindIn);
     }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  second wind="
+                + secondWind
+                + ",\n  fighting style="
+                + fightingStyle
+                + "\n }";
+    }
+
     /**
      * @author Trym Staurheim
      * @return fightingStyle as a @code String based on user input.

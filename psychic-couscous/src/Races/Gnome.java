@@ -28,7 +28,7 @@ public class Gnome extends Race {
                 + darkVision
                 + ",\n gnome cunning="
                 + gnomeCunning
-                + ",\n }";
+                + "\n }";
     }
 
     public String getDarkVision() {

@@ -51,7 +51,7 @@ public class Dwarf extends Race {
                 + dwarvenResilience
                 + ",\n  tool proficiency="
                 + toolProficiency
-                + ",\n }";
+                + "\n }";
     }
 
     private String setDwarfToolproficiency() {

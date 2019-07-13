@@ -30,7 +30,16 @@ public class Barbarian extends Role {
         setRage(rageIn);
         setUnArmoredDefense(unArmoredDefenseIn);
         availableRoleSkills();
+    }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  rage"
+                + rage
+                + ",\n  unarmoured defence="
+                + unArmoredDefense
+                + "\n }";
     }
 
     @Override

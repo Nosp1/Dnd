@@ -38,7 +38,7 @@ public class HalfOrc extends Race {
                 + savageAttacks
                 + ",\n  menacing="
                 + menacing
-                + ",\n }";
+                + "\n }";
     }
 
     public String getDarkVision() {

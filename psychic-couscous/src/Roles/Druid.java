@@ -24,6 +24,12 @@ public class Druid extends Role {
     }
 
     @Override
+    public String toString() {
+        return super.toString()
+                + "\n }";
+    }
+
+    @Override
     public ArrayList<String> availableRoleSkills() {
         ArrayList<String> availableRoleSkills = new ArrayList<>();
         availableRoleSkills.add(getSkills().getString("arcana"));

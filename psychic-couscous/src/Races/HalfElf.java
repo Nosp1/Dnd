@@ -38,7 +38,7 @@ public class HalfElf extends Race {
                 + darkVision
                 + ",\n  skill versatility="
                 + skillVersatility
-                + ",\n }";
+                + "\n }";
     }
 
     public String getFeyAncestry() {

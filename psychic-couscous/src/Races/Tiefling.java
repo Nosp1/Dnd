@@ -34,7 +34,7 @@ public class Tiefling extends Race {
                 + hellishRebuke
                 + ",\n  infernal legacy="
                 + infernalLegacy
-                + ",\n }";
+                + "\n }";
     }
 
     public String getDarkVision() {

@@ -27,6 +27,16 @@ public class Paladin extends Role {
         setLayOnHands(layOnHandsIn);
     }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  lay-on hands="
+                + layOnHands
+                + ",\n  divine sense="
+                + divineSense
+                + "\n }";
+    }
+
     public String getLayOnHands() {
         return layOnHands;
     }

@@ -38,7 +38,7 @@ public class Halfling extends Race {
                 + halflingNimbleness
                 + ",\n  brave="
                 + brave
-                + ",\n }";
+                + "\n }";
     }
 
     public String getLucky() {

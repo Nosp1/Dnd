@@ -21,12 +21,25 @@ public class Rogue extends Role {
     private String sneakAttack; //increases dmg by 2d6 if you are hidden, or target is prone, or ally is nearby target
     private String thievesCant; //language known by thieves.
 
+    public Rogue() { }
+
     public Rogue(String roleNameIn, int baseHpIn, int amountOfSkillsIn, ArrayList<Skill> chosenRoleSkillsIn, String expertiseIn, String sneakAttackIn, String thievesCant, int valueIn) {
         super(roleNameIn, baseHpIn, amountOfSkillsIn, chosenRoleSkillsIn, valueIn);
         setExpertise(expertiseIn);
         setSneakAttack(sneakAttackIn);
         setThievesCant(thievesCant);
+    }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                + ",\n  expertise="
+                + expertise
+                + ",\n  sneak-attack="
+                + sneakAttack
+                + ",\n  thieves-cant"
+                + thievesCant
+                + "\n }";
     }
 
     public String getExpertise() {
