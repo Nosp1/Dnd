@@ -1,5 +1,9 @@
 package backgrounds;
 
+import org.codehaus.jackson.annotate.JsonSubTypes;
+import org.codehaus.jackson.annotate.JsonSubTypes.Type;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
+
 import java.util.ArrayList;
 /*
 The Background class serves a  skeleton for all the DnD Backgrounds,
@@ -7,7 +11,11 @@ containing all the specific properties a background needs.
 Enables the user to create custom Backgrounds by inheriting from this class.
 @Author Trym Staurheim
  */
-
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property="type")
+@JsonSubTypes({
+        @Type(value = Acolyte.class, name = "acolyte"),
+        @Type(value = Criminal.class, name = "criminal")
+})
 public abstract class Background{
     private String backGroundName;
     private String feature;
@@ -19,6 +27,16 @@ public abstract class Background{
         setFeature(featureIn);
         setTools(toolsIn);
 
+    }
+
+    @Override
+    public String toString() {
+        return "Background [background name="
+                + backGroundName
+                + "feature="
+                + feature
+                + "tools=["
+                + tools;
     }
 
     public String getBackGroundName() {

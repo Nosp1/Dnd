@@ -15,12 +15,26 @@ to make implementation easier for  the extended DnD library, as well as custom R
  @Author Trym Staurheim
  */
 
+import org.codehaus.jackson.annotate.JsonSubTypes;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property="type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Barbarian.class, name = "barbarian"),
+        @JsonSubTypes.Type(value = Cleric.class, name = "cleric"),
+        @JsonSubTypes.Type(value = Druid.class, name = "druid"),
+        @JsonSubTypes.Type(value = Fighter.class, name = "fighter"),
+        @JsonSubTypes.Type(value = Paladin.class, name = "paladin"),
+        @JsonSubTypes.Type(value = Rogue.class, name = "rogue")
+})
 public abstract class Role {
     private String roleName;
     private int baseHp;
     private ArrayList<String> availableRoleSkills;
     private int amountOfSkills;
     private ArrayList<Skill> chosenRoleSkills;
+
+    public Role() { }
 
     public Role(String roleNameIn, int baseHpIn, int amountOfSkillsIn, ArrayList<Skill> chosenRoleSkillsIn, int valueIn) {
         setRoleName(roleNameIn);
@@ -29,6 +43,17 @@ public abstract class Role {
         setChosenRoleSkills(chosenRoleSkillsIn);
         changeHp(valueIn);
 
+    }
+
+    @Override
+    public String toString() {
+        return "Role [role name="
+                + roleName
+                + "base HP="
+                + baseHp
+                + "chosen role skills=["
+                + chosenRoleSkills
+                + "]";
     }
 
     public abstract ArrayList<String> availableRoleSkills();
@@ -80,16 +105,5 @@ public abstract class Role {
 
     public void setChosenRoleSkills(ArrayList<Skill> chosenRoleSkillsIn) {
         this.chosenRoleSkills = chosenRoleSkillsIn;
-    }
-
-    @Override
-    public String toString() {
-        return "Role [role name="
-                + roleName
-                + "base HP="
-                + baseHp
-                + "chosen role skills=["
-                + chosenRoleSkills
-                + "]";
     }
 }
