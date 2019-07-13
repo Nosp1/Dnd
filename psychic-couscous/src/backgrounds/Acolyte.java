@@ -2,6 +2,8 @@ package backgrounds;
 
 import handlers.SettingsReader;
 import handlers.Utilities;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonTypeName;
 
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -12,13 +14,25 @@ import java.util.Scanner;
  *
  * @author Trym Staurheim
  */
+@JsonTypeName("acolyte")
 public class Acolyte extends Background {
+    @JsonProperty("@type")
+    private final String type = "acolyte";
+
     private static ResourceBundle gods = SettingsReader.getResourceBundle("God");
     private String acolyteWorships;
 
     public Acolyte(String backGroundNameIn, String featureIn, String toolsIn) {
         super(backGroundNameIn, featureIn, toolsIn);
         setAcolyteworhips(isGodSat());
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()
+                + "acolyte worships="
+                + acolyteWorships
+                + "]";
     }
 
     @Override

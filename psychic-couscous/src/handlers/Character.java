@@ -8,7 +8,6 @@ import backgrounds.Background;
 import backgrounds.Criminal;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -40,7 +39,6 @@ public class Character {
     /**
      * declared for further dynamic type change during program execution to store {@code Role} child on object
      */
-    @JsonIgnore
     private Role role;
     /**
      * declared for dynamic type change during program execution to store {@code Background} child on object
@@ -996,7 +994,7 @@ public class Character {
                 + ",\n race="
                 + race.toString()
                 + ",\n role="
-//                + role.toString()
+                + role.toString()
                 + ",\n stats="
                 + stat
                 + "\n]";

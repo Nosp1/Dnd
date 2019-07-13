@@ -11,6 +11,7 @@ public class Skill {
     /** stores the {@code boolean} on the instanced Skill object */
     private boolean isProficient;
 
+    public Skill() { }
     /**
      * The constructor for {@code Skill} sets the variable name and the boolean isProficient on the instanced object Skill.
      * @param nameIn is the {@code String} characters to be sat on instanced object Skill
