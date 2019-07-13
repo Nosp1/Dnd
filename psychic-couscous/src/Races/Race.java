@@ -48,8 +48,8 @@ public abstract class Race {
         availableStats = new ArrayList<>(Arrays.asList(availableStatsIn));
     }
 
-    public String[] getAvailableStats() {
-        return (String[]) availableStats.toArray();
+    public ArrayList<String> getAvailableStats() {
+        return availableStats;
     }
 
     private void setRaceIncrasestats(int raceIncreaseStatsIn) {

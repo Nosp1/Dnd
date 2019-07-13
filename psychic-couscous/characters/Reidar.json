@@ -1,57 +1,40 @@
 {
   "name" : "Reidar",
-  "age" : 28,
+  "age" : 26,
   "gender" : "Male",
   "race" : {
-    "name" : "Human",
-    "maxAge" : 100,
-    "languages" : "common",
+    "type" : "dragonborn",
+    "name" : "Dragonborn",
+    "maxAge" : 80,
+    "languages" : "Draconic, Common",
     "raceIncreaseStats" : 1,
-    "availableStats" : [ "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" ],
-    "extraLanguage" : "common"
-  },
-  "role" : {
-    "roleName" : "Barbarian",
-    "baseHp" : 13,
-    "amountOfSkills" : 2,
-    "chosenRoleSkills" : [ {
-      "name" : "Intimidation",
-      "proficient" : true
-    }, {
-      "name" : "Survival",
-      "proficient" : true
-    } ],
-    "rage" : "Rage",
-    "unArmoredDefense" : "Unarmored Defense: While you are not wearing any armor, \n your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier.\n You can use a shield and still gain this benefit."
-  },
-  "background" : {
-    "backGroundName" : "Criminal",
-    "feature" : "Criminal Contact",
-    "tools" : "This set of tools includes a small file, a set of lock picks,\n a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. \n Proficiency with these tools lets you add your proficiency bonus to any ability checks you make to disarm traps or open locks."
+    "availableStats" : [ "Strength", "Strength", "Charisma" ],
+    "draconicAncestry" : "Blue dragon with Lightning breath",
+    "breathWeapon" : "Based on your Ancestor"
   },
   "stat" : [ {
     "name" : "Strength",
-    "value" : 14,
-    "modifier" : 1
+    "value" : 17,
+    "modifier" : 2
   }, {
     "name" : "Dexterity",
-    "value" : 13,
-    "modifier" : 1
-  }, {
-    "name" : "Constitution",
-    "value" : 13,
-    "modifier" : 1
-  }, {
-    "name" : "Intelligence",
-    "value" : 7,
-    "modifier" : -2
-  }, {
-    "name" : "Wisdom",
-    "value" : 9,
+    "value" : 8,
     "modifier" : -1
   }, {
-    "name" : "Charisma",
+    "name" : "Constitution",
+    "value" : 16,
+    "modifier" : 3
+  }, {
+    "name" : "Intelligence",
+    "value" : 14,
+    "modifier" : 2
+  }, {
+    "name" : "Wisdom",
     "value" : 11,
     "modifier" : 0
+  }, {
+    "name" : "Charisma",
+    "value" : 15,
+    "modifier" : 2
   } ]
 }

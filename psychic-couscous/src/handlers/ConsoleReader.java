@@ -7,10 +7,6 @@ import java.util.Scanner;
 
 import Races.*;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonSubTypes;
-import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.codehaus.jackson.map.ObjectMapper;
 
 public class ConsoleReader {
@@ -97,10 +93,7 @@ public class ConsoleReader {
     }
 
     private void saveCharacter(Character character) {
-        //TODO: gjøre om karakterens attributer til JSON og lagre det i en fil
-
         ObjectMapper mapper = new ObjectMapper();
-        //mapper.enableDefaultTyping();
         String json;
 
         try {
@@ -124,39 +117,6 @@ public class ConsoleReader {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-
-        /* Forsøk med GSON; fikk det ikke til
-        GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
-
-        //gsonBuilder.registerTypeAdapter(Character.class, new CharacterSerializer());
-
-        gson = gsonBuilder.create();
-
-        String json = gson.toJson(character.toString());
-        System.out.println(json);
-
-        // Skriving til fil
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(character.getName() + ".json"));
-
-            try {
-                writer.write(json);
-            } catch(IOException ioe) {
-                ioe.printStackTrace();
-            } finally {
-
-                try {
-                    writer.close();
-                } catch(IOException ioe) {
-                    ioe.printStackTrace();
-                }
-
-            }
-
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-        */
     }
 
     private void loadCharacter(String path) throws IOException {
