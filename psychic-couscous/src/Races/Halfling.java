@@ -1,9 +1,12 @@
 package Races;
+
+import org.codehaus.jackson.annotate.JsonTypeName;
+
 /*
 The core Halfing Race. Has all properties as strings.
 @Author Trym Staurheim
  */
-
+@JsonTypeName("halfling")
 public class Halfling extends Race {
     String lucky;
     String naturallyStealthy;

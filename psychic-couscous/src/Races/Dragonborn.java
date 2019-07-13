@@ -7,10 +7,11 @@ The Race of Dragonborn. Currently has two defining properties.
 
 import handlers.SettingsReader;
 import handlers.Utilities;
+import org.codehaus.jackson.annotate.JsonTypeName;
 
 import java.util.ResourceBundle;
 import java.util.Scanner;
-
+@JsonTypeName("dragonborn")
 public class Dragonborn extends Race {
     private String draconicAncestry;
     private String breathWeapon;

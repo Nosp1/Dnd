@@ -36,7 +36,6 @@ public class Character {
     /**
      * declared for further dynamic type change during program execution to store {@code Race }  child on object
      */
-    @JsonIgnore
     private Race race;
     /**
      * declared for further dynamic type change during program execution to store {@code Role} child on object
@@ -995,7 +994,7 @@ public class Character {
                 + ",\n gender="
                 + gender
                 + ",\n race="
-//                + race.toString()
+                + race.toString()
                 + ",\n role="
 //                + role.toString()
                 + ",\n stats="

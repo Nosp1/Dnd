@@ -1,9 +1,12 @@
 package Races;
 
+import org.codehaus.jackson.annotate.JsonTypeName;
+
 /*
 The Core HalfOrc with all properties as strings.
 @Author Trym staurheim
  */
+@JsonTypeName("halforc")
 public class HalfOrc extends Race {
     private String darkVision;
     private String relentlessEndurance; // when half-orcs is reduced to 0 hp, you are instead recued to 1hp

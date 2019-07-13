@@ -7,13 +7,14 @@ This is the Core Dwarf. Currently has String properties for all dwarf features.
 
 import handlers.SettingsReader;
 import handlers.Utilities;
+import org.codehaus.jackson.annotate.JsonTypeName;
 
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import static handlers.Utilities.TOOLS;
 import static handlers.Utilities.getTOOLS;
-
+@JsonTypeName("dwarf")
 public class Dwarf extends Race {
     private String darkVision; // can see in the dark
     private String dwarvenCombatTraining; //gets proficiency with special dwarven weapons and armor

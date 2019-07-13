@@ -5,11 +5,12 @@ The  core Half elf race. Has all properties as strings.
  */
 
 import handlers.Stat;
+import org.codehaus.jackson.annotate.JsonTypeName;
 
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-
+@JsonTypeName("halfelf")
 public class HalfElf extends Race {
     private String feyAncestry;
     private String darkVision;

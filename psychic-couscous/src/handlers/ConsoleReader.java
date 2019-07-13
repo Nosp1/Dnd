@@ -100,7 +100,7 @@ public class ConsoleReader {
         //TODO: gjøre om karakterens attributer til JSON og lagre det i en fil
 
         ObjectMapper mapper = new ObjectMapper();
-        mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_CONCRETE_AND_ARRAYS);
+        //mapper.enableDefaultTyping();
         String json;
 
         try {
