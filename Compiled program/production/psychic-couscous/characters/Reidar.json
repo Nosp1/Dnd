@@ -1,0 +1,64 @@
+{
+  "name" : "Reidar",
+  "age" : 26,
+  "gender" : "Male",
+  "race" : {
+    "type" : "dragonborn",
+    "name" : "Dragonborn",
+    "maxAge" : 80,
+    "languages" : "Draconic, Common",
+    "raceIncreaseStats" : 1,
+    "availableStats" : [ "Strength", "Strength", "Charisma" ],
+    "draconicAncestry" : "Blue dragon with Lightning breath",
+    "breathWeapon" : "Based on your Ancestor",
+    "@type" : "dragonborn"
+  },
+  "role" : {
+    "type" : "fighter",
+    "roleName" : "Fighter",
+    "baseHp" : 11,
+    "amountOfSkills" : 2,
+    "chosenRoleSkills" : [ {
+      "name" : "History",
+      "proficient" : true
+    }, {
+      "name" : "Perception",
+      "proficient" : true
+    } ],
+    "secondWind" : "You have a limited well of stamina that you can draw on to protect yourself from harm.\n On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level.\"\n Once you use this feature, you must finish a short or long rest before you can use it again.",
+    "fightingStyle" : "Two-Weapon Fighting: When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack.",
+    "@type" : "fighter"
+  },
+  "background" : {
+    "type" : "criminal",
+    "backGroundName" : "Criminal",
+    "feature" : "Criminal Contact",
+    "tools" : "This set of tools includes a small file, a set of lock picks,\n a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. \n Proficiency with these tools lets you add your proficiency bonus to any ability checks you make to disarm traps or open locks.",
+    "@type" : "criminal"
+  },
+  "stat" : [ {
+    "name" : "Strength",
+    "value" : 19,
+    "modifier" : 3
+  }, {
+    "name" : "Dexterity",
+    "value" : 14,
+    "modifier" : 2
+  }, {
+    "name" : "Constitution",
+    "value" : 12,
+    "modifier" : 1
+  }, {
+    "name" : "Intelligence",
+    "value" : 10,
+    "modifier" : 0
+  }, {
+    "name" : "Wisdom",
+    "value" : 8,
+    "modifier" : -1
+  }, {
+    "name" : "Charisma",
+    "value" : 12,
+    "modifier" : 0
+  } ]
+}

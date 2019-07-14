@@ -3,9 +3,9 @@ package handlers;
 import Races.*;
 import Roles.Role;
 import Roles.*;
-import backgrounds.Acolyte;
-import backgrounds.Background;
-import backgrounds.Criminal;
+import Backgrounds.Acolyte;
+import Backgrounds.Background;
+import Backgrounds.Criminal;
 
 import java.lang.reflect.Array;
 import java.util.*;

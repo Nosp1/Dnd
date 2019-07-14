@@ -1,0 +1,69 @@
+{
+  "name" : "Kelrad",
+  "age" : 19,
+  "gender" : "male",
+  "race" : {
+    "type" : "dwarf",
+    "name" : "Dwarf",
+    "maxAge" : 350,
+    "languages" : "Common,Dwarish",
+    "raceIncreaseStats" : 2,
+    "availableStats" : [ "Constitution" ],
+    "darkVision" : "Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions.You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light.You canât discern color in darkness, only shades of gray.",
+    "dwarvenCombatTraining" : "You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.",
+    "stoneCunning" : "Whenever you make an Intelligence (History) check related to the origin of stonework,you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus.",
+    "dwarvenResilience" : "You have advantage on saving throws against poison, and you have resistance against poison damage (explained in the âCombatâ section).",
+    "toolProficiency" : "Smith`s tools.",
+    "settoolproficiency" : "Brewer`s supplies.",
+    "@type" : "dwarf"
+  },
+  "role" : {
+    "type" : "barbarian",
+    "roleName" : "Barbarian",
+    "baseHp" : 10,
+    "amountOfSkills" : 2,
+    "chosenRoleSkills" : [ {
+      "name" : "Athletics",
+      "proficient" : true
+    }, {
+      "name" : "Intimidation",
+      "proficient" : true
+    } ],
+    "rage" : "Rage",
+    "unArmoredDefense" : "Unarmored Defense: While you are not wearing any armor, \n your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier.\n You can use a shield and still gain this benefit.",
+    "@type" : "barbarian"
+  },
+  "background" : {
+    "type" : "acolyte",
+    "backGroundName" : "Acolyte",
+    "feature" : "Shelter of the Faithful",
+    "tools" : "You have no tools.",
+    "acolyteworhips" : "Gond, god of craft",
+    "@type" : "acolyte"
+  },
+  "stat" : [ {
+    "name" : "Strength",
+    "value" : 11,
+    "modifier" : 0
+  }, {
+    "name" : "Dexterity",
+    "value" : 13,
+    "modifier" : 1
+  }, {
+    "name" : "Constitution",
+    "value" : 8,
+    "modifier" : -2
+  }, {
+    "name" : "Intelligence",
+    "value" : 5,
+    "modifier" : -3
+  }, {
+    "name" : "Wisdom",
+    "value" : 16,
+    "modifier" : 3
+  }, {
+    "name" : "Charisma",
+    "value" : 14,
+    "modifier" : 2
+  } ]
+}

@@ -1,4 +1,4 @@
-package backgrounds;
+package Backgrounds;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonTypeName;
