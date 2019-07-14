@@ -132,8 +132,4 @@ public class Dwarf extends Race {
         toolProficiency = toolProficiencyIn;
 
     }
-
-    public String getSettoolproficiency() {
-        return setDwarfToolproficiency();
-    }
 }
