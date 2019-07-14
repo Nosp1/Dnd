@@ -1,0 +1,70 @@
+{
+  "name" : "trym",
+  "age" : 22,
+  "gender" : "male",
+  "race" : {
+    "type" : "halfelf",
+    "name" : "Half-Elf",
+    "maxAge" : 180,
+    "languages" : "Common, elvish",
+    "raceIncreaseStats" : 2,
+    "availableStats" : [ "Charisma" ],
+    "feyAncestry" : "You have advantage on Saving Throws against being Charmed, and magic canât put you to sleep.",
+    "darkVision" : "Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions.You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light.You canât discern color in darkness, only shades of gray.",
+    "skillVersatility" : "gain proficiency in two skills",
+    "@type" : "halfelf"
+  },
+  "role" : {
+    "type" : "cleric",
+    "roleName" : "Cleric",
+    "baseHp" : 6,
+    "amountOfSkills" : 2,
+    "chosenRoleSkills" : [ {
+      "name" : "Investigation",
+      "proficient" : true
+    }, {
+      "name" : "Arcana",
+      "proficient" : true
+    }, {
+      "name" : "Medicine",
+      "proficient" : true
+    }, {
+      "name" : "Persuasion",
+      "proficient" : true
+    } ],
+    "@type" : "cleric"
+  },
+  "background" : {
+    "type" : "acolyte",
+    "backGroundName" : "Acolyte",
+    "feature" : "Shelter of the Faithful",
+    "tools" : "You have no tools.",
+    "acolyteworhips" : "Gond, god of craft",
+    "@type" : "acolyte"
+  },
+  "stat" : [ {
+    "name" : "Strength",
+    "value" : 18,
+    "modifier" : 3
+  }, {
+    "name" : "Dexterity",
+    "value" : 14,
+    "modifier" : 1
+  }, {
+    "name" : "Constitution",
+    "value" : 7,
+    "modifier" : -2
+  }, {
+    "name" : "Intelligence",
+    "value" : 12,
+    "modifier" : 1
+  }, {
+    "name" : "Wisdom",
+    "value" : 14,
+    "modifier" : 2
+  }, {
+    "name" : "Charisma",
+    "value" : 12,
+    "modifier" : 0
+  } ]
+}

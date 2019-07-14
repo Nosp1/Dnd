@@ -1,7 +1,7 @@
 {
-  "name" : "Brynf",
-  "age" : 50,
-  "gender" : "Male",
+  "name" : "Evelyn",
+  "age" : 110,
+  "gender" : "Female",
   "race" : {
     "type" : "elf",
     "name" : "Elf",
@@ -15,37 +15,54 @@
     "trance" : "Elves donât need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day.(The Common word for such meditation is âtrance.â) While meditating, you can dream after a fashion;such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.",
     "@type" : "elf"
   },
-  "role" : null,
+  "role" : {
+    "type" : "cleric",
+    "roleName" : "Cleric",
+    "baseHp" : 10,
+    "amountOfSkills" : 2,
+    "chosenRoleSkills" : [ {
+      "name" : "Perception",
+      "proficient" : true
+    }, {
+      "name" : "Medicine",
+      "proficient" : true
+    }, {
+      "name" : "Religion",
+      "proficient" : true
+    } ],
+    "@type" : "cleric"
+  },
   "background" : {
-    "type" : "criminal",
-    "backGroundName" : "Criminal",
-    "feature" : "Criminal Contact",
-    "tools" : "This set of tools includes a small file, a set of lock picks,\n a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. \n Proficiency with these tools lets you add your proficiency bonus to any ability checks you make to disarm traps or open locks.",
-    "@type" : "criminal"
+    "type" : "acolyte",
+    "backGroundName" : "Acolyte",
+    "feature" : "Shelter of the Faithful",
+    "tools" : "You have no tools.",
+    "acolyteworhips" : "Helm, god of protection",
+    "@type" : "acolyte"
   },
   "stat" : [ {
     "name" : "Strength",
-    "value" : 0,
-    "modifier" : 0
+    "value" : 7,
+    "modifier" : -2
   }, {
     "name" : "Dexterity",
-    "value" : 1,
-    "modifier" : 0
+    "value" : 11,
+    "modifier" : -1
   }, {
     "name" : "Constitution",
+    "value" : 14,
+    "modifier" : 2
+  }, {
+    "name" : "Intelligence",
+    "value" : 17,
+    "modifier" : 3
+  }, {
+    "name" : "Wisdom",
     "value" : 10,
     "modifier" : 0
   }, {
-    "name" : "Intelligence",
-    "value" : 11,
-    "modifier" : 0
-  }, {
-    "name" : "Wisdom",
-    "value" : 100,
-    "modifier" : 0
-  }, {
     "name" : "Charisma",
-    "value" : 101,
-    "modifier" : 0
+    "value" : 16,
+    "modifier" : 3
   } ]
 }

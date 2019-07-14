@@ -76,12 +76,15 @@ public class Dwarf extends Race {
         switch (input.toLowerCase()) {
             case "1": {
                 return tools.getString("smithstools");
+
             }
             case "2": {
                 return tools.getString("brewerssupplies");
+
             }
             case "3": {
                 return tools.getString("masonstools");
+
             }
             case "4": {
                 System.out.println(tools.getString("toolinfo"));
